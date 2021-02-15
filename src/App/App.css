@@ -1,0 +1,26 @@
+.App {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  .App > main {
+    flex: 1;
+  }
+  
+  .App > header {
+    background-color: #333;
+  }
+
+  .App-h1 {
+    text-align: center;
+    color: #fcfaf1;
+  }
+  
+.App a,
+.App a:active,
+.App a:focus,
+.App a:visited {
+  color: #ececea;
+  text-decoration: none;
+}
