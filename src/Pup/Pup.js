@@ -3,12 +3,9 @@ import Playstyle from "../Utils/Helpers";
 import "./Pup.css";
 
 export default function Pup(props) {
-  console.log(props);
-  console.log(props.pups);
   const pup = props.pups.find(
     ({ id }) => parseInt(id) === parseInt(props.match.params.pupId)
   );
-  console.log(pup);
   const playstyle = pup.playstyle;
   return (
     <div className="Pup">
@@ -17,12 +14,13 @@ export default function Pup(props) {
         Size: {pup.size}
         <br></br>
         Age: {pup.age}
-        <ul>
-          {playstyle.map((play) => (
-            <li>{Playstyle(play)}</li>
-          ))}
-        </ul>
       </p>
+      <ul>
+        {playstyle.map((p) => (
+          <li>{Playstyle(p)}</li>
+        ))}
+      </ul>
+      <button>Back</button>
     </div>
   );
 }

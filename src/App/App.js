@@ -1,5 +1,7 @@
 import React from "react";
 import { Route, Link, Switch } from "react-router-dom";
+import Nav from "../Nav/Nav";
+import AddPupdate from "../AddPupdate/AddPupdate";
 import Pupdates from "../Pupdates/Pupdates";
 import Pup from "../Pup/Pup";
 import "./App.css";
@@ -12,7 +14,7 @@ export default function App(props) {
         <Link to="/">
           <h1 className="App-h1">pupdate</h1>
         </Link>
-        {/* <Nav /> */}
+        <Nav />
       </header>
       <main>
         <Switch>
@@ -25,6 +27,7 @@ export default function App(props) {
             path={"/pups/:pupId"}
             render={(props) => <Pup {...props} pups={pups} />}
           />
+          <Route path={"/new-pupdate"} component={AddPupdate} />
         </Switch>
       </main>
     </div>

@@ -1,0 +1,46 @@
+.AddPupdate h2 {
+    text-align: center;
+}
+
+.AddPupdate {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;  
+}
+
+.react-datepicker-wrapper,
+.react-datepicker__input-container,
+.react-datepicker__input-container input {
+    display: block;
+    width: 100%;
+}
+.AddPupdate-form {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    width: 50%;
+}
+
+.AddPupdate textarea {
+    font-family: sans-serif
+}
+
+.AddPupdate input {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+} 
+
+.AddPupdate button {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }

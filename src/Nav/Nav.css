@@ -1,0 +1,22 @@
+.Nav {
+    background-color: #333;
+    text-align: center;
+    padding-bottom: 10px;
+  }
+  
+  .Nav a,
+  .Nav a:active,
+  .Nav a:focus,
+  .Nav a:visited {
+    color: #ececea;
+    text-decoration: none;
+  }
+  
+  .Nav a:hover {
+    color: #ffffff;
+    text-decoration: solid;
+  }
+  
+  .Nav a:not(:last-of-type) {
+    margin-right: 32px;
+  }

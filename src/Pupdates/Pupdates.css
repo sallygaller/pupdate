@@ -18,3 +18,16 @@
     margin: 0 auto;
     text-align: center;
 }
+
+.Pupdates section {
+    margin-bottom: 100px;
+}
+
+.Pupdates a,
+.Pupdates a:active,
+.Pupdates a:focus,
+.Pupdates a:visited {
+  color: black;
+  font-weight: bold;
+  text-decoration: none;
+}
