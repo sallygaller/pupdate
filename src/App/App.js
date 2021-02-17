@@ -3,6 +3,7 @@ import { Route, Link, Switch } from "react-router-dom";
 import Nav from "../Nav/Nav";
 import AddPupdate from "../AddPupdate/AddPupdate";
 import Pupdates from "../Pupdates/Pupdates";
+import MyPups from "../MyPups/MyPups";
 import Pup from "../Pup/Pup";
 import "./App.css";
 
@@ -28,6 +29,10 @@ export default function App(props) {
             render={(props) => <Pup {...props} pups={pups} />}
           />
           <Route path={"/new-pupdate"} component={AddPupdate} />
+          <Route
+            path={"/pups"}
+            render={(props) => <MyPups {...props} pups={pups} />}
+          />
         </Switch>
       </main>
     </div>
