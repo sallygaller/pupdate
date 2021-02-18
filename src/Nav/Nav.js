@@ -7,6 +7,8 @@ export default function Nav() {
     <nav className="Nav">
       <Link to="/pupdates">Pupdates</Link>{" "}
       <Link to="/new-pupdate">New Pupdate</Link> <Link to="/pups">My Pups</Link>
+      <Link to="/register">Register</Link>
+      <Link to="/login">Log In</Link>
     </nav>
   );
 }

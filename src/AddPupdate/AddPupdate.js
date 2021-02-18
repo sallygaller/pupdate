@@ -23,12 +23,16 @@ export default function AddPupdat() {
         <label htmlFor="time">Time:</label>
         <input></input>
         <label htmlFor="location">Location:</label>
-        <SearchLocationInput location={location} setLocation={setLocation} />
+        <SearchLocationInput
+          location={location}
+          setLocation={setLocation}
+          placeholder={"Enter a location (e.g. a local park)"}
+        />
         <label htmlFor="description">Description:</label>
         <textarea
           id="description"
           name="description"
-          className="AddObservation-textarea"
+          className="AddPupdate-textarea"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
         ></textarea>

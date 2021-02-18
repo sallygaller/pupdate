@@ -10,6 +10,10 @@
     padding: 0; 
 }
 
+.Pupdates select {
+    width: 25%;
+}
+
 .Pupdates li {
     margin-left: 0px;
 }

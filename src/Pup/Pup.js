@@ -21,6 +21,7 @@ export default function Pup(props) {
         ))}
       </ul>
       <button>Back</button>
+      {pup.id === 1 ? <button>Edit</button> : null}
     </div>
   );
 }

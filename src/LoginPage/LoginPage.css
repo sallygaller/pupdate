@@ -1,0 +1,8 @@
+.LoginPage h2 {
+    text-align: center;
+}
+
+.LoginPage {
+    border-radius: 5px;
+    padding: 20px;  
+}

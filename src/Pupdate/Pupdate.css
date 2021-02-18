@@ -9,21 +9,24 @@
 }
 
 .Pupdate h3 {
-    margin: 0px;
-    padding: 10px;
+    margin: 5px 0px;
+    padding: 0px;
 }
+
 .Pupdate button {
-    margin: 0px;
+    margin-bottom: 10px;
     padding: 10px;
 }
 
-/* .Pupdate-item {
-    padding: 15px;
-    border: 1px solid black;
-    flex-basis: content;
-} */
+.Pupdate-RSVP {
+    width: 50%;
+    margin-top: 20px;
+}
+
+.Pupdate ul {
+    padding:  0px;
+}
 
 .Pupdate-item {
-    flex-basis: auto;
-   padding: 10px;
+    flex-basis: 25em;
 }

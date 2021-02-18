@@ -56,7 +56,7 @@ function SearchLocationInput(props) {
       <input
         ref={autoCompleteRef}
         onChange={(event) => props.setLocation(event.target.value)}
-        placeholder="Enter a location (e.g. a local park)"
+        placeholder={props.placeholder}
         value={props.location}
       />
     </div>

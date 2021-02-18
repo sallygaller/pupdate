@@ -1,10 +1,13 @@
 import React from "react";
 import { Route, Link, Switch } from "react-router-dom";
 import Nav from "../Nav/Nav";
+import AddPup from "../AddPup/AddPup";
 import AddPupdate from "../AddPupdate/AddPupdate";
 import Pupdates from "../Pupdates/Pupdates";
 import MyPups from "../MyPups/MyPups";
 import Pup from "../Pup/Pup";
+import RegistrationPage from "../RegistrationPage/RegistrationPage";
+import LoginPage from "../LoginPage/LoginPage";
 import "./App.css";
 
 export default function App(props) {
@@ -33,6 +36,9 @@ export default function App(props) {
             path={"/pups"}
             render={(props) => <MyPups {...props} pups={pups} />}
           />
+          <Route path={"/register"} component={RegistrationPage} />
+          <Route path={"/login"} component={LoginPage} />
+          <Route path={"/addpup"} component={AddPup} />
         </Switch>
       </main>
     </div>

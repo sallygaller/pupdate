@@ -31,7 +31,9 @@ export default function Pupdate(props) {
         <p>Location: {pupdate.location}</p>
       </div>
       <div className="Pupdate-item">
-        <button>RSVP</button>
+        <button className="Pupdate-RSVP" type="button">
+          RSVP
+        </button>
       </div>
     </div>
   );
