@@ -1,8 +1,9 @@
 import React from "react";
 import { Route, Link, Switch } from "react-router-dom";
-import Nav from "../Nav/Nav";
 import AddPup from "../AddPup/AddPup";
 import AddPupdate from "../AddPupdate/AddPupdate";
+import LandingPage from "../LandingPage/LandingPage";
+import Nav from "../Nav/Nav";
 import Pupdates from "../Pupdates/Pupdates";
 import MyPups from "../MyPups/MyPups";
 import Pup from "../Pup/Pup";
@@ -22,7 +23,7 @@ export default function App(props) {
       </header>
       <main>
         <Switch>
-          {/* <Route exact path={"/"} component={LandingPage} /> */}
+          <Route exact path={"/"} component={LandingPage} />
           <Route
             path={"/pupdates"}
             render={() => <Pupdates pups={pups} pupdates={pupdates} />}

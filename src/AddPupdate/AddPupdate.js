@@ -13,15 +13,13 @@ export default function AddPupdat() {
     <div className="AddPupdate">
       <h2>New pupdate</h2>
       <form className="AddPupdate-form">
-        <label htmlFor="date">Date:</label>
+        <label htmlFor="date">Date and Time:</label>
         <DatePicker
           selected={startDate}
           onChange={(date) => setStartDate(date)}
           showTimeSelect
           dateFormat="MMMM d, yyyy h:mm aa"
         />
-        <label htmlFor="time">Time:</label>
-        <input></input>
         <label htmlFor="location">Location:</label>
         <SearchLocationInput
           location={location}

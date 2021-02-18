@@ -1,5 +1,5 @@
 import React from "react";
-import Playstyle from "../Utils/Helpers";
+import { playstyles, pupImage } from "../Utils/Helpers";
 import "./Pup.css";
 
 export default function Pup(props) {
@@ -10,6 +10,7 @@ export default function Pup(props) {
   return (
     <div className="Pup">
       <h1>Hi, I'm {pup.name}!</h1>
+      <img className="Pup-img" alt={pup.name} src={pupImage(pup.id)} />
       <p>
         Size: {pup.size}
         <br></br>
@@ -17,7 +18,7 @@ export default function Pup(props) {
       </p>
       <ul>
         {playstyle.map((p) => (
-          <li>{Playstyle(p)}</li>
+          <li>{playstyles(p)}</li>
         ))}
       </ul>
       <button>Back</button>

@@ -46,7 +46,7 @@ const PUPS = [
   },
   {
     id: 2,
-    name: "Red",
+    name: "Buddy",
     age: "Adult",
     size: "L",
     playstyle: ["rambunctious", "parks", "food-obsessed"],
@@ -54,7 +54,7 @@ const PUPS = [
   },
   {
     id: 3,
-    name: "Merle",
+    name: "Fran",
     age: "Adult",
     size: "L",
     playstyle: ["rambunctious", "parks", "wrestling"],

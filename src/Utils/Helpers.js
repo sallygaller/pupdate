@@ -1,4 +1,28 @@
-export default function playstyles(playstyle) {
+import Eddie from "./images/eddie.jpg";
+import Buddy from "./images/buddy.jpg";
+import Fran from "./images/fran.jpg";
+import Rover from "./images/rover.jpg";
+import Speckles from "./images/speckles.jpg";
+
+export function pupImage(pupId) {
+  if (pupId === 1) {
+    return Eddie;
+  }
+  if (pupId === 2) {
+    return Buddy;
+  }
+  if (pupId === 3) {
+    return Fran;
+  }
+  if (pupId === 4) {
+    return Rover;
+  }
+  if (pupId === 5) {
+    return Speckles;
+  }
+}
+
+export function playstyles(playstyle) {
   if (playstyle === "nervous") {
     return "I'm nervous or shy around other dogs.";
   }

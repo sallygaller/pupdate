@@ -14,7 +14,7 @@ export default function Pupdate(props) {
               <li key={pup.id}>
                 <h3>{pup.name}</h3>
                 <Link to={`/pups/${pup.id}`}>
-                  <button type="button">{pup.name}'s Profile</button>
+                  <button type="button">{pup.name}'s Play Profile</button>
                 </Link>
               </li>
             ) : null
