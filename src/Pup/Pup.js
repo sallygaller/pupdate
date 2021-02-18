@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { playstyles, pupImage } from "../Utils/Helpers";
 import "./Pup.css";
 
@@ -22,7 +23,11 @@ export default function Pup(props) {
         ))}
       </ul>
       <button>Back</button>
-      {pup.id === 1 ? <button>Edit</button> : null}
+      {pup.id === 1 ? (
+        <Link to={`/edit/pups/${pup.id}`}>
+          <button>Edit</button>
+        </Link>
+      ) : null}
     </div>
   );
 }

@@ -1,30 +1,37 @@
 import React, { useState } from "react";
-import "./AddPup.css";
+import "./EditPup.css";
 
-export default function AddPup() {
+export default function EditPup(props) {
   const [name, setName] = useState("");
   const [age, setAge] = useState("");
   const [size, setSize] = useState("");
 
+  const pup = props.pups.find(
+    ({ id }) => parseInt(id) === parseInt(props.match.params.pupId)
+  );
+
   return (
-    <div className="AddPup">
-      <h2>Add a Pup</h2>
-      <form className="AddPup-form">
+    <div className="EditPup">
+      <h2>Edit a Pup</h2>
+      <form className="EditPup-form">
         <label htmlFor="pup-name">Name:</label>
         <input
           type="text"
           name="name"
           id="name"
-          value={name}
+          value={pup.name}
           onChange={(e) => setName(e.target.value)}
         />
         <label htmlFor="pup-age">Age range:</label>
         <select
           name="pup-age"
           id="pup-age"
-          value={age}
+          value={pup.age}
           onChange={(e) => setAge(e.target.value)}
         >
+          <option value={pup.age} selected disabled hidden>
+            {pup.age}
+          </option>
           <option>Puppy (6-18 months)</option>
           <option>Adult (18 months-6 years)</option>
           <option>Senior (6 years and older)</option>
@@ -33,9 +40,12 @@ export default function AddPup() {
         <select
           name="pup-size"
           id="pup-size"
-          value={size}
+          value={pup.size}
           onChange={(e) => setSize(e.target.value)}
         >
+          <option value={pup.size} selected disabled hidden>
+            {pup.size}
+          </option>
           <option>Extra Small (under 10lbs)</option>
           <option>Small (10-30lbs)</option>
           <option>Medium (30-60lbs)</option>
@@ -43,7 +53,7 @@ export default function AddPup() {
           <option>Extra Large (over 90lbs)</option>
         </select>
         <label for="pup-playstyle">Playstyle (check all that apply):</label>
-        <div className="AddPup-option">
+        <div className="EditPup-option">
           <input
             type="checkbox"
             id="playstyle1"
@@ -54,7 +64,7 @@ export default function AddPup() {
             Nervous/Shy
           </label>
         </div>
-        <div className="AddPup-option">
+        <div className="EditPup-option">
           <input
             type="checkbox"
             id="playstyle2"
@@ -65,7 +75,7 @@ export default function AddPup() {
             Rambunctious/Boisterous
           </label>
         </div>
-        <div className="AddPup-option">
+        <div className="EditPup-option">
           <input
             type="checkbox"
             id="playstyle3"
@@ -76,7 +86,7 @@ export default function AddPup() {
             Gentle play
           </label>
         </div>
-        <div className="AddPup-option">
+        <div className="EditPup-option">
           <input
             type="checkbox"
             id="playstyle4"
@@ -87,7 +97,7 @@ export default function AddPup() {
             Playfighting/wrestling
           </label>
         </div>
-        <div className="AddPup-option">
+        <div className="EditPup-option">
           <input
             type="checkbox"
             id="playstyle5"
@@ -98,7 +108,7 @@ export default function AddPup() {
             Ball-obsessed
           </label>
         </div>
-        <div className="AddPup-option">
+        <div className="EditPup-option">
           <input
             type="checkbox"
             id="playstyle6"
@@ -109,7 +119,7 @@ export default function AddPup() {
             Food-obsessed
           </label>
         </div>
-        <div className="AddPup-option">
+        <div className="EditPup-option">
           <input
             type="checkbox"
             id="playstyle7"
@@ -120,7 +130,7 @@ export default function AddPup() {
             Prefers walks
           </label>
         </div>
-        <div className="AddPup-option">
+        <div className="EditPup-option">
           <input
             type="checkbox"
             id="playstyle8"

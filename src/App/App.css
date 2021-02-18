@@ -24,4 +24,13 @@
   .App a:visited {
     text-decoration: none;
   }
+
+  footer {
+    background-color: #333;
+    color: #fcfaf1;
+    margin-top: auto;
+    text-align: center;
+    flex-shrink: 0;
+    padding: 20px;
+  }
   

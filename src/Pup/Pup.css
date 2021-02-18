@@ -1,12 +1,32 @@
 .Pup {
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    width: 75%;
+    margin: 0 auto;
 }
 
 .Pup-img {
     max-width: 350px;
+    margin: 0 auto;
 }
 
-ul {
+.Pup ul {
     list-style: none;
     padding-left: 0px;
+}
+
+.Pup button {
+    width: 50%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 15px auto;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.Pup button:enabled:hover {
+    background-color: #45a049;
 }
