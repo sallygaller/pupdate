@@ -1,34 +1,38 @@
 import React, { useState } from "react";
 import SearchLocationInput from "../SearchLocation/SearchLocation";
-import "./AddPupdate.css";
+import "./EditPupdate.css";
 
-export default function AddPupdate() {
+export default function EditPupdate(props) {
   const [date, setDate] = useState("");
   const [startTime, setStartTime] = useState("");
   const [endTime, setEndTime] = useState("");
   const [location, setLocation] = useState("");
   const [description, setDescription] = useState("");
 
+  const pupdate = props.pupdates.find(
+    ({ id }) => parseInt(id) === parseInt(props.match.params.pupdateId)
+  );
+
   return (
-    <div className="AddPupdate">
-      <h2>New pupdate</h2>
-      <form className="AddPupdate-form">
+    <div className="EditPupdate">
+      <h2>Edit pupdate</h2>
+      <form className="EditPupdate-form">
         <label htmlFor="date">Date: </label>
         <input
           type="date"
-          value={date}
+          value={pupdate.date}
           onChange={(e) => setDate(e.target.value)}
         ></input>
         <label htmlFor="startTime">Start Time: </label>
         <input
           type="time"
-          value={startTime}
+          value={pupdate.startTime}
           onChange={(e) => setStartTime(e.target.value)}
         ></input>
         <label htmlFor="endTime">End Time: </label>
         <input
           type="time"
-          value={endTime}
+          value={pupdate.endTime}
           onChange={(e) => setEndTime(e.target.value)}
         ></input>
         <label htmlFor="location">Location:</label>
@@ -41,10 +45,10 @@ export default function AddPupdate() {
         <textarea
           id="description"
           name="description"
-          className="AddPupdate-textarea"
+          className="EditPupdate-textarea"
           rows="5"
           cols="10"
-          value={description}
+          value={pupdate.description}
           onChange={(e) => setDescription(e.target.value)}
         ></textarea>
         <button type="submit">Submit</button>

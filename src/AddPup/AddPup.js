@@ -67,9 +67,9 @@ export default function AddPup() {
           value={age}
           onChange={(e) => setAge(e.target.value)}
         >
-          <option>Puppy (6-18 months)</option>
-          <option>Adult (18 months-6 years)</option>
-          <option>Senior (6 years and older)</option>
+          <option value="Puppy">Puppy (6-18 months)</option>
+          <option value="Adult">Adult (18 months-6 years)</option>
+          <option value="Senior">Senior (6 years and older)</option>
         </select>
         <label htmlFor="pup-size">Size:</label>
         <select
@@ -78,11 +78,11 @@ export default function AddPup() {
           value={size}
           onChange={(e) => setSize(e.target.value)}
         >
-          <option>Extra Small (under 10lbs)</option>
-          <option>Small (10-30lbs)</option>
-          <option>Medium (30-60lbs)</option>
-          <option>Large (60-90lbs)</option>
-          <option>Extra Large (over 90lbs)</option>
+          <option value="XS">Extra Small (under 10lbs)</option>
+          <option value="S">Small (10-30lbs)</option>
+          <option value="M">Medium (30-60lbs)</option>
+          <option value="L">Large (60-90lbs)</option>
+          <option value="XL">Extra Large (over 90lbs)</option>
         </select>
         <label htmlFor="pup-playstyle">Playstyle (check all that apply):</label>
         <div className="AddPup-option">

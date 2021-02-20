@@ -7,7 +7,7 @@ import App from "./App/App";
 const PUPDATES = [
   {
     id: 1,
-    date: "01/03/2021",
+    date: "2021/03/20",
     startTime: "15:30",
     endTime: "16:30",
     location: "Arbor Lodge Park",
@@ -15,7 +15,7 @@ const PUPDATES = [
   },
   {
     id: 2,
-    date: "02/03/2021",
+    date: "2021/02/21",
     startTime: "09:30",
     endTime: "11:00",
     location: "Arbor Lodge Park",
@@ -23,7 +23,7 @@ const PUPDATES = [
   },
   {
     id: 3,
-    date: "03/15/2021",
+    date: "2021/03/15",
     startTime: "09:30",
     endTime: "10:30",
     location: "Cathedral Park",
@@ -31,7 +31,7 @@ const PUPDATES = [
   },
   {
     id: 4,
-    date: "02/15/2021",
+    date: "2021/02/28",
     startTime: "10:30",
     endTime: "11:30",
     location: "Portsmouth Park",

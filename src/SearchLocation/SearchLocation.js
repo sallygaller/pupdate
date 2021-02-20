@@ -42,7 +42,7 @@ async function handlePlaceSelect(updateQuery) {
 }
 
 function SearchLocationInput(props) {
-  const autoCompleteRef = useRef(null);
+  const autoCompleteRef = useRef("");
 
   useEffect(() => {
     loadScript(

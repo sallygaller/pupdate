@@ -3,6 +3,7 @@ import { Route, Link, Switch } from "react-router-dom";
 import AddPup from "../AddPup/AddPup";
 import AddPupdate from "../AddPupdate/AddPupdate";
 import EditPup from "../EditPup/EditPup";
+import EditPupdate from "../EditPupdate/EditPupdate";
 import LandingPage from "../LandingPage/LandingPage";
 import Nav from "../Nav/Nav";
 import Pupdates from "../Pupdates/Pupdates";
@@ -26,14 +27,18 @@ export default function App(props) {
         <Switch>
           <Route exact path={"/"} component={LandingPage} />
           <Route
+            path={"/edit/pupdates/:pupdateId"}
+            render={(props) => <EditPupdate {...props} pupdates={pupdates} />}
+          />
+          <Route
             path={"/pupdates"}
             render={() => <Pupdates pups={pups} pupdates={pupdates} />}
           />
+          <Route path={"/new-pupdate"} component={AddPupdate} />
           <Route
             path={"/pups/:pupId"}
             render={(props) => <Pup {...props} pups={pups} />}
           />
-          <Route path={"/new-pupdate"} component={AddPupdate} />
           <Route
             path={"/pups"}
             render={(props) => <MyPups {...props} pups={pups} />}

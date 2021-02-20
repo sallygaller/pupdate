@@ -33,9 +33,20 @@ export default function Pupdate(props) {
         </ul>
       </div>
       <div className="Pupdate-item">
-        <button className="Pupdate-rsvp" type="button">
-          RSVP
-        </button>
+        {pupdate.organizer === 1 ? (
+          <div>
+            <button className="Pupdate-rsvp" type="button">
+              RSVP
+            </button>
+            <Link to={`/edit/pupdates/${pupdate.id}`}>
+              <button className="Pupdate-edit">Edit</button>
+            </Link>
+          </div>
+        ) : (
+          <button className="Pupdate-rsvp" type="button">
+            RSVP
+          </button>
+        )}
       </div>
     </div>
   );

@@ -17,12 +17,14 @@ export default function MyPups(props) {
         {pups.map((pup) =>
           pup.id === 1 ? (
             <li key={pup.id}>
-              <h3>{pup.name}</h3>
-              <img
-                className="MyPups-img"
-                alt={pup.name}
-                src={pupImage(pup.id)}
-              />
+              <Link to={`/pups/${pup.id}`}>
+                <h3>{pup.name}</h3>
+                <img
+                  className="MyPups-img"
+                  alt={pup.name}
+                  src={pupImage(pup.id)}
+                />
+              </Link>
               <br></br>
               <Link to={`/edit/pups/${pup.id}`}>
                 <button className="MyPups-profile">Edit Play Profile</button>
