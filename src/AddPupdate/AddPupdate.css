@@ -8,12 +8,6 @@
     padding: 20px;  
 }
 
-.react-datepicker-wrapper,
-.react-datepicker__input-container,
-.react-datepicker__input-container input {
-    display: block;
-    width: 100%;
-}
 .AddPupdate-form {
     display: flex;
     flex-direction: column;
@@ -34,6 +28,10 @@
     border-radius: 4px;
     box-sizing: border-box;
 } 
+
+.AddPupdate label {
+    margin-bottom: 5px;
+}
 
 .AddPupdate button {
     width: 100%;

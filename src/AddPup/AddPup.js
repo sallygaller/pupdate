@@ -1,10 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./AddPup.css";
 
 export default function AddPup() {
   const [name, setName] = useState("");
   const [age, setAge] = useState("");
   const [size, setSize] = useState("");
+  const [breed, setBreed] = useState("");
+  const [breedList, setBreedList] = useState("");
+
+  useEffect(() => {
+    fetch("https://dog.ceo/api/breeds/list")
+      .then((response) => response.json())
+      .then((data) => {
+        setBreedList(data.message);
+      });
+  }, []);
 
   return (
     <div className="AddPup">
@@ -18,6 +28,23 @@ export default function AddPup() {
           value={name}
           onChange={(e) => setName(e.target.value)}
         />
+        <label htmlFor="pup-breed">
+          Breed (if your pup's a mutt, select the dominant breed):
+        </label>
+        <select
+          name="breed"
+          id="breed"
+          value={breed}
+          onChange={(e) => setBreed(e.target.value)}
+        >
+          {breedList.map((breed) => {
+            return (
+              <option value="">
+                {breed.charAt(0).toUpperCase() + breed.slice(1)}
+              </option>
+            );
+          })}
+        </select>
         <label htmlFor="pup-age">Age range:</label>
         <select
           name="pup-age"
@@ -42,7 +69,7 @@ export default function AddPup() {
           <option>Large (60-90lbs)</option>
           <option>Extra Large (over 90lbs)</option>
         </select>
-        <label for="pup-playstyle">Playstyle (check all that apply):</label>
+        <label htmlFor="pup-playstyle">Playstyle (check all that apply):</label>
         <div className="AddPup-option">
           <input
             type="checkbox"
@@ -50,7 +77,7 @@ export default function AddPup() {
             name="playstyle1"
             value="Nervous"
           />
-          <label class="checkbox" for="playstyle1">
+          <label className="checkbox" htmlFor="playstyle1">
             Nervous/Shy
           </label>
         </div>
@@ -61,7 +88,7 @@ export default function AddPup() {
             name="playstyle2"
             value="rambunctious"
           />
-          <label class="checkbox" for="playstyle2">
+          <label className="checkbox" htmlFor="playstyle2">
             Rambunctious/Boisterous
           </label>
         </div>
@@ -72,7 +99,7 @@ export default function AddPup() {
             name="playstyle3"
             value="gentle"
           />
-          <label class="checkbox" for="playstyle3">
+          <label className="checkbox" htmlFor="playstyle3">
             Gentle play
           </label>
         </div>
@@ -83,7 +110,7 @@ export default function AddPup() {
             name="playstyle4"
             value="playfighting"
           />
-          <label class="checkbox" for="playstyle4">
+          <label className="checkbox" htmlFor="playstyle4">
             Playfighting/wrestling
           </label>
         </div>
@@ -94,7 +121,7 @@ export default function AddPup() {
             name="playstyle5"
             value="parks"
           />
-          <label class="checkbox" for="playstyle5">
+          <label className="checkbox" htmlFor="playstyle5">
             Ball-obsessed
           </label>
         </div>
@@ -105,7 +132,7 @@ export default function AddPup() {
             name="playstyle6"
             value="parks"
           />
-          <label class="checkbox" for="playstyle6">
+          <label className="checkbox" htmlFor="playstyle6">
             Food-obsessed
           </label>
         </div>
@@ -116,7 +143,7 @@ export default function AddPup() {
             name="playstyle7"
             value="walks"
           />
-          <label class="checkbox" for="playstyle7">
+          <label className="checkbox" htmlFor="playstyle7">
             Prefers walks
           </label>
         </div>
@@ -127,7 +154,7 @@ export default function AddPup() {
             name="playstyle8"
             value="parks"
           />
-          <label class="checkbox" for="playstyle8">
+          <label className="checkbox" htmlFor="playstyle8">
             Prefers off-leash parks
           </label>
         </div>

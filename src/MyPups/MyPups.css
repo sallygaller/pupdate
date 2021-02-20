@@ -1,7 +1,43 @@
 .MyPups {
     text-align: center;
+    display: flex;
+    width: 50%;
+    margin: 0 auto;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.MyPups h2 {
+    margin-bottom: 10px;
 }
 
 .MyPups ul {
     padding: 0px;
+}
+
+.MyPups-img {
+    max-width: 350px;
+    margin: 0 auto;
+}
+
+.MyPups-profile {
+    width: 25%;
+    background-color: #C28832;
+    color: white;
+    margin: 10px;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.MyPups-add {
+    width: 25%;
+    background-color: #297537;
+    color: white;
+    margin: 5px;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
 }
