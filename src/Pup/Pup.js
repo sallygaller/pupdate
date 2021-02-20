@@ -19,7 +19,7 @@ export default function Pup(props) {
       </p>
       <ul>
         {playstyle.map((p) => (
-          <li>{playstyles(p)}</li>
+          <li key={p.id}>{playstyles(p.style)}</li>
         ))}
       </ul>
       <button>Back</button>

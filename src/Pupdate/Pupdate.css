@@ -13,14 +13,35 @@
     padding: 0px;
 }
 
-.Pupdate button {
+
+.Pupdate-profile {
+    width: 80%;
+    background-color: #C28832;
+    color: white;
     margin-bottom: 10px;
     padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
 }
 
-.Pupdate-RSVP {
-    width: 50%;
-    margin-top: 20px;
+.Pupdate-profile button:enabled:hover {
+    background-color: #F5AC40;
+}
+
+.Pupdate-rsvp {
+    width: 80%;
+    background-color: #297537;
+    color: white;
+    margin: 20px;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.Pupdate-p {
+    margin-bottom: 8px;
 }
 
 .Pupdate ul {
@@ -29,4 +50,5 @@
 
 .Pupdate-item {
     flex-basis: 25em;
+    margin: 10px;
 }

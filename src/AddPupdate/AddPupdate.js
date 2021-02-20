@@ -14,18 +14,20 @@ export default function AddPupdat() {
       <h2>New pupdate</h2>
       <form className="AddPupdate-form">
         <label htmlFor="date">Date and Time:</label>
-        <DatePicker
+        <input type="time"></input>
+        {/* <DatePicker
           selected={startDate}
           onChange={(date) => setStartDate(date)}
           showTimeSelect
           dateFormat="MMMM d, yyyy h:mm aa"
-        />
+        /> */}
         <label htmlFor="location">Location:</label>
         <SearchLocationInput
           location={location}
           setLocation={setLocation}
           placeholder={"Enter a location (e.g. a local park)"}
         />
+        <input type="date"></input>
         <label htmlFor="description">Description:</label>
         <textarea
           id="description"

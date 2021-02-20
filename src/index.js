@@ -8,28 +8,32 @@ const PUPDATES = [
   {
     id: 1,
     date: "01/03/2021",
-    time: "15:30",
+    startTime: "15:30",
+    endTime: "16:30",
     location: "Arbor Lodge Park",
     organizer: 3,
   },
   {
     id: 2,
     date: "02/03/2021",
-    time: "09:30",
+    startTime: "09:30",
+    endTime: "11:00",
     location: "Arbor Lodge Park",
     organizer: 1,
   },
   {
     id: 3,
     date: "03/15/2021",
-    time: "09:30",
+    startTime: "09:30",
+    endTime: "10:30",
     location: "Cathedral Park",
     organizer: 1,
   },
   {
     id: 4,
     date: "02/15/2021",
-    time: "10:30",
+    startTime: "10:30",
+    endTime: "11:30",
     location: "Portsmouth Park",
     organizer: 2,
   },
@@ -41,7 +45,12 @@ const PUPS = [
     name: "Eddie",
     age: "Adult",
     size: "M",
-    playstyle: ["nervous", "food-obsessed", "walks", "gentle"],
+    playstyle: [
+      { id: 4, style: "nervous" },
+      { id: 3, style: "food-obsessed" },
+      { id: 5, style: "walks" },
+      { id: 6, style: "gentle" },
+    ],
     owner: 1,
   },
   {
@@ -49,7 +58,11 @@ const PUPS = [
     name: "Buddy",
     age: "Adult",
     size: "L",
-    playstyle: ["rambunctious", "parks", "food-obsessed"],
+    playstyle: [
+      { id: 1, style: "rambunctious" },
+      { id: 2, style: "parks" },
+      { id: 3, style: "food-obsessed" },
+    ],
     owner: 2,
   },
   {
@@ -57,7 +70,11 @@ const PUPS = [
     name: "Fran",
     age: "Adult",
     size: "L",
-    playstyle: ["rambunctious", "parks", "wrestling"],
+    playstyle: [
+      { id: 1, style: "rambunctious" },
+      { id: 2, style: "parks" },
+      { id: 7, style: "wrestling" },
+    ],
     owner: 2,
   },
   {
@@ -65,7 +82,11 @@ const PUPS = [
     name: "Rover",
     age: "Puppy",
     size: "S",
-    playstyle: ["rambunctious", "parks", "ball-obsessed"],
+    playstyle: [
+      { id: 1, style: "rambunctious" },
+      { id: 2, style: "parks" },
+      { id: 8, style: "ball-obsessed" },
+    ],
     owner: 3,
   },
   {
@@ -73,7 +94,11 @@ const PUPS = [
     name: "Speckles",
     age: "Senior",
     size: "M",
-    playstyle: ["gentle", "walks", "food-obsessed"],
+    playstyle: [
+      { id: 3, style: "food-obsessed" },
+      { id: 5, style: "walks" },
+      { id: 6, style: "gentle" },
+    ],
     owner: 4,
   },
 ];
