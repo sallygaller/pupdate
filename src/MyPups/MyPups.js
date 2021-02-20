@@ -24,11 +24,12 @@ export default function MyPups(props) {
                 src={pupImage(pup.id)}
               />
               <br></br>
-              <Link to={`/pups/${pup.id}`}>
-                <button className="MyPups-profile" type="button">
-                  {pup.name}'s Play Profile
-                </button>
+              <Link to={`/edit/pups/${pup.id}`}>
+                <button className="MyPups-profile">Edit Play Profile</button>
               </Link>
+              <button className="MyPups-delete-profile" type="button">
+                Delete Play Profile
+              </button>
             </li>
           ) : null
         )}

@@ -44,6 +44,8 @@ const PUPS = [
     id: 1,
     name: "Eddie",
     age: "Adult",
+    breed: "dachshund",
+    mix: "true",
     size: "M",
     playstyle: [
       { id: 4, style: "nervous" },
@@ -57,6 +59,8 @@ const PUPS = [
     id: 2,
     name: "Buddy",
     age: "Adult",
+    breed: "beagle",
+    mix: "true",
     size: "L",
     playstyle: [
       { id: 1, style: "rambunctious" },
@@ -69,6 +73,8 @@ const PUPS = [
     id: 3,
     name: "Fran",
     age: "Adult",
+    breed: "pittbull",
+    mix: "true",
     size: "L",
     playstyle: [
       { id: 1, style: "rambunctious" },
@@ -81,6 +87,8 @@ const PUPS = [
     id: 4,
     name: "Rover",
     age: "Puppy",
+    breed: "labrador",
+    mix: "true",
     size: "S",
     playstyle: [
       { id: 1, style: "rambunctious" },
@@ -93,6 +101,7 @@ const PUPS = [
     id: 5,
     name: "Speckles",
     age: "Senior",
+    breed: "labrador",
     size: "M",
     playstyle: [
       { id: 3, style: "food-obsessed" },

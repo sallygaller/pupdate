@@ -21,7 +21,7 @@
 }
 
 .AddPup input[type=checkbox] {
-    width: 25%;
+    width: 10%;
     padding: 12px 20px;
     margin: 8px 0;
     display: inline-block;
@@ -47,4 +47,8 @@
 
 .AddPup-option {
     align-self: center;
+}
+
+.AddPup-mix {
+    margin-bottom: 15px;
 }

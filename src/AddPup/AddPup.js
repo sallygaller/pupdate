@@ -7,6 +7,7 @@ export default function AddPup() {
   const [size, setSize] = useState("");
   const [breed, setBreed] = useState("");
   const [breedList, setBreedList] = useState("");
+  const [mix, setMix] = useState(false);
 
   useEffect(() => {
     fetch("https://dog.ceo/api/breeds/list")
@@ -15,6 +16,8 @@ export default function AddPup() {
         setBreedList(data.message);
       });
   }, []);
+
+  const handleClick = () => setMix(!mix);
 
   return (
     <div className="AddPup">
@@ -29,7 +32,7 @@ export default function AddPup() {
           onChange={(e) => setName(e.target.value)}
         />
         <label htmlFor="pup-breed">
-          Breed (if your pup's a mutt, select the dominant breed):
+          Breed (if your pup's a mixture, select the dominant breed):
         </label>
         <select
           name="breed"
@@ -37,14 +40,26 @@ export default function AddPup() {
           value={breed}
           onChange={(e) => setBreed(e.target.value)}
         >
-          {breedList.map((breed) => {
+          {Object.values(breedList).map((breed) => {
             return (
-              <option value="">
+              <option value={breed}>
                 {breed.charAt(0).toUpperCase() + breed.slice(1)}
               </option>
             );
           })}
         </select>
+        <div className="AddPup-mix">
+          <input
+            className="pup-mix"
+            type="checkbox"
+            id="pup-mix"
+            name="pup-mix"
+            value="pup-mix"
+            checked={mix}
+            onClick={handleClick}
+          />
+          <label htmlFor="pup-mix">My pup's a mix!</label>
+        </div>
         <label htmlFor="pup-age">Age range:</label>
         <select
           name="pup-age"

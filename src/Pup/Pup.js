@@ -13,6 +13,9 @@ export default function Pup(props) {
       <h1>Hi, I'm {pup.name}!</h1>
       <img className="Pup-img" alt={pup.name} src={pupImage(pup.id)} />
       <p>
+        Breed: {pup.breed.charAt(0).toUpperCase() + pup.breed.slice(1)}{" "}
+        {pup.mix === "true" ? "Mix" : null}
+        <br></br>
         Size: {pup.size}
         <br></br>
         Age: {pup.age}
