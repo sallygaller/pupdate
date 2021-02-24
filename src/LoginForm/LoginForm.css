@@ -30,3 +30,7 @@
 .LoginForm button:enabled:hover {
     background-color: #45a049;
 }
+
+.red {
+    color: red;
+}
