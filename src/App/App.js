@@ -127,12 +127,7 @@ class App extends React.Component {
                 <EditPupdate {...props} pupdates={this.pupdates} />
               )}
             />
-            <Route
-              path={"/pupdates"}
-              render={() => (
-                <Pupdates pups={this.pups} pupdates={this.pupdates} />
-              )}
-            />
+            <Route path={"/pupdates"} render={() => <Pupdates />} />
             <Route path={"/new-pupdate"} component={AddPupdate} />
             <Route
               path={"/pups/:pupId"}

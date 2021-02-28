@@ -8,6 +8,9 @@ export default function Pup(props) {
     ({ id }) => parseInt(id) === parseInt(props.match.params.pupId)
   );
   const playstyle = pup.playstyle;
+
+  //componentDidMount - get pup by id
+
   return (
     <div className="Pup">
       <h1>Hi, I'm {pup.name}!</h1>
