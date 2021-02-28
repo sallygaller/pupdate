@@ -1,6 +1,6 @@
 import React from "react";
 // import { Link } from "react-router-dom";
-// import Pupdate from "../Pupdate/Pupdate";
+import Pupdate from "../Pupdate/Pupdate";
 import { API_ENDPOINT } from "../config";
 import TokenService from "../services/token-service";
 import "./Pupdates.css";
@@ -58,17 +58,18 @@ class Pupdates extends React.Component {
   }
 
   render() {
-    console.log(this.state);
     return (
       <div className="Pupdates">
         <section>
           <h2>My pupdates</h2>
           <div>
-            {/* <ul>
-              {this.state.userPupdates.map((pupdateRsvp) => {
-                this.state.pupdates.filter();
-              })}
-            </ul> */}
+            <ul>
+              {this.state.myPupdates.map((myPupdate) => (
+                <li key={myPupdate.id}>
+                  <Pupdate pupdate={myPupdate} />
+                </li>
+              ))}
+            </ul>
           </div>
         </section>
         <section>
@@ -81,13 +82,11 @@ class Pupdates extends React.Component {
             </select>
           </div>
           <div>
-            {/* <ul>
-              {this.state.pupdates.map((pupdate) => (
-                <li key={pupdate.id}>
-                  <Link to={`/pupdates/${pupdate.id}`}>{pupdate.location}</Link>
-                </li>
+            <ul>
+              {this.state.availablePupdates.map((availablePupdate) => (
+                <li key={availablePupdate.id}>{availablePupdate.location}</li>
               ))}
-            </ul> */}
+            </ul>
           </div>
         </section>
       </div>
