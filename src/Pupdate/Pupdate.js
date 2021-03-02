@@ -41,35 +41,10 @@ class Pupdate extends React.Component {
   }
 
   handleAttendees = (e) => {
-    let currentRsvps = [];
-    for (let i = 0; i < this.state.pupdateRsvps.length; i++) {
-      fetch(
-        API_ENDPOINT + `/pups/user/${this.state.pupdateRsvps[i].attendee}`,
-        {
-          headers: {
-            authorization: `bearer ${TokenService.getAuthToken()}`,
-          },
-        }
-      )
-        .then((res) => {
-          if (!res.ok) {
-            throw new Error(console.log(res.status));
-          }
-          return res.json();
-        })
-        .then((responseData) => {
-          this.setState({
-            attendees: currentRsvps.push(responseData),
-          });
-        })
-        .catch((error) => {
-          console.error(error);
-        });
-    }
+    console.log(this.state.pupdateRsvps);
   };
 
   render() {
-    console.log(this.state.organizer);
     return (
       <div className="Pupdate">
         <div className="Pupdate-group">
@@ -86,7 +61,14 @@ class Pupdate extends React.Component {
             <ul>
               {
                 this.state.organizerPups.map((organizerPup) => (
-                  <li key={organizerPup.id}>{organizerPup.name}</li>
+                  <li key={organizerPup.id}>
+                    {organizerPup.name}
+                    <Link to={`/pups/${organizerPup.id}`}>
+                      <button className="MyPups-add" type="button">
+                        View {organizerPup.name}'s Play Profile
+                      </button>
+                    </Link>
+                  </li>
                 ))
 
                 /* {this.state.pups.map((pup) => (

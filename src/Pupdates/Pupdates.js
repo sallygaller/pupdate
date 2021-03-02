@@ -17,11 +17,6 @@ class Pupdates extends React.Component {
     };
   }
 
-  setMyPupdates = () => {
-    console.log(this.state);
-    this.setState({});
-  };
-
   componentDidMount() {
     Promise.all([
       fetch(API_ENDPOINT + `/pupdates`, {
@@ -84,7 +79,9 @@ class Pupdates extends React.Component {
           <div>
             <ul>
               {this.state.availablePupdates.map((availablePupdate) => (
-                <li key={availablePupdate.id}>{availablePupdate.location}</li>
+                <li key={availablePupdate.id}>
+                  <Pupdate pupdate={availablePupdate} />
+                </li>
               ))}
             </ul>
           </div>
