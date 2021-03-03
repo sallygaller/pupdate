@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import TokenService from "../services/token-service";
-import AttendeeList from "../AttendeeList/AttendeeList";
 import { API_ENDPOINT } from "../config";
 import "./Pupdate.css";
 
@@ -40,48 +39,33 @@ class Pupdate extends React.Component {
       });
   }
 
-  handleAttendees = (e) => {
-    console.log(this.state.pupdateRsvps);
-  };
-
   render() {
+    const pupdate = this.props.pupdate;
     return (
       <div className="Pupdate">
         <div className="Pupdate-group">
           <div className="Pupdate-item">
             <p>
-              Date: {this.props.pupdate.date} <br></br>
-              Time: {this.props.pupdate.starttime}-{this.props.pupdate.endtime}
+              Date: {pupdate.date} <br></br>
+              Time: {pupdate.starttime}-{pupdate.endtime}
             </p>
           </div>
           <div className="Pupdate-item">
-            <p>Location: {this.props.pupdate.location}</p>
+            <p>Location: {pupdate.location}</p>
           </div>
           <div className="Pupdate-item">
             <ul>
-              {
-                this.state.organizerPups.map((organizerPup) => (
-                  <li key={organizerPup.id}>
-                    {organizerPup.name}
-                    <Link to={`/pups/${organizerPup.id}`}>
-                      <button className="MyPups-add" type="button">
-                        View {organizerPup.name}'s Play Profile
-                      </button>
-                    </Link>
-                  </li>
-                ))
-
-                /* {this.state.pups.map((pup) => (
-              <li key={this.state.pup.id}>
-                <p className="Pupdate-p">{this.state.pup.name}</p>
-                <Link to={`/pups/${this.state.pup.id}`}>
-                  <button className="Pupdate-profile" type="button">
-                    {pup.name}'s Play Profile
-                  </button>
-                </Link>
-              </li>
-            ))} */
-              }
+              {this.state.organizerPups.map((organizerPup) => (
+                <li key={organizerPup.id}>
+                  {organizerPup.name}
+                  <br></br>
+                  <Link to={`/pups/${organizerPup.id}`}>
+                    <button className="Pupdate-rsvp" type="button">
+                      View {organizerPup.name}'s Play Profile
+                    </button>
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
           <div className="Pupdate-item">
@@ -89,19 +73,17 @@ class Pupdate extends React.Component {
               <button className="Pupdate-rsvp" type="button">
                 Change RSVP
               </button>
-              <Link to={`/edit/pupdates/${this.state.id}`}>
+              <Link to={`/edit/pupdates/${pupdate.id}`}>
                 <button className="Pupdate-edit">Edit</button>
               </Link>
             </div>
           </div>
           <div className="Pupdate-item">
-            <button
-              onClick={(e) => this.handleAttendees(e)}
-              className="Pupdate-rsvp"
-              type="button"
-            >
-              View attendees
-            </button>
+            <Link to={`/pupdates/${pupdate.id}`}>
+              <button className="Pupdate-rsvp" type="button">
+                View Pupdate
+              </button>
+            </Link>
           </div>
         </div>
       </div>

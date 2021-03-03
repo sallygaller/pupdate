@@ -12,6 +12,7 @@ import Nav from "../Nav/Nav";
 import Pupdates from "../Pupdates/Pupdates";
 import MyPups from "../MyPups/MyPups";
 import Pup from "../Pup/Pup";
+import PupdateComplete from "../PupdateComplete/PupdateComplete";
 import RegistrationPage from "../RegistrationPage/RegistrationPage";
 import TokenService from "../services/token-service";
 import "./App.css";
@@ -126,6 +127,10 @@ class App extends React.Component {
               render={(props) => (
                 <EditPupdate {...props} pupdates={this.pupdates} />
               )}
+            />
+            <Route
+              path={"/pupdates/:pupdateId"}
+              render={(props) => <PupdateComplete {...props} />}
             />
             <Route path={"/pupdates"} render={() => <Pupdates />} />
             <Route path={"/new-pupdate"} component={AddPupdate} />

@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import TokenService from "../services/token-service";
 import { API_ENDPOINT } from "../config";
-import { playstyles, pupImage } from "../Utils/Helpers";
 import "./Pup.css";
 
 class Pup extends React.Component {
@@ -41,33 +40,6 @@ class Pup extends React.Component {
     // }).isRequired,
   };
 
-  playstyles = () => {
-    if (this.state.nervous === "true") {
-      return <li>I'm nervous or shy around other dogs.</li>;
-    }
-    if (this.state.gentle === "true") {
-      return <li>I play gently.</li>;
-    }
-    if (this.state.foodobsessed === "true") {
-      return <li>I'm food-obsessed!"</li>;
-    }
-    if (this.state.walks === "true") {
-      return "I like going on walks with my pup pals.";
-    }
-    if (this.state.parks === "true") {
-      return "I like going to dog parks with my pup pals.";
-    }
-    if (this.state.wrestling === "true") {
-      return "I like playfighting and wrestling.";
-    }
-    if (this.state.rambunctious === "true") {
-      return "I'm rambunctious and playful.";
-    }
-    if (this.state.ballobsessed === "true") {
-      return "I love to play fetch!";
-    }
-  };
-
   componentDidMount() {
     const { pupId } = this.props.match.params;
     fetch(API_ENDPOINT + `/pups/${pupId}`, {
@@ -90,14 +62,33 @@ class Pup extends React.Component {
           age: responseData.age,
           size: responseData.size,
           playstyle: {
-            nervous: responseData.nervous,
-            rambunctious: responseData.rambunctious,
-            entle: responseData.gentle,
-            wrestling: responseData.wrestling,
-            walks: responseData.walks,
-            parks: responseData.parks,
-            foodobsessed: responseData.foodobsessed,
-            ballobsessed: responseData.ballobsessed,
+            nervous:
+              responseData.nervous === true
+                ? "I'm nervous or shy around other dogs."
+                : "",
+            rambunctious:
+              responseData.rambunctious === true
+                ? "I'm rambunctious and playful."
+                : null,
+            gentle: responseData.gentle === true ? "I play gently." : null,
+            wrestling:
+              responseData.wrestling === true
+                ? "I like playfighting and wrestling."
+                : null,
+            walks:
+              responseData.walks === true
+                ? "I like going on walks with my pup pals."
+                : null,
+            parks:
+              responseData.parks === true
+                ? "I like going to dog parks with my pup pals."
+                : null,
+            foodobsessed:
+              responseData.foodobsessed === true ? "I'm food-obsessed!" : null,
+            ballobsessed:
+              responseData.ballobsessed === true
+                ? "I love to play fetch!"
+                : null,
           },
           description: responseData.description,
           owner: responseData.owner,
@@ -122,13 +113,17 @@ class Pup extends React.Component {
           <br></br>
           Age: {this.state.age}
         </p>
-        <ul>{this.playstyles(this.state.playstyle)}</ul>
-        <button>Back</button>
-        {this.state.id === 1 ? (
-          <Link to={`/edit/pups/${this.state.id}`}>
-            <button>Edit</button>
-          </Link>
-        ) : null}
+        <p>{this.state.description}</p>
+        <ul>
+          <h2>{this.state.name}'s Play Profile</h2>
+          {Object.values(this.state.playstyle).map((p) => {
+            return <li>{p}</li>;
+          })}
+        </ul>
+
+        <Link to={`/edit/pups/${this.state.id}`}>
+          <button>Edit</button>
+        </Link>
       </div>
     );
   }
