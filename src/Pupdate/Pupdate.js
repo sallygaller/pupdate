@@ -69,19 +69,9 @@ class Pupdate extends React.Component {
             </ul>
           </div>
           <div className="Pupdate-item">
-            <div>
-              <button className="Pupdate-rsvp" type="button">
-                Change RSVP
-              </button>
-              <Link to={`/edit/pupdates/${pupdate.id}`}>
-                <button className="Pupdate-edit">Edit</button>
-              </Link>
-            </div>
-          </div>
-          <div className="Pupdate-item">
             <Link to={`/pupdates/${pupdate.id}`}>
               <button className="Pupdate-rsvp" type="button">
-                View Pupdate
+                View Pupdate and RSVP
               </button>
             </Link>
           </div>

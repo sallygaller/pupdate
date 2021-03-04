@@ -1,0 +1,43 @@
+.PupdateComplete {
+    text-align: center;
+    width: 50%;
+    margin: 0 auto;
+}
+
+.PupdateComplete ul, li {
+    list-style-type: none;
+    list-style-position: inside;
+    margin: 0;
+    padding: 0; 
+}
+
+.PupdateComplete select {
+    width: 25%;
+}
+
+.PupdateComplete li {
+    display: flex;
+    flex-direction: row;
+}
+
+.PupdateComplete-button {
+    margin: 0 auto;
+    text-align: center;
+}
+
+.PupdateComplete section {
+    margin-bottom: 100px;
+}
+
+.PupdateComplete a,
+.PupdateComplete a:active,
+.PupdateComplete a:focus,
+.PupdateComplete a:visited {
+  color: black;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.PupdateComplete-item {
+    text-align: left;
+}
