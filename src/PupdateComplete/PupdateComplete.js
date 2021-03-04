@@ -91,19 +91,19 @@ class PupdateComplete extends React.Component {
   }
 
   handleRsvpNo = (e) => {
-    fetch(API_ENDPOINT + `/pupdate-rsvp/${this.state.pupdate.id}`, {
+    fetch(API_ENDPOINT + `/pupdate-rsvp/${this.state.rsvp}`, {
       method: "DELETE",
       headers: {
+        "content-type": "application/json",
         authorization: `bearer ${TokenService.getAuthToken()}`,
       },
     })
       .then((res) => {
-        if (!res.ok) {
-          return res.json().then((error) => {
-            throw error;
-          });
-        }
-        return res.json();
+        if (!res.ok) return res.json().then((error) => Promise.reject(error));
+        return res;
+      })
+      .then((data) => {
+        this.props.history.push("/pupdates");
       })
       .catch((error) => {
         console.error({ error });

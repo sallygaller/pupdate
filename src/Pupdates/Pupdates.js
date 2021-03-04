@@ -40,11 +40,14 @@ class Pupdates extends React.Component {
               return userPupdate.pupdate === pupdate.id;
             });
           }),
-          availablePupdates: responseData1.filter((pupdate) => {
-            return responseData2.some((userPupdate) => {
-              return userPupdate.pupdate !== pupdate.id;
-            });
-          }),
+          availablePupdates:
+            responseData2.length === 0
+              ? responseData1
+              : responseData1.filter((pupdate) => {
+                  return responseData2.some((userPupdate) => {
+                    return userPupdate.pupdate !== pupdate.id;
+                  });
+                }),
         })
       )
       .catch((error) => {
@@ -58,13 +61,17 @@ class Pupdates extends React.Component {
         <section>
           <h2>My pupdates</h2>
           <div>
-            <ul>
-              {this.state.myPupdates.map((myPupdate) => (
-                <li key={myPupdate.id}>
-                  <Pupdate pupdate={myPupdate} />
-                </li>
-              ))}
-            </ul>
+            {this.state.userPupdates.length === 0 ? (
+              <p>You don't have any pupdates scheduled!</p>
+            ) : (
+              <ul>
+                {this.state.myPupdates.map((myPupdate) => (
+                  <li key={myPupdate.id}>
+                    <Pupdate pupdate={myPupdate} />
+                  </li>
+                ))}
+              </ul>
+            )}
           </div>
         </section>
         <section>
