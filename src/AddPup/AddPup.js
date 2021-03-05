@@ -1,13 +1,37 @@
 import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router";
+import TokenService from "../services/token-service";
+import { API_ENDPOINT } from "../config";
 import "./AddPup.css";
 
 export default function AddPup() {
-  const [name, setName] = useState("");
-  const [age, setAge] = useState("");
-  const [size, setSize] = useState("");
-  const [breed, setBreed] = useState("");
   const [breedList, setBreedList] = useState("");
-  const [mix, setMix] = useState(false);
+  const [error, setError] = useState(null);
+  const history = useHistory();
+  const [formState, setFormState] = useState({
+    name: "",
+    age: "",
+    size: "",
+    breed: "hi",
+    mix: false,
+    nervous: false,
+    rambunctious: false,
+    gentle: false,
+    wrestling: false,
+    walks: false,
+    parks: false,
+    foodobsessed: false,
+    ballobsessed: false,
+    description: "",
+  });
+
+  const onChange = (e) => {
+    if (e.target.type === "checkbox" && !e.target.checked) {
+      setFormState({ ...formState, [e.target.name]: "" });
+    } else {
+      setFormState({ ...formState, [e.target.name]: e.target.value });
+    }
+  };
 
   useEffect(() => {
     fetch("https://dog.ceo/api/breeds/list")
@@ -17,19 +41,63 @@ export default function AddPup() {
       });
   }, []);
 
-  const handleClick = () => setMix(!mix);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const pup = {
+      name: formState.name,
+      breed: formState.breed,
+      mix: formState.mix,
+      age: formState.age,
+      size: formState.size,
+      nervous: formState.nervous,
+      rambunctious: formState.rambunctious,
+      gentle: formState.gentle,
+      wrestling: formState.wrestling,
+      walks: formState.walks,
+      parks: formState.parks,
+      foodobsessed: formState.foodobsessed,
+      ballobsessed: formState.ballobsessed,
+      description: formState.description,
+    };
+    fetch(API_ENDPOINT + `/pups`, {
+      method: "POST",
+      body: JSON.stringify(pup),
+      headers: {
+        "content-type": "application/json",
+        authorization: `bearer ${TokenService.getAuthToken()}`,
+      },
+    })
+      .then((res) => {
+        if (!res.ok) {
+          return res.json().then((error) => {
+            throw error;
+          });
+        }
+        return res.json();
+      })
+      .then((data) => {
+        history.push("/pups");
+      })
+      .catch((error) => {
+        setError(error.message);
+      });
+  };
+
+  const handleClickCancel = () => {
+    history.push("/pups");
+  };
 
   return (
     <div className="AddPup">
       <h2>Add a Pup</h2>
-      <form className="AddPup-form">
+      <form className="AddPup-form" onSubmit={(e) => handleSubmit(e)}>
         <label htmlFor="pup-name">Name:</label>
         <input
           type="text"
           name="name"
           id="name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
+          value={formState.name}
+          onChange={onChange}
         />
         <label htmlFor="pup-breed">
           Breed (if your pup's a mixture, select the dominant breed):
@@ -37,8 +105,8 @@ export default function AddPup() {
         <select
           name="breed"
           id="breed"
-          value={breed}
-          onChange={(e) => setBreed(e.target.value)}
+          value={formState.breed}
+          onChange={onChange}
         >
           {Object.values(breedList).map((breed) => {
             return (
@@ -52,31 +120,25 @@ export default function AddPup() {
           <input
             className="pup-mix"
             type="checkbox"
-            id="pup-mix"
-            name="pup-mix"
-            value="pup-mix"
-            checked={mix}
-            onClick={handleClick}
+            id="mix"
+            name="mix"
+            value={formState.mix}
+            onChange={onChange}
           />
           <label htmlFor="pup-mix">My pup's a mix!</label>
         </div>
         <label htmlFor="pup-age">Age range:</label>
-        <select
-          name="pup-age"
-          id="pup-age"
-          value={age}
-          onChange={(e) => setAge(e.target.value)}
-        >
+        <select name="age" id="age" value={formState.age} onChange={onChange}>
           <option value="Puppy">Puppy (6-18 months)</option>
           <option value="Adult">Adult (18 months-6 years)</option>
           <option value="Senior">Senior (6 years and older)</option>
         </select>
         <label htmlFor="pup-size">Size:</label>
         <select
-          name="pup-size"
-          id="pup-size"
-          value={size}
-          onChange={(e) => setSize(e.target.value)}
+          name="size"
+          id="size"
+          value={formState.size}
+          onChange={onChange}
         >
           <option value="XS">Extra Small (under 10lbs)</option>
           <option value="S">Small (10-30lbs)</option>
@@ -88,93 +150,111 @@ export default function AddPup() {
         <div className="AddPup-option">
           <input
             type="checkbox"
-            id="playstyle1"
-            name="playstyle1"
-            value="Nervous"
+            id="nervous"
+            name="nervous"
+            value={formState.nervous}
+            onChange={onChange}
           />
-          <label className="checkbox" htmlFor="playstyle1">
+          <label className="checkbox" htmlFor="nervous">
             Nervous/Shy
           </label>
         </div>
         <div className="AddPup-option">
           <input
             type="checkbox"
-            id="playstyle2"
-            name="playstyle2"
-            value="rambunctious"
+            id="rambunctious"
+            name="rambunctious"
+            value={formState.rambunctious}
+            onChange={onChange}
           />
-          <label className="checkbox" htmlFor="playstyle2">
+          <label className="checkbox" htmlFor="rambunctious">
             Rambunctious/Boisterous
           </label>
         </div>
         <div className="AddPup-option">
           <input
             type="checkbox"
-            id="playstyle3"
-            name="playstyle3"
-            value="gentle"
+            id="gentle"
+            name="gentle"
+            value={formState.gentle}
+            onChange={onChange}
           />
-          <label className="checkbox" htmlFor="playstyle3">
+          <label className="checkbox" htmlFor="gentle">
             Gentle play
           </label>
         </div>
         <div className="AddPup-option">
           <input
             type="checkbox"
-            id="playstyle4"
-            name="playstyle4"
-            value="playfighting"
+            id="wrestling"
+            name="wrestling"
+            value={formState.wrestling}
+            onChange={onChange}
           />
-          <label className="checkbox" htmlFor="playstyle4">
+          <label className="checkbox" htmlFor="wrestling">
             Playfighting/wrestling
           </label>
         </div>
         <div className="AddPup-option">
           <input
             type="checkbox"
-            id="playstyle5"
-            name="playstyle5"
-            value="parks"
+            id="foodobsessed"
+            name="foodobsessed"
+            value={formState.foodobsessed}
+            onChange={onChange}
           />
-          <label className="checkbox" htmlFor="playstyle5">
-            Ball-obsessed
-          </label>
-        </div>
-        <div className="AddPup-option">
-          <input
-            type="checkbox"
-            id="playstyle6"
-            name="playstyle6"
-            value="parks"
-          />
-          <label className="checkbox" htmlFor="playstyle6">
+          <label className="checkbox" htmlFor="foodobsessed">
             Food-obsessed
           </label>
         </div>
         <div className="AddPup-option">
           <input
             type="checkbox"
-            id="playstyle7"
-            name="playstyle7"
-            value="walks"
+            id="ballobsessed"
+            name="ballobsessed"
+            value={formState.ballobsessed}
+            onChange={onChange}
           />
-          <label className="checkbox" htmlFor="playstyle7">
+          <label className="checkbox" htmlFor="ballobsessed">
+            Ball-obsessed
+          </label>
+        </div>
+        <div className="AddPup-option">
+          <input
+            type="checkbox"
+            id="walks"
+            name="walks"
+            value={formState.walks}
+            onChange={onChange}
+          />
+          <label className="checkbox" htmlFor="walks">
             Prefers walks
           </label>
         </div>
         <div className="AddPup-option">
           <input
             type="checkbox"
-            id="playstyle8"
-            name="playstyle8"
-            value="parks"
+            id="parks"
+            name="parks"
+            value={formState.parks}
+            onChange={onChange}
           />
-          <label className="checkbox" htmlFor="playstyle8">
+          <label className="checkbox" htmlFor="parks">
             Prefers off-leash parks
           </label>
         </div>
+        <label htmlFor="pup-description">Description:</label>
+        <input
+          type="textarea"
+          name="description"
+          id="description"
+          value={formState.description}
+          onChange={onChange}
+        />
         <button type="submit">Submit</button>
-        <button type="button">Cancel</button>
+        <button type="button" onClick={handleClickCancel}>
+          Cancel
+        </button>
       </form>
     </div>
   );

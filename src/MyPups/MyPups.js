@@ -1,21 +1,47 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { pupImage } from "../Utils/Helpers";
+import { API_ENDPOINT } from "../config";
+import TokenService from "../services/token-service";
 import "./MyPups.css";
 
-export default function MyPups(props) {
-  const pups = props.pups;
-  return (
-    <div className="MyPups">
-      <h2>My Pups</h2>
-      <Link to={`/addpup`}>
-        <button className="MyPups-add" type="button">
-          Add a Pup!
-        </button>
-      </Link>
-      <ul>
-        {pups.map((pup) =>
-          pup.id === 1 ? (
+class MyPups extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      pups: [],
+    };
+  }
+
+  componentDidMount() {
+    // get pup of each pupdate organizer
+    fetch(API_ENDPOINT + `/pups/user`, {
+      headers: {
+        authorization: `bearer ${TokenService.getAuthToken()}`,
+      },
+    })
+      .then((res) => res.json())
+      .then((responseData) =>
+        this.setState({
+          pups: responseData,
+        })
+      )
+      .catch((error) => {
+        console.error({ error });
+      });
+  }
+
+  render() {
+    return (
+      <div className="MyPups">
+        <h2>My Pups</h2>
+        <Link to={`/addpup`}>
+          <button className="MyPups-add" type="button">
+            Add a Pup!
+          </button>
+        </Link>
+        <ul>
+          {this.state.pups.map((pup) => (
             <li key={pup.id}>
               <Link to={`/pups/${pup.id}`}>
                 <h3>{pup.name}</h3>
@@ -33,9 +59,11 @@ export default function MyPups(props) {
                 Delete Play Profile
               </button>
             </li>
-          ) : null
-        )}
-      </ul>
-    </div>
-  );
+          ))}
+        </ul>
+      </div>
+    );
+  }
 }
+
+export default MyPups;
