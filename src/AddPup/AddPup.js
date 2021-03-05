@@ -12,7 +12,7 @@ export default function AddPup() {
     name: "",
     age: "",
     size: "",
-    breed: "hi",
+    breed: "",
     mix: false,
     nervous: false,
     rambunctious: false,
@@ -93,6 +93,7 @@ export default function AddPup() {
       <form className="AddPup-form" onSubmit={(e) => handleSubmit(e)}>
         <label htmlFor="pup-name">Name:</label>
         <input
+          required
           type="text"
           name="name"
           id="name"
@@ -128,13 +129,20 @@ export default function AddPup() {
           <label htmlFor="pup-mix">My pup's a mix!</label>
         </div>
         <label htmlFor="pup-age">Age range:</label>
-        <select name="age" id="age" value={formState.age} onChange={onChange}>
+        <select
+          required
+          name="age"
+          id="age"
+          value={formState.age}
+          onChange={onChange}
+        >
           <option value="Puppy">Puppy (6-18 months)</option>
           <option value="Adult">Adult (18 months-6 years)</option>
           <option value="Senior">Senior (6 years and older)</option>
         </select>
         <label htmlFor="pup-size">Size:</label>
         <select
+          required
           name="size"
           id="size"
           value={formState.size}

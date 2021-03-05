@@ -13,8 +13,36 @@ class MyPups extends React.Component {
     };
   }
 
+  handleDeletePup = (pupId) => {
+    const newPups = this.state.pups.filter((pup) => pup.id !== pupId);
+    this.setState({
+      pups: newPups,
+    });
+  };
+
+  handleDeleteRequest = (id) => {
+    fetch(API_ENDPOINT + `/pups/${id}`, {
+      method: "DELETE",
+      headers: {
+        "content-type": "application/json",
+        authorization: `bearer ${TokenService.getAuthToken()}`,
+      },
+    })
+      .then((res) => {
+        if (!res.ok) return res.json().then((error) => Promise.reject(error));
+        return res;
+      })
+      .then((data) => {
+        this.handleDeletePup(id);
+        this.props.history.push("/pups");
+      })
+      .catch((error) => {
+        console.error({ error });
+      });
+  };
+
   componentDidMount() {
-    // get pup of each pupdate organizer
+    // get pup(s) of logged in user
     fetch(API_ENDPOINT + `/pups/user`, {
       headers: {
         authorization: `bearer ${TokenService.getAuthToken()}`,
@@ -55,7 +83,11 @@ class MyPups extends React.Component {
               <Link to={`/edit/pups/${pup.id}`}>
                 <button className="MyPups-profile">Edit Play Profile</button>
               </Link>
-              <button className="MyPups-delete-profile" type="button">
+              <button
+                className="MyPups-delete-profile"
+                type="button"
+                onClick={() => this.handleDeleteRequest(pup.id)}
+              >
                 Delete Play Profile
               </button>
             </li>
