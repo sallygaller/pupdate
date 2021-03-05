@@ -30,16 +30,19 @@ class PupdateComplete extends React.Component {
   componentDidMount() {
     const { pupdateId } = this.props.match.params;
     Promise.all([
+      // get RSVPS for pupdate
       fetch(API_ENDPOINT + `/pupdate-rsvp/${pupdateId}`, {
         headers: {
           authorization: `bearer ${TokenService.getAuthToken()}`,
         },
       }),
+      // get details about pupdate
       fetch(API_ENDPOINT + `/pupdates/${pupdateId}`, {
         headers: {
           authorization: `bearer ${TokenService.getAuthToken()}`,
         },
       }),
+      // get pupdate RSVPS for logged in user
       fetch(API_ENDPOINT + `/pupdate-rsvp/user`, {
         headers: {
           authorization: `bearer ${TokenService.getAuthToken()}`,
@@ -50,6 +53,7 @@ class PupdateComplete extends React.Component {
         Promise.all([res1.json(), res2.json(), res3.json()])
       )
       .then(([responseData1, responseData2, responseData3]) => {
+        // loop through user RSVPs to see if they've registered for this pupdate
         for (let i = 0; i < responseData3.length; i++) {
           if (responseData2.id === responseData3[i].pupdate) {
             this.setState({
@@ -91,7 +95,7 @@ class PupdateComplete extends React.Component {
   }
 
   handleRsvpNo = (e) => {
-    fetch(API_ENDPOINT + `/pupdate-rsvp/${this.state.rsvp}`, {
+    fetch(API_ENDPOINT + `/pupdate-rsvp/user/${this.state.rsvp}`, {
       method: "DELETE",
       headers: {
         "content-type": "application/json",
@@ -139,7 +143,11 @@ class PupdateComplete extends React.Component {
             {moment(this.state.pupdate.date).format("LL")}
           </h2>
           <p>
-            Time: {this.state.pupdate.starttime} - {this.state.pupdate.endtime}
+            Time:{" "}
+            {moment(this.state.pupdate.starttime, "h:mm A").format("h:mm A")} -{" "}
+            {moment(this.state.pupdate.endtime, "h:mm A").format("h:mm A")}{" "}
+            <br></br>
+            Location: {this.state.pupdate.location}, {this.state.pupdate.city}
           </p>
           <div className="PupdateComplete-item">
             <h3>Attendees:</h3>

@@ -1,5 +1,4 @@
 import React from "react";
-// import { Link } from "react-router-dom";
 import Pupdate from "../Pupdate/Pupdate";
 import { API_ENDPOINT } from "../config";
 import TokenService from "../services/token-service";
@@ -12,6 +11,7 @@ class Pupdates extends React.Component {
       pupdates: [],
       userPupdates: [],
       availablePupdates: [],
+      userPupdateRsvps: [],
       myPupdates: [],
       error: null,
     };
@@ -19,22 +19,34 @@ class Pupdates extends React.Component {
 
   componentDidMount() {
     Promise.all([
+      // get all pupdates
       fetch(API_ENDPOINT + `/pupdates`, {
         headers: {
           authorization: `bearer ${TokenService.getAuthToken()}`,
         },
       }),
+      // get pupdate rsvps for logged in user
       fetch(API_ENDPOINT + `/pupdate-rsvp/user`, {
         headers: {
           authorization: `bearer ${TokenService.getAuthToken()}`,
         },
       }),
+      // get pupdates that user has organized
+      fetch(API_ENDPOINT + `/pupdates/user`, {
+        headers: {
+          authorization: `bearer ${TokenService.getAuthToken()}`,
+        },
+      }),
     ])
-      .then(([res1, res2]) => Promise.all([res1.json(), res2.json()]))
-      .then(([responseData1, responseData2]) =>
+      .then(([res1, res2, res3]) =>
+        Promise.all([res1.json(), res2.json(), res3.json()])
+      )
+      .then(([responseData1, responseData2, responseData3]) =>
+        // filter response data to see which pupdates user has RSVP'd to
         this.setState({
           pupdates: responseData1,
-          userPupdates: responseData2,
+          userPupdateRsvps: responseData2,
+          userPupdates: responseData3,
           myPupdates: responseData1.filter((pupdate) => {
             return responseData2.some((userPupdate) => {
               return userPupdate.pupdate === pupdate.id;
@@ -65,6 +77,11 @@ class Pupdates extends React.Component {
               <p>You don't have any pupdates scheduled!</p>
             ) : (
               <ul>
+                {this.state.userPupdates.map((userPupdate) => (
+                  <li key={userPupdate.id}>
+                    <Pupdate pupdate={userPupdate} />
+                  </li>
+                ))}
                 {this.state.myPupdates.map((myPupdate) => (
                   <li key={myPupdate.id}>
                     <Pupdate pupdate={myPupdate} />

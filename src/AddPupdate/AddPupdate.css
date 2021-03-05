@@ -19,6 +19,11 @@
     font-family: sans-serif
 }
 
+.AddPupdate-error {
+    color: red;
+    text-align: center;
+} 
+
 .AddPupdate input {
     width: 100%;
     padding: 12px 20px;

@@ -117,7 +117,7 @@ class Pup extends React.Component {
         <ul>
           <h2>{this.state.name}'s Play Profile</h2>
           {Object.values(this.state.playstyle).map((p) => {
-            return <li>{p}</li>;
+            return p === null ? null : <li key={p}>{p}</li>;
           })}
         </ul>
 

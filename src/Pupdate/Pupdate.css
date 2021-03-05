@@ -1,5 +1,5 @@
 .Pupdate {
-    width: 50%;
+    width: 75%;
     margin: 0px auto;
     align-content: flex-start;
     justify-content: center;
@@ -16,7 +16,6 @@
     padding: 0px;
 }
 
-
 .Pupdate-profile {
     width: 80%;
     background-color: #C28832;
@@ -32,11 +31,22 @@
     background-color: #F5AC40;
 }
 
+.Pupdate-play-profile {
+    width: 60%;
+    background-color: #297537;
+    color: white;
+    margin: 5px 0px;
+    padding: 5px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
 .Pupdate-rsvp {
     width: 80%;
     background-color: #297537;
     color: white;
-    margin: 20px;
+    margin: 5px 0px;
     padding: 10px;
     border: none;
     border-radius: 4px;

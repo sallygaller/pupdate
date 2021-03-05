@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import TokenService from "../services/token-service";
 import { API_ENDPOINT } from "../config";
+import moment from "moment";
 import "./Pupdate.css";
 
 class Pupdate extends React.Component {
@@ -15,23 +16,16 @@ class Pupdate extends React.Component {
   }
 
   componentDidMount() {
-    Promise.all([
-      fetch(API_ENDPOINT + `/pups/user/${this.props.pupdate.organizer}`, {
-        headers: {
-          authorization: `bearer ${TokenService.getAuthToken()}`,
-        },
-      }),
-      fetch(API_ENDPOINT + `/pupdate-rsvp/${this.props.pupdate.id}`, {
-        headers: {
-          authorization: `bearer ${TokenService.getAuthToken()}`,
-        },
-      }),
-    ])
-      .then(([res1, res2]) => Promise.all([res1.json(), res2.json()]))
-      .then(([responseData1, responseData2]) =>
+    // get pup of each pupdate organizer
+    fetch(API_ENDPOINT + `/pups/user/${this.props.pupdate.organizer}`, {
+      headers: {
+        authorization: `bearer ${TokenService.getAuthToken()}`,
+      },
+    })
+      .then((res) => res.json())
+      .then((responseData) =>
         this.setState({
-          organizerPups: responseData1,
-          pupdateRsvps: responseData2,
+          organizerPups: responseData,
         })
       )
       .catch((error) => {
@@ -46,8 +40,9 @@ class Pupdate extends React.Component {
         <div className="Pupdate-group">
           <div className="Pupdate-item">
             <p>
-              Date: {pupdate.date} <br></br>
-              Time: {pupdate.starttime}-{pupdate.endtime}
+              Date: {moment(pupdate.date).format("LL")} <br></br>
+              Time: {moment(pupdate.starttime, "h:mm A").format("h:mm A")} -
+              {moment(pupdate.endtime, "h:mm A").format("h:mm A")}
             </p>
           </div>
           <div className="Pupdate-item">
@@ -60,8 +55,8 @@ class Pupdate extends React.Component {
                   {organizerPup.name}
                   <br></br>
                   <Link to={`/pups/${organizerPup.id}`}>
-                    <button className="Pupdate-rsvp" type="button">
-                      View {organizerPup.name}'s Play Profile
+                    <button className="Pupdate-play-profile" type="button">
+                      View Play Profile
                     </button>
                   </Link>
                 </li>
@@ -71,7 +66,7 @@ class Pupdate extends React.Component {
           <div className="Pupdate-item">
             <Link to={`/pupdates/${pupdate.id}`}>
               <button className="Pupdate-rsvp" type="button">
-                View Pupdate and RSVP
+                View Pupdate/Change RSVP
               </button>
             </Link>
           </div>
