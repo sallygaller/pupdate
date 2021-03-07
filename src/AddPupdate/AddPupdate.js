@@ -11,7 +11,6 @@ export default function AddPupdate() {
   const [starttime, setStarttime] = useState("");
   const [endtime, setEndtime] = useState("");
   const [location, setLocation] = useState("");
-  const [locale, setLocale] = useState("");
   const [description, setDescription] = useState("");
   const [error, setError] = useState(null);
 

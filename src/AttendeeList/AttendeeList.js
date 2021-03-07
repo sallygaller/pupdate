@@ -9,6 +9,7 @@ class AttendeeList extends React.Component {
     super(props);
     this.state = {
       pups: [],
+      attendees: [],
     };
   }
 
@@ -22,37 +23,27 @@ class AttendeeList extends React.Component {
   };
 
   componentDidMount() {
-    console.log(this.props);
-    const pupdateId = this.props.params.pupdateId;
-    // get pupdate attendee list (rsvps)
-    fetch(API_ENDPOINT + `/pupdate-rsvp/${pupdateId}`, {
-      headers: {
-        authorization: `bearer ${TokenService.getAuthToken()}`,
-      },
-    })
-      .then((res) => res.json())
-      .then((response) => {
-        let attendeeList = [];
-        for (let i = 0; i < response.length; i++) {
-          fetch(API_ENDPOINT + `/pups/${response[i].attendee}`, {
-            headers: {
-              authorization: `bearer ${TokenService.getAuthToken()}`,
-            },
+    console.log(this.props.attendees);
+    Promise.all(
+      this.props.attendees.map((rsvp) =>
+        fetch(API_ENDPOINT + `/pups/${rsvp.attendee}`, {
+          headers: {
+            authorization: `bearer ${TokenService.getAuthToken()}`,
+          },
+        })
+      )
+    )
+      .then((responses) => {
+        return Promise.all(
+          responses.map((response) => {
+            return response.json();
           })
-            .then((res) => res.json())
-            .then((responsePup) => {
-              let obj = {};
-              obj["id"] = responsePup.id;
-              obj["name"] = responsePup.name;
-              attendeeList.push(obj);
-              return attendeeList;
-            })
-            .then((attendeeList) =>
-              this.setState({
-                attendees: attendeeList,
-              })
-            );
-        }
+        );
+      })
+      .then((data) => {
+        this.setState({
+          attendees: data,
+        });
       })
       .catch((error) => {
         console.error({ error });
@@ -64,9 +55,7 @@ class AttendeeList extends React.Component {
       <div>
         <h3>Attendees:</h3>
         <ul>
-          <li>Attendee List here</li>
-          <li>{console.log(this.state.attendees)}</li>
-          {/* {this.state.attendees.map((attendee) => {
+          {this.state.attendees.map((attendee) => {
             return (
               <li key={attendee.id}>
                 {attendee.name}
@@ -78,7 +67,7 @@ class AttendeeList extends React.Component {
                 </Link>
               </li>
             );
-          })} */}
+          })}
         </ul>
       </div>
     );

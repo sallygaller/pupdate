@@ -13,12 +13,10 @@ class PupdateComplete extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      pupdate: [],
       attendees: [],
-      attending: false,
-      rsvp: "",
-      pupdate: {},
-      userPupdates: {},
-      userOrganized: false,
+      userPupdate: false,
+      userAttending: false,
       error: null,
     };
   }
@@ -41,43 +39,68 @@ class PupdateComplete extends React.Component {
           authorization: `bearer ${TokenService.getAuthToken()}`,
         },
       }),
-      // get pupdate RSVPS for logged in user
-      fetch(API_ENDPOINT + `/pupdate-rsvp/user`, {
+      // get rsvps for pupdate
+      fetch(API_ENDPOINT + `/pupdate-rsvp/${pupdateId}`, {
         headers: {
           authorization: `bearer ${TokenService.getAuthToken()}`,
         },
       }),
-      // get pupdates the user organized
+      // get user organized pupdates
       fetch(API_ENDPOINT + `/pupdates/user`, {
         headers: {
           authorization: `bearer ${TokenService.getAuthToken()}`,
         },
       }),
+      // get user rsvps
+      fetch(API_ENDPOINT + `/pupdate-rsvp/user`, {
+        headers: {
+          authorization: `bearer ${TokenService.getAuthToken()}`,
+        },
+      }),
     ])
-      .then(([res2, res3, res4]) =>
-        Promise.all([res2.json(), res3.json(), res4.json()])
+      .then(([res1, res2, res3, res4]) =>
+        Promise.all([res1.json(), res2.json(), res3.json(), res4.json()])
       )
-      .then(([responseData2, responseData3, responseData4]) => {
-        for (let i = 0; i < responseData4.length; i++) {
-          if (responseData4[i].id === pupdateId) {
-            this.setState({
-              userOrganized: true,
-            });
-          }
-        }
-        // loop through user RSVPs to see if they've registered for this pupdate
-        for (let i = 0; i < responseData3.length; i++) {
-          if (responseData2.id === responseData3[i].pupdate) {
-            this.setState({
-              attending: true,
-              rsvp: responseData3[i].id,
-            });
-          }
-        }
+      .then(([responseData1, responseData2, responseData3, responseData4]) => {
         this.setState({
-          pupdate: responseData2,
-          userPupdates: responseData3,
+          pupdate: responseData1,
         });
+        responseData4.map((pupdateRsvps) => {
+          if (pupdateRsvps.pupdate === responseData1.id) {
+            this.setState({
+              userAttending: true,
+            });
+          }
+        });
+        responseData3.map((pupdate) => {
+          if (pupdate.id === responseData1.id) {
+            this.setState({
+              userPupdate: true,
+            });
+          }
+        });
+        Promise.all(
+          responseData2.map((pupdateRsvp) =>
+            fetch(API_ENDPOINT + `/pups/${pupdateRsvp.attendee}`, {
+              headers: {
+                authorization: `bearer ${TokenService.getAuthToken()}`,
+              },
+            })
+          )
+        )
+          .then((responses) => {
+            return Promise.all(
+              responses.map((response) => {
+                return response.json();
+              })
+            );
+          })
+          .then((data) => {
+            console.log(data);
+            this.setState({
+              attendees: data,
+            });
+          });
       })
       .catch((error) => {
         console.error({ error });
@@ -125,13 +148,11 @@ class PupdateComplete extends React.Component {
   };
 
   render() {
+    console.log(this.state);
     return (
       <div className="PupdateComplete">
         <section>
-          <h2>
-            {this.state.pupdate.locale} Pupdate on{" "}
-            {moment(this.state.pupdate.date).format("LL")}
-          </h2>
+          <h2>Pupdate on {moment(this.state.pupdate.date).format("LL")}</h2>
           <p>
             Time:{" "}
             {moment(this.state.pupdate.starttime, "h:mm A").format("h:mm A")} -{" "}
@@ -139,32 +160,18 @@ class PupdateComplete extends React.Component {
             <br></br>
             Location: {this.state.pupdate.location}, {this.state.pupdate.city}
           </p>
-          <div className="PupdateComplete-item">
-            <RSVPButtons
-              // handleDeleteRequest={this.handleDeleteRequest}
-              handleRsvpYes={this.handleRsvpYes}
-              handleRsvpNo={this.handleRsvpNo}
-              attending={this.state.attending}
-              organized={this.state.userOrganized}
-            />
-            {this.state.attending === false &&
-            this.state.organized === false ? (
-              <button onClick={(e) => this.handleRsvpYes(e)}>
-                I'll be there!
-              </button>
-            ) : this.state.organized === true ? (
-              // <button onClick={(e) => this.handleRsvpYes(e)}>
-              <div>
+          {this.state.userPupdate === true ? (
+            <div>
+              <Link to={`/edit/pupdate/${this.state.pupdate.id}`}>
                 <button>Edit Pupdate</button>
-                <button>Delete Pupdate</button>
-              </div>
-            ) : this.state.organized === false &&
-              this.state.attending === false ? (
-              <button onClick={(e) => this.handleRsvpNo(e)}>
-                I'm no longer attending
-              </button>
-            ) : null}
-          </div>
+              </Link>
+              <button>Delete Pupdate</button>
+            </div>
+          ) : this.state.userAttending === true ? (
+            <button>I can no longer attend.</button>
+          ) : (
+            <button>I'll be there!</button>
+          )}
         </section>
       </div>
     );

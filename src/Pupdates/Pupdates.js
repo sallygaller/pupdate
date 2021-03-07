@@ -34,8 +34,6 @@ class Pupdates extends React.Component {
         this.setState({
           pupdateOrganized: responseData2,
         });
-        let fetches = [];
-        let rsvps = [];
         Promise.all(
           responseData1.map((pupdateRsvp) =>
             fetch(API_ENDPOINT + `/pupdates/${pupdateRsvp.pupdate}`, {

@@ -46,8 +46,9 @@ class Pupdate extends React.Component {
             </p>
           </div>
           <div className="Pupdate-item">
-            <p>Locale: {pupdate.locale}</p>
+            <p>Location: {pupdate.location}</p>
           </div>
+
           <div className="Pupdate-item">
             <ul>
               {this.state.organizerPups.map((organizerPup) => (
@@ -63,13 +64,33 @@ class Pupdate extends React.Component {
               ))}
             </ul>
           </div>
-          <div className="Pupdate-item">
-            <Link to={`/pupdates/${pupdate.id}`}>
-              <button className="Pupdate-rsvp" type="button">
-                View Pupdate/Change RSVP
-              </button>
-            </Link>
-          </div>
+          {this.props.userOrganized === "true" ? (
+            <div className="Pupdate-item">
+              <Link to={`/pupdates/${pupdate.id}`}>
+                <button className="Pupdate-rsvp" type="button">
+                  View/Edit Pupdate
+                </button>
+              </Link>
+            </div>
+          ) : null}
+          {this.props.userAttending === "true" ? (
+            <div className="Pupdate-item">
+              <Link to={`/pupdates/${pupdate.id}`}>
+                <button className="Pupdate-rsvp" type="button">
+                  View Pupdate/Change RSVP
+                </button>
+              </Link>
+            </div>
+          ) : null}
+          {this.props.availablePupdate === "true" ? (
+            <div className="Pupdate-item">
+              <Link to={`/pupdates/${pupdate.id}`}>
+                <button className="Pupdate-rsvp" type="button">
+                  View Pupdate/RSVP
+                </button>
+              </Link>
+            </div>
+          ) : null}
         </div>
       </div>
     );

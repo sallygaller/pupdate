@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import TokenService from "../services/token-service";
-import { API_ENDPOINT } from "../config";
+import { API_ENDPOINT, S3_ID, S3_KEY } from "../config";
 import "./Pup.css";
 
 class Pup extends React.Component {
@@ -28,6 +28,7 @@ class Pup extends React.Component {
       },
       description: "",
       owner: "",
+      userPup: false,
     };
   }
 
@@ -42,56 +43,65 @@ class Pup extends React.Component {
 
   componentDidMount() {
     const { pupId } = this.props.match.params;
-    fetch(API_ENDPOINT + `/pups/${pupId}`, {
-      headers: {
-        authorization: `bearer ${TokenService.getAuthToken()}`,
-      },
-    })
-      .then((res) => {
-        if (!res.ok) {
-          throw new Error(console.log(res.status));
-        }
-        return res.json();
-      })
-      .then((responseData) => {
+    Promise.all([
+      fetch(API_ENDPOINT + `/pups/${pupId}`, {
+        headers: {
+          authorization: `bearer ${TokenService.getAuthToken()}`,
+        },
+      }),
+      fetch(API_ENDPOINT + `/pups/user`, {
+        headers: {
+          authorization: `bearer ${TokenService.getAuthToken()}`,
+        },
+      }),
+    ])
+      .then(([res1, res2]) => Promise.all([res1.json(), res2.json()]))
+      .then(([responseData1, responseData2]) => {
+        responseData2.map((pup) => {
+          if (pup.id === responseData1.id) {
+            this.setState({
+              userPup: true,
+            });
+          }
+        });
         this.setState({
-          id: responseData.id,
-          name: responseData.name,
-          breed: responseData.breed,
-          mix: responseData.mix,
-          age: responseData.age,
-          size: responseData.size,
+          id: responseData1.id,
+          name: responseData1.name,
+          breed: responseData1.breed,
+          mix: responseData1.mix,
+          age: responseData1.age,
+          size: responseData1.size,
           playstyle: {
             nervous:
-              responseData.nervous === true
+              responseData1.nervous === true
                 ? "I'm nervous or shy around other dogs."
                 : "",
             rambunctious:
-              responseData.rambunctious === true
+              responseData1.rambunctious === true
                 ? "I'm rambunctious and playful."
-                : null,
-            gentle: responseData.gentle === true ? "I play gently." : null,
+                : "",
+            gentle: responseData1.gentle === true ? "I play gently." : null,
             wrestling:
-              responseData.wrestling === true
+              responseData1.wrestling === true
                 ? "I like playfighting and wrestling."
-                : null,
+                : "",
             walks:
-              responseData.walks === true
+              responseData1.walks === true
                 ? "I like going on walks with my pup pals."
-                : null,
+                : "",
             parks:
-              responseData.parks === true
+              responseData1.parks === true
                 ? "I like going to dog parks with my pup pals."
-                : null,
+                : "",
             foodobsessed:
-              responseData.foodobsessed === true ? "I'm food-obsessed!" : null,
+              responseData1.foodobsessed === true ? "I'm food-obsessed!" : null,
             ballobsessed:
-              responseData.ballobsessed === true
+              responseData1.ballobsessed === true
                 ? "I love to play fetch!"
-                : null,
+                : "",
           },
-          description: responseData.description,
-          owner: responseData.owner,
+          description: responseData1.description,
+          owner: responseData1.owner,
         });
       })
       .catch((error) => {
@@ -103,7 +113,11 @@ class Pup extends React.Component {
     return (
       <div className="Pup">
         <h1>Hi, I'm {this.state.name}!</h1>
-        {/* <img className="Pup-img" alt={this.state.pup.name} src={pupImage(pup.id)} /> */}
+        {/* <img
+          className="Pup-img"
+          alt={this.state.name}
+          src={`https://pupdate.s3-us-west-1.amazonaws.com/pics/3`}
+        /> */}
         <p>
           Breed:{" "}
           {this.state.breed.charAt(0).toUpperCase() + this.state.breed.slice(1)}{" "}
@@ -117,13 +131,14 @@ class Pup extends React.Component {
         <ul>
           <h2>{this.state.name}'s Play Profile</h2>
           {Object.values(this.state.playstyle).map((p) => {
-            return p === null ? null : <li key={p}>{p}</li>;
+            return p !== "" ? <li key={p}>{p}</li> : "";
           })}
         </ul>
-
-        <Link to={`/edit/pups/${this.state.id}`}>
-          <button>Edit</button>
-        </Link>
+        {this.state.userPup === true ? (
+          <Link to={`/edit/pups/${this.state.id}`}>
+            <button>Edit</button>
+          </Link>
+        ) : null}
       </div>
     );
   }
