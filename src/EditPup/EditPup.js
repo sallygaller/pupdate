@@ -39,8 +39,6 @@ export default function EditPup(props) {
         return res.json();
       })
       .then((responseData) => {
-        console.log(responseData);
-        console.log(responseData.rambunctious);
         setFormState({
           id: responseData.id,
           name: responseData.name,
@@ -84,6 +82,7 @@ export default function EditPup(props) {
   const handleSubmit = (e) => {
     e.preventDefault();
     const pup = {
+      id: formState.id,
       name: formState.name,
       breed: formState.breed,
       mix: formState.mix,
@@ -99,8 +98,8 @@ export default function EditPup(props) {
       ballobsessed: formState.ballobsessed,
       description: formState.description,
     };
-    fetch(API_ENDPOINT + `/pups`, {
-      method: "POST",
+    fetch(API_ENDPOINT + `/pups/${pup.id}`, {
+      method: "PATCH",
       body: JSON.stringify(pup),
       headers: {
         "content-type": "application/json",
@@ -108,14 +107,9 @@ export default function EditPup(props) {
       },
     })
       .then((res) => {
-        if (!res.ok) {
-          return res.json().then((error) => {
-            throw error;
-          });
-        }
-        return res.json();
+        if (!res.ok) return res.json().then((error) => Promise.reject(error));
       })
-      .then((data) => {
+      .then(() => {
         history.push("/pups");
       })
       .catch((error) => {
@@ -151,7 +145,7 @@ export default function EditPup(props) {
         >
           {Object.values(breedList).map((breed) => {
             return (
-              <option value={breed}>
+              <option key={breed} value={breed}>
                 {breed.charAt(0).toUpperCase() + breed.slice(1)}
               </option>
             );
@@ -176,9 +170,15 @@ export default function EditPup(props) {
           value={formState.age}
           onChange={onChange}
         >
-          <option value="Puppy">Puppy (6-18 months)</option>
-          <option value="Adult">Adult (18 months-6 years)</option>
-          <option value="Senior">Senior (6 years and older)</option>
+          <option key="puppy" value="Puppy">
+            Puppy (6-18 months)
+          </option>
+          <option key="adult" value="Adult">
+            Adult (18 months-6 years)
+          </option>
+          <option key="senior" value="Senior">
+            Senior (6 years and older)
+          </option>
         </select>
         <label htmlFor="pup-size">Size:</label>
         <select
@@ -188,11 +188,21 @@ export default function EditPup(props) {
           value={formState.size}
           onChange={onChange}
         >
-          <option value="XS">Extra Small (under 10lbs)</option>
-          <option value="S">Small (10-30lbs)</option>
-          <option value="M">Medium (30-60lbs)</option>
-          <option value="L">Large (60-90lbs)</option>
-          <option value="XL">Extra Large (over 90lbs)</option>
+          <option key="XS" value="XS">
+            Extra Small (under 10lbs)
+          </option>
+          <option key="S" value="S">
+            Small (10-30lbs)
+          </option>
+          <option key="M" value="M">
+            Medium (30-60lbs)
+          </option>
+          <option key="L" value="L">
+            Large (60-90lbs)
+          </option>
+          <option key="XL" value="XL">
+            Extra Large (over 90lbs)
+          </option>
         </select>
         <label htmlFor="pup-playstyle">Playstyle (check all that apply):</label>
         <div className="AddPup-option">

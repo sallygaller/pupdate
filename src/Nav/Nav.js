@@ -5,7 +5,8 @@ import "./Nav.css";
 export default function Nav() {
   return (
     <nav className="Nav">
-      <Link to="/pupdates">Pupdates</Link>{" "}
+      <Link to="/availablepupdates">Available Pupdates</Link>{" "}
+      <Link to="/pupdates">My Pupdates</Link>{" "}
       <Link to="/new-pupdate">New Pupdate</Link> <Link to="/pups">My Pups</Link>
       <Link to="/register">Register</Link>
       <Link to="/login">Log In</Link>

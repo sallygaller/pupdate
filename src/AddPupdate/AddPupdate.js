@@ -11,6 +11,7 @@ export default function AddPupdate() {
   const [starttime, setStarttime] = useState("");
   const [endtime, setEndtime] = useState("");
   const [location, setLocation] = useState("");
+  const [locale, setLocale] = useState("");
   const [description, setDescription] = useState("");
   const [error, setError] = useState(null);
 
@@ -18,6 +19,7 @@ export default function AddPupdate() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log(location);
     const pupdate = {
       date,
       starttime,

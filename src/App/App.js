@@ -3,6 +3,7 @@ import { Route, Link, Switch, withRouter } from "react-router-dom";
 import AddPup from "../AddPup/AddPup";
 import AddPupdate from "../AddPupdate/AddPupdate";
 import AuthApiService from "../services/auth-api-service";
+import AvailablePupdates from "../AvailablePupdates/AvailablePupdates";
 import EditPup from "../EditPup/EditPup";
 import EditPupdate from "../EditPupdate/EditPupdate";
 import IdleService from "../services/idle-service";
@@ -133,6 +134,10 @@ class App extends React.Component {
               render={(props) => <PupdateComplete {...props} />}
             />
             <Route path={"/pupdates"} render={() => <Pupdates />} />
+            <Route
+              path={"/availablepupdates"}
+              render={() => <AvailablePupdates />}
+            />
             <Route path={"/new-pupdate"} component={AddPupdate} />
             <Route
               path={"/pups/:pupId"}

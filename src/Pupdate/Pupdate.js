@@ -46,7 +46,7 @@ class Pupdate extends React.Component {
             </p>
           </div>
           <div className="Pupdate-item">
-            <p>Location: {pupdate.location}</p>
+            <p>Locale: {pupdate.locale}</p>
           </div>
           <div className="Pupdate-item">
             <ul>
