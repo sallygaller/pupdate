@@ -12,6 +12,7 @@ import LoginPage from "../LoginPage/LoginPage";
 import Nav from "../Nav/Nav";
 import Pupdates from "../Pupdates/Pupdates";
 import MyPups from "../MyPups/MyPups";
+import PrivateRoute from "../Utils/PrivateRoute";
 import Pup from "../Pup/Pup";
 import PupdateComplete from "../PupdateComplete/PupdateComplete";
 import RegistrationPage from "../RegistrationPage/RegistrationPage";
@@ -118,45 +119,37 @@ class App extends React.Component {
           <Link to="/">
             <h1 className="App-h1">pupdate</h1>
           </Link>
-          <Nav />
+          <Nav isLoggedIn={this.state.isLoggedIn} onLogout={this.onLogout} />
         </header>
         <main>
           <Switch>
             <Route exact path={"/"} component={LandingPage} />
-            <Route
+            <PrivateRoute
               path={"/edit/pupdates/:pupdateId"}
-              render={(props) => (
-                <EditPupdate {...props} pupdates={this.pupdates} />
-              )}
+              component={EditPupdate}
             />
-            <Route
+            <PrivateRoute
               path={"/pupdates/:pupdateId"}
-              render={(props) => <PupdateComplete {...props} />}
+              component={PupdateComplete}
             />
-            <Route path={"/pupdates"} render={() => <Pupdates />} />
-            <Route
+            <PrivateRoute path={"/pupdates"} component={Pupdates} />
+            <PrivateRoute
               path={"/availablepupdates"}
-              render={() => <AvailablePupdates />}
+              component={AvailablePupdates}
             />
-            <Route path={"/new-pupdate"} component={AddPupdate} />
-            <Route
-              path={"/pups/:pupId"}
-              render={(props) => <Pup {...props} />}
-            />
-            <Route
+            <PrivateRoute path={"/new-pupdate"} component={AddPupdate} />
+            <PrivateRoute path={"/pups/:pupId"} component={Pup} />
+            <PrivateRoute
               path={"/pups"}
               render={(props) => <MyPups {...props} pups={this.pups} />}
             />
-            <Route
-              path={"/edit/pups/:pupId"}
-              render={(props) => <EditPup {...props} pups={this.pups} />}
-            />
+            <PrivateRoute path={"/edit/pups/:pupId"} component={EditPup} />
+            <PrivateRoute path={"/addpup"} component={AddPup} />
             <Route path={"/register"} component={RegistrationPage} />
             <Route
               path={"/login"}
               render={() => <LoginPage onLogin={this.onLogin} />}
             />
-            <Route path={"/addpup"} component={AddPup} />
           </Switch>
         </main>
         <footer>

@@ -30,3 +30,7 @@
 .RegistrationForm button:enabled:hover {
     background-color: #45a049;
 }
+
+.RegistrationForm-error {
+    color: red;
+}

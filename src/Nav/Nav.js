@@ -1,15 +1,79 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+import TokenService from "../services/token-service";
+import IdleService from "../services/idle-service";
 import "./Nav.css";
 
-export default function Nav() {
-  return (
-    <nav className="Nav">
-      <Link to="/availablepupdates">Available Pupdates</Link>{" "}
-      <Link to="/pupdates">My Pupdates</Link>{" "}
-      <Link to="/new-pupdate">New Pupdate</Link> <Link to="/pups">My Pups</Link>
-      <Link to="/register">Register</Link>
-      <Link to="/login">Log In</Link>
-    </nav>
-  );
+class Nav extends React.Component {
+  handleLogoutClick = () => {
+    TokenService.clearAuthToken();
+    /* when logging out, clear the callbacks to the refresh api and idle auto logout */
+    TokenService.clearCallbackBeforeExpiry();
+    IdleService.unRegisterIdleResets();
+    this.props.onLogout();
+  };
+
+  renderLogoutLink() {
+    return (
+      <div>
+        <NavLink
+          to="/availablepupdates"
+          activeStyle={{
+            fontWeight: "bold",
+          }}
+        >
+          {" "}
+          Available Pupdates
+        </NavLink>{" "}
+        <NavLink
+          to="/pupdates"
+          activeStyle={{
+            fontWeight: "bold",
+          }}
+        >
+          My Pupdates
+        </NavLink>{" "}
+        <NavLink
+          to="/new-pupdate"
+          activeStyle={{
+            fontWeight: "bold",
+          }}
+        >
+          New Pupdate
+        </NavLink>{" "}
+        <NavLink
+          to="/pups"
+          activeStyle={{
+            fontWeight: "bold",
+          }}
+        >
+          My Pups
+        </NavLink>{" "}
+        <NavLink onClick={this.handleLogoutClick} to="/">
+          Logout
+        </NavLink>
+      </div>
+    );
+  }
+
+  renderLoginLink() {
+    return (
+      <div>
+        <NavLink to="/login">Log in</NavLink>
+        <NavLink to="/register">Register</NavLink>
+      </div>
+    );
+  }
+
+  render() {
+    return (
+      <nav className="Nav">
+        {this.props.isLoggedIn
+          ? this.renderLogoutLink()
+          : this.renderLoginLink()}
+      </nav>
+    );
+  }
 }
+
+export default Nav;
