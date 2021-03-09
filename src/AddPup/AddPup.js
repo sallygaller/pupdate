@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router";
 import TokenService from "../services/token-service";
+import FormData from "form-data";
 import { API_ENDPOINT } from "../config";
 import "./AddPup.css";
 
@@ -8,6 +9,7 @@ export default function AddPup() {
   const [breedList, setBreedList] = useState("");
   const [error, setError] = useState(null);
   const history = useHistory();
+  const [uploads, setUploads] = useState(null);
   const [formState, setFormState] = useState({
     name: "",
     age: "",
@@ -43,36 +45,71 @@ export default function AddPup() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const pup = {
-      name: formState.name,
-      breed: formState.breed,
-      mix: formState.mix,
-      age: formState.age,
-      size: formState.size,
-      nervous: formState.nervous,
-      rambunctious: formState.rambunctious,
-      gentle: formState.gentle,
-      wrestling: formState.wrestling,
-      walks: formState.walks,
-      parks: formState.parks,
-      foodobsessed: formState.foodobsessed,
-      ballobsessed: formState.ballobsessed,
-      description: formState.description,
-    };
-    fetch(API_ENDPOINT + `/pups`, {
+    //   console.log(formState.uploads);
+    //   const pup = {
+    //     name: formState.name,
+    //     breed: formState.breed,
+    //     mix: formState.mix,
+    //     age: formState.age,
+    //     size: formState.size,
+    //     nervous: formState.nervous,
+    //     rambunctious: formState.rambunctious,
+    //     gentle: formState.gentle,
+    //     wrestling: formState.wrestling,
+    //     walks: formState.walks,
+    //     parks: formState.parks,
+    //     foodobsessed: formState.foodobsessed,
+    //     ballobsessed: formState.ballobsessed,
+    //     description: formState.description,
+    //   };
+
+    //   fetch(API_ENDPOINT + `/pups`, {
+    //     method: "POST",
+    //     body: JSON.stringify(pup),
+    //     headers: {
+    //       "content-type": "application/json",
+    //       authorization: `bearer ${TokenService.getAuthToken()}`,
+    //     },
+    //   })
+    //     .then((res) => {
+    //       if (!res.ok) {
+    //         return res.json().then((error) => {
+    //           throw error;
+    //         });
+    //       }
+    //       return res.json();
+    //     })
+    //     // .then((data) => {
+    //     //   history.push("/pups");
+    //     // })
+    //     .catch((error) => {
+    //       setError(error.message);
+    //     });
+
+    const pupPic = uploads;
+    console.log(uploads);
+    const form = new FormData();
+    console.log(form);
+    form.append("uploads", pupPic);
+    form.get("uploads");
+    console.log(uploads);
+
+    fetch(API_ENDPOINT + `/pups/upload`, {
       method: "POST",
-      body: JSON.stringify(pup),
-      headers: {
-        "content-type": "application/json",
-        authorization: `bearer ${TokenService.getAuthToken()}`,
-      },
+      body: form,
+      // headers: {
+      //   // "content-type": "multipart/form-data",
+      //   authorization: `bearer ${TokenService.getAuthToken()}`,
+      // },
     })
       .then((res) => {
         if (!res.ok) {
+          console.log(res);
           return res.json().then((error) => {
             throw error;
           });
         }
+        console.log(res);
         return res.json();
       })
       .then((data) => {
@@ -83,6 +120,14 @@ export default function AddPup() {
       });
   };
 
+  const onChangePic = (e) => {
+    console.log("here!");
+    console.log(e.target.files[0]);
+    setUploads(e.target.files[0]);
+    // setUploads({ uploads: e.target.files[0] });
+    console.log(uploads);
+  };
+
   const handleClickCancel = () => {
     history.push("/pups");
   };
@@ -90,6 +135,15 @@ export default function AddPup() {
   return (
     <div className="AddPup">
       <h2>Add a Pup</h2>
+      <form
+        action="http://localhost:8000/api/pups/upload"
+        method="post"
+        enctype="multipart/form-data"
+      >
+        {" "}
+        <input type="file" name="uploads" />{" "}
+        <button type="submit">Click me</button>
+      </form>
       <form className="AddPup-form" onSubmit={(e) => handleSubmit(e)}>
         <label htmlFor="pup-name">Name:</label>
         <input
@@ -258,6 +312,14 @@ export default function AddPup() {
           id="description"
           value={formState.description}
           onChange={onChange}
+        />
+        <label htmlFor="pup-pic">Photo:</label>
+        <input
+          type="file"
+          name="uploads"
+          id="uploads"
+          // value={uploads}
+          onChange={(e) => onChangePic(e)}
         />
         <button type="submit">Submit</button>
         <button type="button" onClick={handleClickCancel}>

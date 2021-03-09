@@ -139,10 +139,7 @@ class App extends React.Component {
             />
             <PrivateRoute path={"/new-pupdate"} component={AddPupdate} />
             <PrivateRoute path={"/pups/:pupId"} component={Pup} />
-            <PrivateRoute
-              path={"/pups"}
-              render={(props) => <MyPups {...props} pups={this.pups} />}
-            />
+            <PrivateRoute path={"/pups"} component={MyPups} />
             <PrivateRoute path={"/edit/pups/:pupId"} component={EditPup} />
             <PrivateRoute path={"/addpup"} component={AddPup} />
             <Route path={"/register"} component={RegistrationPage} />
