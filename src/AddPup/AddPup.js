@@ -43,80 +43,134 @@ export default function AddPup() {
       });
   }, []);
 
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   const pup = {
+  //     name: formState.name,
+  //     breed: formState.breed,
+  //     mix: formState.mix,
+  //     age: formState.age,
+  //     size: formState.size,
+  //     nervous: formState.nervous,
+  //     rambunctious: formState.rambunctious,
+  //     gentle: formState.gentle,
+  //     wrestling: formState.wrestling,
+  //     walks: formState.walks,
+  //     parks: formState.parks,
+  //     foodobsessed: formState.foodobsessed,
+  //     ballobsessed: formState.ballobsessed,
+  //     description: formState.description,
+  //   };
+  //   fetch(API_ENDPOINT + `/pups`, {
+  //     method: "POST",
+  //     body: JSON.stringify(pup),
+  //     headers: {
+  //       "content-type": "application/json",
+  //       authorization: `bearer ${TokenService.getAuthToken()}`,
+  //     },
+  //   }).then((res) => {
+  //     if (!res.ok) {
+  //       return res.json().then((error) => {
+  //         throw error;
+  //       });
+  //     }
+  //     return res.json();
+  //   });
+  //   // .catch((error) => {
+  //   //   setError(error.message);
+  //   // });
+  //   const pupPic = uploads;
+  //   const form = new FormData();
+  //   form.append("uploads", pupPic);
+  //   form.get("uploads");
+  //   fetch(API_ENDPOINT + `/pups/upload`, {
+  //     method: "POST",
+  //     body: form,
+  //     // headers: {
+  //     //   // "content-type": "multipart/form-data",
+  //     //   authorization: `bearer ${TokenService.getAuthToken()}`,
+  //     // },
+  //   })
+  //     .then((res) => {
+  //       if (!res.ok) {
+  //         return res.json().then((error) => {
+  //           throw error;
+  //         });
+  //       }
+  //       return res.json();
+  //     })
+  //     .then((data) => {
+  //       console.log(data);
+  //       history.push("/pups");
+  //     })
+  //     .catch((error) => {
+  //       setError(error.message);
+  //     });
+  // };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    //   console.log(formState.uploads);
-    //   const pup = {
-    //     name: formState.name,
-    //     breed: formState.breed,
-    //     mix: formState.mix,
-    //     age: formState.age,
-    //     size: formState.size,
-    //     nervous: formState.nervous,
-    //     rambunctious: formState.rambunctious,
-    //     gentle: formState.gentle,
-    //     wrestling: formState.wrestling,
-    //     walks: formState.walks,
-    //     parks: formState.parks,
-    //     foodobsessed: formState.foodobsessed,
-    //     ballobsessed: formState.ballobsessed,
-    //     description: formState.description,
-    //   };
-
-    //   fetch(API_ENDPOINT + `/pups`, {
-    //     method: "POST",
-    //     body: JSON.stringify(pup),
-    //     headers: {
-    //       "content-type": "application/json",
-    //       authorization: `bearer ${TokenService.getAuthToken()}`,
-    //     },
-    //   })
-    //     .then((res) => {
-    //       if (!res.ok) {
-    //         return res.json().then((error) => {
-    //           throw error;
-    //         });
-    //       }
-    //       return res.json();
-    //     })
-    //     // .then((data) => {
-    //     //   history.push("/pups");
-    //     // })
-    //     .catch((error) => {
-    //       setError(error.message);
-    //     });
-
+    const pup = {
+      name: formState.name,
+      breed: formState.breed,
+      mix: formState.mix,
+      age: formState.age,
+      size: formState.size,
+      nervous: formState.nervous,
+      rambunctious: formState.rambunctious,
+      gentle: formState.gentle,
+      wrestling: formState.wrestling,
+      walks: formState.walks,
+      parks: formState.parks,
+      foodobsessed: formState.foodobsessed,
+      ballobsessed: formState.ballobsessed,
+      description: formState.description,
+    };
     const pupPic = uploads;
-    console.log(uploads);
     const form = new FormData();
-    console.log(form);
     form.append("uploads", pupPic);
     form.get("uploads");
-    console.log(uploads);
-
-    fetch(API_ENDPOINT + `/pups/upload`, {
+    fetch(API_ENDPOINT + `/pups`, {
       method: "POST",
-      body: form,
-      // headers: {
-      //   // "content-type": "multipart/form-data",
-      //   authorization: `bearer ${TokenService.getAuthToken()}`,
-      // },
+      body: JSON.stringify(pup),
+      headers: {
+        "content-type": "application/json",
+        authorization: `bearer ${TokenService.getAuthToken()}`,
+      },
     })
       .then((res) => {
         if (!res.ok) {
-          console.log(res);
           return res.json().then((error) => {
             throw error;
           });
         }
-        console.log(res);
         return res.json();
       })
       .then((data) => {
+        let newPupId = data.id;
+        return fetch(API_ENDPOINT + `/pups/upload`, {
+          method: "POST",
+          body: form,
+          headers: {
+            key: newPupId,
+            authorization: `bearer ${TokenService.getAuthToken()}`,
+          },
+        });
+      })
+      .then((res) => {
+        if (!res.ok) {
+          return res.json().then((error) => {
+            throw error;
+          });
+        }
+        return res.json();
+      })
+      .then((data) => {
+        console.log("success!");
         history.push("/pups");
       })
       .catch((error) => {
-        setError(error.message);
+        console.error({ error });
       });
   };
 
@@ -135,7 +189,7 @@ export default function AddPup() {
   return (
     <div className="AddPup">
       <h2>Add a Pup</h2>
-      <form
+      {/* <form
         action="http://localhost:8000/api/pups/upload"
         method="post"
         enctype="multipart/form-data"
@@ -143,7 +197,7 @@ export default function AddPup() {
         {" "}
         <input type="file" name="uploads" />{" "}
         <button type="submit">Click me</button>
-      </form>
+      </form> */}
       <form className="AddPup-form" onSubmit={(e) => handleSubmit(e)}>
         <label htmlFor="pup-name">Name:</label>
         <input
