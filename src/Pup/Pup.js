@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import TokenService from "../services/token-service";
-import { API_ENDPOINT, S3_ID, S3_KEY } from "../config";
+import { API_ENDPOINT } from "../config";
 import "./Pup.css";
 
 class Pup extends React.Component {
@@ -36,9 +36,6 @@ class Pup extends React.Component {
     match: PropTypes.shape({
       params: PropTypes.object,
     }),
-    // history: PropTypes.shape({
-    //   push: PropTypes.func,
-    // }).isRequired,
   };
 
   componentDidMount() {
@@ -109,6 +106,10 @@ class Pup extends React.Component {
       });
   }
 
+  handleBack = () => {
+    this.props.history.goBack();
+  };
+
   render() {
     return (
       <div className="Pup">
@@ -139,6 +140,9 @@ class Pup extends React.Component {
             <button>Edit</button>
           </Link>
         ) : null}
+        <div>
+          <button onClick={this.handleBack}>Back</button>
+        </div>
       </div>
     );
   }

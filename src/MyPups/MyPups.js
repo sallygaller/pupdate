@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { pupImage } from "../Utils/Helpers";
 import { API_ENDPOINT } from "../config";
 import TokenService from "../services/token-service";
 import "./MyPups.css";

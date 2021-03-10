@@ -43,71 +43,6 @@ export default function AddPup() {
       });
   }, []);
 
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   const pup = {
-  //     name: formState.name,
-  //     breed: formState.breed,
-  //     mix: formState.mix,
-  //     age: formState.age,
-  //     size: formState.size,
-  //     nervous: formState.nervous,
-  //     rambunctious: formState.rambunctious,
-  //     gentle: formState.gentle,
-  //     wrestling: formState.wrestling,
-  //     walks: formState.walks,
-  //     parks: formState.parks,
-  //     foodobsessed: formState.foodobsessed,
-  //     ballobsessed: formState.ballobsessed,
-  //     description: formState.description,
-  //   };
-  //   fetch(API_ENDPOINT + `/pups`, {
-  //     method: "POST",
-  //     body: JSON.stringify(pup),
-  //     headers: {
-  //       "content-type": "application/json",
-  //       authorization: `bearer ${TokenService.getAuthToken()}`,
-  //     },
-  //   }).then((res) => {
-  //     if (!res.ok) {
-  //       return res.json().then((error) => {
-  //         throw error;
-  //       });
-  //     }
-  //     return res.json();
-  //   });
-  //   // .catch((error) => {
-  //   //   setError(error.message);
-  //   // });
-  //   const pupPic = uploads;
-  //   const form = new FormData();
-  //   form.append("uploads", pupPic);
-  //   form.get("uploads");
-  //   fetch(API_ENDPOINT + `/pups/upload`, {
-  //     method: "POST",
-  //     body: form,
-  //     // headers: {
-  //     //   // "content-type": "multipart/form-data",
-  //     //   authorization: `bearer ${TokenService.getAuthToken()}`,
-  //     // },
-  //   })
-  //     .then((res) => {
-  //       if (!res.ok) {
-  //         return res.json().then((error) => {
-  //           throw error;
-  //         });
-  //       }
-  //       return res.json();
-  //     })
-  //     .then((data) => {
-  //       console.log(data);
-  //       history.push("/pups");
-  //     })
-  //     .catch((error) => {
-  //       setError(error.message);
-  //     });
-  // };
-
   const handleSubmit = (e) => {
     e.preventDefault();
     const pup = {
@@ -189,15 +124,6 @@ export default function AddPup() {
   return (
     <div className="AddPup">
       <h2>Add a Pup</h2>
-      {/* <form
-        action="http://localhost:8000/api/pups/upload"
-        method="post"
-        enctype="multipart/form-data"
-      >
-        {" "}
-        <input type="file" name="uploads" />{" "}
-        <button type="submit">Click me</button>
-      </form> */}
       <form className="AddPup-form" onSubmit={(e) => handleSubmit(e)}>
         <label htmlFor="pup-name">Name:</label>
         <input
@@ -219,7 +145,7 @@ export default function AddPup() {
         >
           {Object.values(breedList).map((breed) => {
             return (
-              <option value={breed}>
+              <option key={breed} value={breed}>
                 {breed.charAt(0).toUpperCase() + breed.slice(1)}
               </option>
             );
@@ -244,9 +170,15 @@ export default function AddPup() {
           value={formState.age}
           onChange={onChange}
         >
-          <option value="Puppy">Puppy (6-18 months)</option>
-          <option value="Adult">Adult (18 months-6 years)</option>
-          <option value="Senior">Senior (6 years and older)</option>
+          <option key="puppy" value="Puppy">
+            Puppy (6-18 months)
+          </option>
+          <option key="adult" value="Adult">
+            Adult (18 months-6 years)
+          </option>
+          <option key="senior" value="Senior">
+            Senior (6 years and older)
+          </option>
         </select>
         <label htmlFor="pup-size">Size:</label>
         <select
@@ -256,11 +188,21 @@ export default function AddPup() {
           value={formState.size}
           onChange={onChange}
         >
-          <option value="XS">Extra Small (under 10lbs)</option>
-          <option value="S">Small (10-30lbs)</option>
-          <option value="M">Medium (30-60lbs)</option>
-          <option value="L">Large (60-90lbs)</option>
-          <option value="XL">Extra Large (over 90lbs)</option>
+          <option key="xs" value="XS">
+            Extra Small (under 10lbs)
+          </option>
+          <option key="s" value="S">
+            Small (10-30lbs)
+          </option>
+          <option key="m" value="M">
+            Medium (30-60lbs)
+          </option>
+          <option key="l" value="L">
+            Large (60-90lbs)
+          </option>
+          <option key="xl" value="XL">
+            Extra Large (over 90lbs)
+          </option>
         </select>
         <label htmlFor="pup-playstyle">Playstyle (check all that apply):</label>
         <div className="AddPup-option">

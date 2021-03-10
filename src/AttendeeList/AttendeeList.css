@@ -1,3 +1,17 @@
+.AttendeeList {
+   margin: 0 auto;
+}
+
 .AttendeeList-hidden {
     display: none;
+}
+
+.AttendeeList-play-profile {
+    background-color: #0081a7;
+    color: white;
+    margin: 0px 15px;
+}
+
+li {
+    padding: 10px;
 }

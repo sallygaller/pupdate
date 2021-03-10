@@ -14,7 +14,8 @@ class PupdateComplete extends React.Component {
     super(props);
     this.state = {
       pupdate: [],
-      attendees: [],
+      attendees: "",
+      organizerPups: [],
       showAttendees: false,
       rsvp: "",
       userPupdate: false,
@@ -86,7 +87,21 @@ class PupdateComplete extends React.Component {
             });
           }
         });
+        return responseData1;
       })
+      .then((responseData1) =>
+        fetch(API_ENDPOINT + `/pups/user/${responseData1.id}`, {
+          headers: {
+            authorization: `bearer ${TokenService.getAuthToken()}`,
+          },
+        })
+      )
+      .then((res) => res.json())
+      .then((responseData) =>
+        this.setState({
+          organizerPups: responseData,
+        })
+      )
       .catch((error) => {
         console.error({ error });
       });
@@ -161,6 +176,33 @@ class PupdateComplete extends React.Component {
         }
         return res.json();
       })
+      .then((data) => {
+        this.props.history.push("/pupdates");
+      })
+      .catch((error) => {
+        console.error({ error });
+      });
+  };
+
+  handleBack = () => {
+    this.props.history.goBack();
+  };
+
+  handleDeleteRequest = () => {
+    fetch(API_ENDPOINT + `/pupdates/${this.state.pupdate.id}`, {
+      method: "DELETE",
+      headers: {
+        "content-type": "application/json",
+        authorization: `bearer ${TokenService.getAuthToken()}`,
+      },
+    })
+      .then((res) => {
+        if (!res.ok) return res.json().then((error) => Promise.reject(error));
+        return res;
+      })
+      .then((data) => {
+        this.props.history.push("/pupdates");
+      })
       .catch((error) => {
         console.error({ error });
       });
@@ -171,31 +213,61 @@ class PupdateComplete extends React.Component {
       <div className="PupdateComplete">
         <section>
           <h2>Pupdate on {moment(this.state.pupdate.date).format("LL")}</h2>
-          <p>
-            Time:{" "}
-            {moment(this.state.pupdate.starttime, "h:mm A").format("h:mm A")} -{" "}
-            {moment(this.state.pupdate.endtime, "h:mm A").format("h:mm A")}{" "}
-            <br></br>
-            Location: {this.state.pupdate.location}
-            {this.state.pupdate.description ? this.pupdate.description : null}
-          </p>
-          <button onClick={this.handleAttendees}>View Attendee List</button>
-          <AttendeeList
-            showAttendees={this.state.showAttendees}
-            attendees={this.state.attendees}
-          />
+          <div>
+            <p>
+              Time:{" "}
+              {moment(this.state.pupdate.starttime, "h:mm A").format("h:mm A")}{" "}
+              - {moment(this.state.pupdate.endtime, "h:mm A").format("h:mm A")}{" "}
+              <br></br>
+              Location: {this.state.pupdate.location}
+              {this.state.pupdate.description ? this.pupdate.description : null}
+            </p>
+          </div>
+          {this.state.userPupdate === true ? null : (
+            <div>
+              <h3>Organized by:</h3>
+              <ul>
+                {this.state.organizerPups.map((organizerPup) => (
+                  <li key={organizerPup.id}>
+                    <Link to={`/pups/${organizerPup.id}`}>
+                      {organizerPup.name}
+                    </Link>
+                    <br></br>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+          <div>
+            <button onClick={this.handleAttendees}>
+              View/Hide Attendee List
+            </button>
+            <AttendeeList
+              showAttendees={this.state.showAttendees}
+              attendees={this.state.attendees}
+            />
+          </div>
+          <br></br>
           {this.state.userPupdate === true ? (
             <div>
               <Link to={`/edit/pupdates/${this.state.pupdate.id}`}>
                 <button>Edit Pupdate</button>
               </Link>
-              <button>Delete Pupdate</button>
+              <button onClick={this.handleDeleteRequest}>Delete Pupdate</button>
             </div>
           ) : this.state.userAttending === true ? (
-            <button>I can no longer attend.</button>
+            <div>
+              <button onClick={this.handleRsvpNo}>
+                I can no longer attend.
+              </button>
+            </div>
           ) : (
-            <button>I'll be there!</button>
+            <div>
+              <button onClick={this.handleRsvpYes}>I'll be there!</button>
+            </div>
           )}
+          <br></br>
+          <button onClick={this.handleBack}>Back to Pupdates</button>
         </section>
       </div>
     );
