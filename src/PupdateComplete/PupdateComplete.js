@@ -96,7 +96,7 @@ class PupdateComplete extends React.Component {
     if (this.state.showAttendees === false) {
       Promise.all(
         this.state.rsvps.map((pupdateRsvp) =>
-          fetch(API_ENDPOINT + `/pups/${pupdateRsvp.attendee}`, {
+          fetch(API_ENDPOINT + `/pups/user/${pupdateRsvp.attendee}`, {
             headers: {
               authorization: `bearer ${TokenService.getAuthToken()}`,
             },

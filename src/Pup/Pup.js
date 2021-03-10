@@ -113,11 +113,11 @@ class Pup extends React.Component {
     return (
       <div className="Pup">
         <h1>Hi, I'm {this.state.name}!</h1>
-        {/* <img
-          className="Pup-img"
+        <img
+          className="MyPups-img"
           alt={this.state.name}
-          src={`https://pupdate.s3-us-west-1.amazonaws.com/pics/3`}
-        /> */}
+          src={`https://pupdate.s3-us-west-1.amazonaws.com/${this.state.id}`}
+        />
         <p>
           Breed:{" "}
           {this.state.breed.charAt(0).toUpperCase() + this.state.breed.slice(1)}{" "}
@@ -129,7 +129,7 @@ class Pup extends React.Component {
         </p>
         <p>{this.state.description}</p>
         <ul>
-          <h2>{this.state.name}'s Play Profile</h2>
+          <h3>{this.state.name}'s Play Profile</h3>
           {Object.values(this.state.playstyle).map((p) => {
             return p !== "" ? <li key={p}>{p}</li> : "";
           })}

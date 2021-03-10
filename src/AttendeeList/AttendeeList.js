@@ -6,11 +6,14 @@ export default function AttendeeList(props) {
   if (props.showAttendees === false) {
     console.log("false");
   }
+  const attendees = props.attendees;
+  console.log(attendees);
   return (
     <ul
       className={props.showAttendees === false ? "AttendeeList-hidden" : null}
     >
-      {props.attendees.map((attendee) => {
+      {attendees.map((attendee) => {
+        console.log(attendee);
         return (
           <li key={attendee.id}>
             {attendee.name}

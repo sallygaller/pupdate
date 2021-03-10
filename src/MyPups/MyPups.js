@@ -76,7 +76,7 @@ class MyPups extends React.Component {
                 <img
                   className="MyPups-img"
                   alt={pup.name}
-                  src={pupImage(pup.id)}
+                  src={`https://pupdate.s3-us-west-1.amazonaws.com/${pup.id}`}
                 />
               </Link>
               <br></br>
