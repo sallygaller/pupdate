@@ -18,13 +18,11 @@ export default function AddPupdate() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(location);
     const pupdate = {
       date,
       starttime,
       endtime,
       location,
-      description,
     };
     fetch(API_ENDPOINT + `/pupdates`, {
       method: "POST",
@@ -106,16 +104,6 @@ export default function AddPupdate() {
           setLocation={setLocation}
           placeholder={"Enter a location (e.g. a local park)"}
         />
-        <label htmlFor="description">Description:</label>
-        <textarea
-          id="description"
-          name="description"
-          className="AddPupdate-textarea"
-          rows="5"
-          cols="10"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-        ></textarea>
         <button type="submit">Submit</button>{" "}
         <button type="button" onClick={handleClickCancel}>
           Cancel

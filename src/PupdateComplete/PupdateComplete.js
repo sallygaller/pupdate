@@ -1,8 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import AttendeeList from "../AttendeeList/AttendeeList";
-import OrganizerPups from "../OrganizerPups/OrganizerPups";
-import RSVPButtons from "../RSVPButtons/RSVPButtons";
 import PropTypes from "prop-types";
 import moment from "moment";
 import { API_ENDPOINT } from "../config";
@@ -220,7 +218,6 @@ class PupdateComplete extends React.Component {
               - {moment(this.state.pupdate.endtime, "h:mm A").format("h:mm A")}{" "}
               <br></br>
               Location: {this.state.pupdate.location}
-              {this.state.pupdate.description ? this.pupdate.description : null}
             </p>
           </div>
           {this.state.userPupdate === true ? null : (

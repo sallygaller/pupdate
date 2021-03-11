@@ -101,7 +101,6 @@ export default function AddPup() {
         return res.json();
       })
       .then((data) => {
-        console.log("success!");
         history.push("/pups");
       })
       .catch((error) => {
@@ -110,11 +109,8 @@ export default function AddPup() {
   };
 
   const onChangePic = (e) => {
-    console.log("here!");
-    console.log(e.target.files[0]);
     setUploads(e.target.files[0]);
     // setUploads({ uploads: e.target.files[0] });
-    console.log(uploads);
   };
 
   const handleClickCancel = () => {

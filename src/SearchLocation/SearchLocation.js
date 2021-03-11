@@ -38,7 +38,6 @@ async function handlePlaceSelect(updateQuery) {
   const addressObject = autoComplete.getPlace();
   const query = addressObject.formatted_address;
   updateQuery(query);
-  console.log(addressObject);
 }
 
 function SearchLocationInput(props) {
