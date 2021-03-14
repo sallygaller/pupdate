@@ -5,9 +5,9 @@ import PropTypes from "prop-types";
 import moment from "moment";
 import { API_ENDPOINT } from "../config";
 import TokenService from "../services/token-service";
-import "./PupdateComplete.css";
+import "./PupdateProfile.css";
 
-class PupdateComplete extends React.Component {
+class PupdateProfile extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -208,7 +208,7 @@ class PupdateComplete extends React.Component {
 
   render() {
     return (
-      <div className="PupdateComplete">
+      <div className="PupdateProfile">
         <section>
           <h2>Pupdate on {moment(this.state.pupdate.date).format("LL")}</h2>
           <div>
@@ -271,4 +271,4 @@ class PupdateComplete extends React.Component {
   }
 }
 
-export default PupdateComplete;
+export default PupdateProfile;

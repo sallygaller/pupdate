@@ -1,7 +1,9 @@
 import React from "react";
 import Pupdate from "../Pupdate/Pupdate";
+import AvailablePupdates from "../AvailablePupdates/AvailablePupdates";
 import { API_ENDPOINT } from "../config";
 import TokenService from "../services/token-service";
+import Accordion from "../Accordion/Accordion";
 import "./Pupdates.css";
 
 class Pupdates extends React.Component {
@@ -64,29 +66,21 @@ class Pupdates extends React.Component {
   render() {
     return (
       <div className="Pupdates">
+        <h2>Pupdates</h2>
         <section>
-          <h3>Pupdates I've organized:</h3>
-          {this.state.pupdateOrganized.length === 0 ? (
-            <p>You haven't organized a pupdate</p>
-          ) : (
-            <ul>
-              {this.state.pupdateOrganized.map((pupdate) => (
-                <li key={pupdate.id}>
-                  <Pupdate pupdate={pupdate} userOrganized="true" />
-                </li>
-              ))}
-            </ul>
-          )}
-          <h3>Pupdates I'm attending</h3>
-          <div>
-            <ul>
-              {this.state.pupdateAttending.map((pupdate) => (
-                <li key={pupdate.id}>
-                  <Pupdate pupdate={pupdate} userAttending="true" />
-                </li>
-              ))}
-            </ul>
-          </div>
+          <Accordion
+            title="Pupdates I've Organized"
+            pupdates={this.state.pupdateOrganized}
+            userOrganized="true"
+            userAttending="false"
+          />
+          <Accordion
+            title="Pupdates I'm Attending"
+            pupdates={this.state.pupdateAttending}
+            userOrganized="false"
+            userAttending="true"
+          />
+          <AvailablePupdates />
         </section>
       </div>
     );

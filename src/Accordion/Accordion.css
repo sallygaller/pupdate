@@ -1,0 +1,93 @@
+/* * {
+  box-sizing: border-box;
+} */
+
+
+.section {
+  position: relative;
+  width: 100%;
+  border-bottom: 2px solid;
+  /* border-left: 2px solid;  
+  border-right: 2px solid; */
+}
+.section button {
+    position: absolute;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    height: 3em;
+    width: 3em;
+    outline: 0;
+    border: 0;
+    background: none;
+    text-indent: -9999%;
+    pointer-events: none;
+  }
+.section button:before {
+      content: '';
+      display: block;
+      position: absolute;
+      height: 12px;
+      width: 4px;
+      border-radius: .3em;
+      background: #F2AD1D;
+      transform-origin: 50%;
+      top: 50%;
+      left: 50%;
+      transition: all .25s ease-in-out;
+      transform: translate(75%, -50%) rotate(45deg);
+    }
+.section button:after {
+      content: '';
+      display: block;
+      position: absolute;
+      height: 12px;
+      width: 4px;
+      border-radius: .3em;
+      background: #F2AD1D;
+      transform-origin: 50%;
+      top: 50%;
+      left: 50%;
+      transition: all .25s ease-in-out;
+      transform: translate(-75%, -50%) rotate(-45deg);
+}
+
+.section.open button:before, .section.open button:after {
+      height: 14px;
+}
+.section.open
+    :before {
+      transform: translate(0%, -50%) rotate(-45deg);
+}
+.section.open
+    :after {
+      transform: translate(0%, -50%) rotate(45deg);
+}
+.section.open 
+  .articlewrap {
+    height: 100%;
+}
+
+
+.articlewrap {
+  height: 0;
+  overflow: hidden;
+  transition: all .2s ease-in;
+}
+
+.sectionhead {
+  width: 100%;
+  overflow: hidden;
+  cursor: pointer;
+  font-weight: 700;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  padding: 1em;
+  padding-right: 2.1em;
+}
+
+.article {
+  padding: 1em;
+  color: #333;
+  line-height: 1.3;
+}

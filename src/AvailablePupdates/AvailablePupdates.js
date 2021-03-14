@@ -1,7 +1,9 @@
 import React from "react";
 import Pupdate from "../Pupdate/Pupdate";
+import Accordion from "../Accordion/Accordion";
 import { API_ENDPOINT } from "../config";
 import TokenService from "../services/token-service";
+import "./AvailablePupdates.css";
 
 class AvailablePupdates extends React.Component {
   constructor(props) {
@@ -74,24 +76,23 @@ class AvailablePupdates extends React.Component {
 
   render() {
     return (
-      <div className="Pupdates">
+      <div className="AvailablePupdates">
         <section>
-          <h2 id="available">Available pupdates</h2>
           <div>
-            <label htmlFor="Pupdates-sort">Sort by </label>
-            <select>
-              <option value="date-desc">Date (Newest to Oldest)</option>
-              <option value="date-asc">Date (Oldest to Newest)</option>
-            </select>
-          </div>
-          <div>
-            <ul>
+            <Accordion
+              title="Available Pupdates"
+              pupdates={this.state.availablePupdates}
+              userOrganized="false"
+              userAttending="false"
+              availablePupdate="true"
+            />
+            {/* <ul>
               {this.state.availablePupdates.map((availablePupdate) => (
                 <li key={availablePupdate.id}>
                   <Pupdate pupdate={availablePupdate} availablePupdate="true" />
                 </li>
               ))}
-            </ul>
+            </ul> */}
           </div>
         </section>
       </div>

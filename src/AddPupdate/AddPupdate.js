@@ -23,6 +23,7 @@ export default function AddPupdate() {
       starttime,
       endtime,
       location,
+      description,
     };
     fetch(API_ENDPOINT + `/pupdates`, {
       method: "POST",
@@ -64,36 +65,6 @@ export default function AddPupdate() {
             </p>
           )}
         </div>
-        <label htmlFor="date">
-          Date:
-          <Required />
-        </label>
-        <input
-          required
-          type="date"
-          value={date}
-          onChange={(e) => setDate(e.target.value)}
-        ></input>
-        <label htmlFor="startTime">
-          Start Time:
-          <Required />
-        </label>
-        <input
-          required
-          type="time"
-          value={starttime}
-          onChange={(e) => setStarttime(e.target.value)}
-        ></input>
-        <label htmlFor="endTime">
-          End Time
-          <Required />{" "}
-        </label>
-        <input
-          required
-          type="time"
-          value={endtime}
-          onChange={(e) => setEndtime(e.target.value)}
-        ></input>
         <label htmlFor="location">
           Location:
           <Required />
@@ -103,6 +74,46 @@ export default function AddPupdate() {
           location={location}
           setLocation={setLocation}
           placeholder={"Enter a location (e.g. a local park)"}
+        />
+        <label htmlFor="date">
+          Date:
+          <Required />
+        </label>
+        <input
+          required
+          type="date"
+          value={date}
+          onChange={(e) => setDate(e.target.value)}
+        />
+        <label htmlFor="startTime">
+          Start Time:
+          <Required />
+        </label>
+        <input
+          required
+          type="time"
+          value={starttime}
+          onChange={(e) => setStarttime(e.target.value)}
+        />
+        <label htmlFor="endTime">
+          End Time
+          <Required />{" "}
+        </label>
+        <input
+          required
+          type="time"
+          value={endtime}
+          onChange={(e) => setEndtime(e.target.value)}
+        />
+        <label htmlFor="description">Description:</label>
+        <textarea
+          id="description"
+          name="description"
+          className="AddPupdate-textarea"
+          rows="5"
+          cols="10"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
         />
         <button type="submit">Submit</button>{" "}
         <button type="button" onClick={handleClickCancel}>

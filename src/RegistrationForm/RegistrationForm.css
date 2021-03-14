@@ -18,19 +18,20 @@
 
   .RegistrationForm button {
     width: 100%;
-    background-color: #4CAF50;
-    color: white;
+    border: #F2AD1D solid 2px;
+    border-radius: 25px;
     padding: 14px 20px;
     margin: 8px 0;
-    border: none;
-    border-radius: 4px;
     cursor: pointer;
 }
 
 .RegistrationForm button:enabled:hover {
-    background-color: #45a049;
+    background-color: #F2AD1D;
 }
 
 .RegistrationForm-error {
     color: red;
 }
+
+
+

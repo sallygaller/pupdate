@@ -38,56 +38,48 @@ class Pupdate extends React.Component {
     return (
       <div className="Pupdate">
         <div className="Pupdate-group">
-          <div className="Pupdate-item">
+          <div className="Pupdate-item-double">
             <p>
               Date: {moment(pupdate.date).format("LL")} <br></br>
-              Time: {moment(pupdate.starttime, "h:mm A").format("h:mm A")} -
-              {moment(pupdate.endtime, "h:mm A").format("h:mm A")}
+              Time: {moment(pupdate.starttime, "h:mm A").format(
+                "h:mm A"
+              )} - {moment(pupdate.endtime, "h:mm A").format("h:mm A")}{" "}
+              <br></br>
+              Location: {pupdate.location}
             </p>
           </div>
-          <div className="Pupdate-item">
-            <p>Location: {pupdate.location}</p>
-          </div>
-
+          {/* </div>
+        <div className="Pupdate-group"> */}
           <div className="Pupdate-item">
             <ul>
+              Organized by:
               {this.state.organizerPups.map((organizerPup) => (
                 <li key={organizerPup.id}>
-                  {organizerPup.name}
-                  <br></br>
                   <Link to={`/pups/${organizerPup.id}`}>
-                    <button className="Pupdate-play-profile" type="button">
-                      View Play Profile
-                    </button>
+                    {organizerPup.name}
                   </Link>
                 </li>
               ))}
             </ul>
           </div>
           {this.props.userOrganized === "true" ? (
-            <div className="Pupdate-item">
+            <div className="Pupdate-item Pupdate-rsvp">
               <Link to={`/pupdates/${pupdate.id}`}>
-                <button className="Pupdate-rsvp" type="button">
-                  View/Edit Pupdate
-                </button>
+                <p>View/Edit Pupdate</p>
               </Link>
             </div>
           ) : null}
           {this.props.userAttending === "true" ? (
-            <div className="Pupdate-item">
+            <div className="Pupdate-item Pupdate-rsvp">
               <Link to={`/pupdates/${pupdate.id}`}>
-                <button className="Pupdate-rsvp" type="button">
-                  View Pupdate/Change RSVP
-                </button>
+                <p>View Pupdate/RSVP</p>
               </Link>
             </div>
           ) : null}
           {this.props.availablePupdate === "true" ? (
-            <div className="Pupdate-item">
+            <div className="Pupdate-item Pupdate-rsvp">
               <Link to={`/pupdates/${pupdate.id}`}>
-                <button className="Pupdate-rsvp" type="button">
-                  View Pupdate/RSVP
-                </button>
+                <p>View Pupdate/RSVP</p>
               </Link>
             </div>
           ) : null}

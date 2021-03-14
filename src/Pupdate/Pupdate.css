@@ -1,9 +1,9 @@
 .Pupdate {
-    width: 75%;
-    margin: 0px auto;
-    align-content: flex-start;
-    justify-content: center;
-    border-bottom: 1px solid black;
+    /* margin: 0px auto; */
+    /* border: #F2AD1D solid 2px;
+    border-radius: 25px; */
+    padding: 5px;
+    margin: 5px;
 }
 
 .Pupdate-group {
@@ -16,56 +16,21 @@
     padding: 0px;
 }
 
-.Pupdate-profile {
-    width: 80%;
-    background-color: #C28832;
-    color: white;
-    margin-bottom: 10px;
+.Pupdate-rsvp p {
+    border: none;
+    cursor: pointer;
+    border: #F2AD1D solid 2px;
+    border-radius: 25px;
     padding: 10px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+    text-align: center;
 }
 
-.Pupdate-profile button:enabled:hover {
-    background-color: #F5AC40;
-}
-
-.Pupdate-play-profile {
-    width: 60%;
-    background-color: #297537;
-    color: white;
-    margin: 5px 0px;
-    padding: 5px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-.Pupdate-rsvp {
-    width: 80%;
-    background-color: #297537;
-    color: white;
-    margin: 5px 0px;
-    padding: 10px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-.Pupdate-edit {
-    width: 80%;
-    background-color: #B31E00;
-    color: white;
-    margin: 0px 20px;
-    padding: 10px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+.Pupdate-rsvp p:hover {
+    background-color: #F2AD1D;
 }
 
 .Pupdate-p {
-    margin-bottom: 8px;
+    margin-top: 0px;
 }
 
 .Pupdate ul {
@@ -75,4 +40,8 @@
 .Pupdate-item {
     flex-basis: 25em;
     margin: 10px;
+}
+
+.Pupdate-item-double {
+    flex-basis: 50em;
 }

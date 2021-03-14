@@ -75,6 +75,20 @@ export default function EditPupdate(props) {
     <div className="EditPupdate">
       <h2>Edit pupdate</h2>
       <form className="EditPupdate-form" onSubmit={(e) => handleSubmit(e)}>
+        <div className="EditPupdate-error" role="alert">
+          {error && (
+            <p>
+              {error.message}
+              {error}
+            </p>
+          )}
+        </div>
+        <label htmlFor="location">Location:</label>
+        <SearchLocationInput
+          location={location}
+          setLocation={setLocation}
+          placeholder={"Enter a location (e.g. a local park)"}
+        />
         <label htmlFor="date">Date: </label>
         <input
           type="date"
@@ -93,12 +107,6 @@ export default function EditPupdate(props) {
           value={endtime}
           onChange={(e) => setEndtime(e.target.value)}
         ></input>
-        <label htmlFor="location">Location:</label>
-        <SearchLocationInput
-          location={location}
-          setLocation={setLocation}
-          placeholder={"Enter a location (e.g. a local park)"}
-        />
         <label htmlFor="description">Description:</label>
         <textarea
           id="description"

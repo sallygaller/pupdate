@@ -1,52 +1,49 @@
-.PupdateComplete {
+.PupdateProfile {
     text-align: center;
     width: 50%;
     margin: 0 auto;
 }
 
-
-
-.PupdateComplete ul, li {
+.PupdateProfile ul, li {
     list-style-type: none;
     list-style-position: inside;
     margin: 0;
     padding: 0; 
 }
 
-.PupdateComplete-play-profile {
-    background-color: #0081a7;
-    color: white;
-    margin: 0px 15px;
-}
-
-.PupdateComplete select {
+.PupdateProfile select {
     width: 25%;
 }
 
-.PupdateComplete li {
+.PupdateProfile li {
     display: flex;
     flex-direction: row;
     text-align: center;
 }
 
-.PupdateComplete-button {
+.PupdateProfile button {
     margin: 0 auto;
+    padding: 10px;
+    border: #F2AD1D solid 2px;
+    border-radius: 25px;
+    cursor: pointer;
+    padding: 10px;
     text-align: center;
 }
 
-.PupdateComplete section {
+.PupdateProfile section {
     margin-bottom: 100px;
 }
 
-.PupdateComplete a,
-.PupdateComplete a:active,
-.PupdateComplete a:focus,
-.PupdateComplete a:visited {
+.PupdateProfile a,
+.PupdateProfile a:active,
+.PupdateProfile a:focus,
+.PupdateProfile a:visited {
   color: black;
   font-weight: bold;
   text-decoration: none;
 }
 
-.PupdateComplete-item {
+.PupdateProfile-item {
     text-align: left;
 }

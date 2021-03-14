@@ -10,11 +10,17 @@
 .LandingPage a:active,
 .LandingPage a:focus,
 .LandingPage a:visited {
+  border: #F2AD1D solid 2px;
   color: black;
+  border-radius: 25px;
+  padding: 5px 10px;
   text-decoration: none;
 }
 
+.LandingPage-link {
+  margin-bottom: 25px;
+}
+
 .LandingPage a:hover {
-  color: gray;
-  text-decoration: solid;
+  background-color: #F2AD1D;
 }

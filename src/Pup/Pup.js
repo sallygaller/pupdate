@@ -115,7 +115,7 @@ class Pup extends React.Component {
       <div className="Pup">
         <h1>Hi, I'm {this.state.name}!</h1>
         <img
-          className="MyPups-img"
+          className="Pup-img"
           alt={this.state.name}
           src={`https://pupdate.s3-us-west-1.amazonaws.com/${this.state.id}`}
         />

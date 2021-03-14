@@ -1,6 +1,11 @@
 .Pupdates {
-    text-align: center;
     margin-left: 0px;
+    width: 75%;
+    margin: 0 auto;
+}
+
+.Pupdates h2 {
+    text-align: center;
 }
 
 .Pupdates ul, li {

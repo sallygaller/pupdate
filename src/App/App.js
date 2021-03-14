@@ -14,7 +14,7 @@ import Pupdates from "../Pupdates/Pupdates";
 import MyPups from "../MyPups/MyPups";
 import PrivateRoute from "../Utils/PrivateRoute";
 import Pup from "../Pup/Pup";
-import PupdateComplete from "../PupdateComplete/PupdateComplete";
+import PupdateProfile from "../PupdateProfile/PupdateProfile";
 import RegistrationPage from "../RegistrationPage/RegistrationPage";
 import TokenService from "../services/token-service";
 import "./App.css";
@@ -130,7 +130,7 @@ class App extends React.Component {
             />
             <PrivateRoute
               path={"/pupdates/:pupdateId"}
-              component={PupdateComplete}
+              component={PupdateProfile}
             />
             <PrivateRoute path={"/pupdates"} component={Pupdates} />
             <PrivateRoute
@@ -151,6 +151,16 @@ class App extends React.Component {
         </main>
         <footer>
           <p>Created by Sally Galler</p>
+          <p>
+            Photo by{" "}
+            <a href="https://unsplash.com/@camilofierro14?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">
+              Camilo Fierro
+            </a>{" "}
+            on{" "}
+            <a href="/s/photos/dogs?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">
+              Unsplash
+            </a>
+          </p>
         </footer>
       </div>
     );

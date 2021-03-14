@@ -30,19 +30,17 @@
     box-sizing: border-box;
   }
 
-.EditPup button {
+  .EditPup button {
     width: 100%;
-    background-color: #4CAF50;
-    color: white;
+    border: #F2AD1D solid 2px;
+    border-radius: 25px;
     padding: 14px 20px;
     margin: 8px 0;
-    border: none;
-    border-radius: 4px;
     cursor: pointer;
 }
 
-.EditPup button:enabled:hover {
-    background-color: #45a049;
+.EditPup button:hover {
+    background-color: #F2AD1D;
 }
 
 .EditPup-option {

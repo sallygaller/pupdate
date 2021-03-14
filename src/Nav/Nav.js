@@ -16,7 +16,7 @@ class Nav extends React.Component {
   renderLogoutLink() {
     return (
       <div>
-        <NavLink
+        {/* <NavLink
           to="/availablepupdates"
           activeStyle={{
             fontWeight: "bold",
@@ -24,14 +24,14 @@ class Nav extends React.Component {
         >
           {" "}
           Available Pupdates
-        </NavLink>{" "}
+        </NavLink>{" "} */}
         <NavLink
           to="/pupdates"
           activeStyle={{
             fontWeight: "bold",
           }}
         >
-          My Pupdates
+          Pupdates
         </NavLink>{" "}
         <NavLink
           to="/new-pupdate"
