@@ -310,10 +310,12 @@ export default function EditPup(props) {
           </label>
         </div>
         <label htmlFor="pup-description">Description:</label>
-        <input
-          type="textarea"
-          name="description"
+        <textarea
           id="description"
+          name="description"
+          className="AddPupdate-textarea"
+          rows="5"
+          cols="10"
           value={formState.description}
           onChange={onChange}
         />

@@ -298,10 +298,12 @@ export default function AddPup() {
           </label>
         </div>
         <label htmlFor="pup-description">Description:</label>
-        <input
-          type="textarea"
-          name="description"
+        <textarea
           id="description"
+          name="description"
+          className="AddPupdate-textarea"
+          rows="5"
+          cols="10"
           value={formState.description}
           onChange={onChange}
         />
@@ -310,7 +312,6 @@ export default function AddPup() {
           type="file"
           name="uploads"
           id="uploads"
-          // value={uploads}
           onChange={(e) => onChangePic(e)}
         />
         <button type="submit">Submit</button>

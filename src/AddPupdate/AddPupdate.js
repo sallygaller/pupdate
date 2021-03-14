@@ -55,7 +55,7 @@ export default function AddPupdate() {
 
   return (
     <div className="AddPupdate">
-      <h2>New pupdate</h2>
+      <h2>New Pupdate</h2>
       <form className="AddPupdate-form" onSubmit={(e) => handleSubmit(e)}>
         <div className="AddPupdate-error" role="alert">
           {error && (

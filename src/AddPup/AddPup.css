@@ -3,7 +3,7 @@
     flex-direction: column;
     text-align: left;
     margin: 0 auto;
-    width: 30%;
+    width: 50%;
 }
 
 .AddPup h2 {
@@ -20,29 +20,45 @@
     box-sizing: border-box;
 }
 
-.AddPup input[type=checkbox] {
-    width: 10%;
+.AddPup textarea {
+    width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
     display: inline-block;
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
+}
+
+.AddPup input[type=file] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    box-sizing: border-box;
+}
+
+.AddPup input[type=checkbox] {
+    width: 10%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #F2AD1D;
+    border-radius: 4px;
+    box-sizing: border-box;
   }
 
-.AddPup button {
+  .AddPup button {
     width: 100%;
-    background-color: #4CAF50;
-    color: white;
+    border: #F2AD1D solid 2px;
+    border-radius: 25px;
     padding: 14px 20px;
     margin: 8px 0;
-    border: none;
-    border-radius: 4px;
     cursor: pointer;
 }
 
 .AddPup button:enabled:hover {
-    background-color: #45a049;
+    background-color: #F2AD1D;
 }
 
 .AddPup-option {

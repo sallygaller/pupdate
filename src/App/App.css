@@ -2,6 +2,7 @@
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    font-family: 'Open Sans', sans-serif;
   }
   
   .App > main {
@@ -22,6 +23,9 @@
   .App-h1 {
     text-align: center;
     color: #fcfaf1;
+    font-family: 'La Belle Aurore', cursive;
+    font-size: 4em;
+    margin-bottom: 0px;
   }
 
   .App a,
@@ -34,8 +38,8 @@
   footer {
     color: white;
     flex: 0 1 auto;
-    padding-top: 10px;
     height: 250px;
+    font-size: 12px;
     text-align: center;
     flex-shrink: 0;
     background-image: url("../Utils/images/dogs.jpg");
