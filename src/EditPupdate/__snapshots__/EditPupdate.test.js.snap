@@ -1,0 +1,88 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders the UI as expected 1`] = `
+<div
+  className="EditPupdate"
+>
+  <h2>
+    Edit Pupdate
+  </h2>
+  <form
+    className="EditPupdate-form"
+    onSubmit={[Function]}
+  >
+    <div
+      className="EditPupdate-error"
+      role="alert"
+    />
+    <label
+      htmlFor="location"
+    >
+      Location:
+    </label>
+    <div
+      className="search-location-input"
+    >
+      <input
+        onChange={[Function]}
+        placeholder="Enter a location (e.g. a local park)"
+        value=""
+      />
+    </div>
+    <label
+      htmlFor="date"
+    >
+      Date: 
+    </label>
+    <input
+      onChange={[Function]}
+      type="date"
+      value="Invalid date"
+    />
+    <label
+      htmlFor="startTime"
+    >
+      Start Time: 
+    </label>
+    <input
+      onChange={[Function]}
+      type="time"
+      value=""
+    />
+    <label
+      htmlFor="endTime"
+    >
+      End Time: 
+    </label>
+    <input
+      onChange={[Function]}
+      type="time"
+      value=""
+    />
+    <label
+      htmlFor="description"
+    >
+      Description:
+    </label>
+    <textarea
+      className="EditPupdate-textarea"
+      cols="10"
+      id="description"
+      name="description"
+      onChange={[Function]}
+      rows="5"
+      value=""
+    />
+    <button
+      type="submit"
+    >
+      Submit
+    </button>
+    <button
+      type="button"
+    >
+      Cancel
+    </button>
+  </form>
+</div>
+`;

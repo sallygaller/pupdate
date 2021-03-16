@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders the UI as expected 1`] = `
+<nav
+  className="Nav"
+>
+  <div>
+    <a
+      aria-current={null}
+      href="/login"
+      onClick={[Function]}
+    >
+      Log in
+    </a>
+    <a
+      aria-current={null}
+      href="/register"
+      onClick={[Function]}
+    >
+      Register
+    </a>
+  </div>
+</nav>
+`;

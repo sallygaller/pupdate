@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders the UI as expected 1`] = `
+<div
+  className="MyPups"
+>
+  <h2>
+    My Pups
+  </h2>
+  <a
+    href="/addpup"
+    onClick={[Function]}
+  >
+    <button
+      className="MyPups-add"
+      type="button"
+    >
+      Add a Pup!
+    </button>
+  </a>
+  <ul />
+</div>
+`;

@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders the UI as expected 1`] = `
+<div
+  className="Pupdate"
+>
+  <div
+    className="Pupdate-group"
+  >
+    <div
+      className="Pupdate-item-double"
+    >
+      <p>
+        Date: 
+        March 2, 2020
+         
+        <br />
+        Time: 
+        9:30 AM
+         - 
+        10:30 AM
+         
+        <br />
+        Location: 
+        Arbor Lodge Park
+      </p>
+    </div>
+    <div
+      className="Pupdate-item"
+    >
+      <ul>
+        Organized by:
+      </ul>
+    </div>
+  </div>
+</div>
+`;

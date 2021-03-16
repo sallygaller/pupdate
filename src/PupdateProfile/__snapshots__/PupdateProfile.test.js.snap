@@ -1,0 +1,68 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders the UI as expected 1`] = `
+<div
+  className="PupdateProfile"
+>
+  <section>
+    <h2>
+      Pupdate on 
+      March 16, 2021
+    </h2>
+    <div>
+      <p>
+        Time:
+         
+        Invalid date
+         
+        - 
+        Invalid date
+         
+        <br />
+        Location: 
+      </p>
+    </div>
+    <div>
+      <h3>
+        Organized by:
+      </h3>
+      <ul />
+    </div>
+    <div>
+      <button
+        onClick={[Function]}
+      >
+        <p
+          className="PupdateProfile-attendee"
+        >
+          View Attendee List
+        </p>
+      </button>
+      <div
+        className="AttendeeList"
+      >
+        <ul
+          className="AttendeeList-hidden"
+        >
+          <li>
+            No attendees yet!
+          </li>
+        </ul>
+      </div>
+    </div>
+    <br />
+    <div>
+      <button
+        onClick={[Function]}
+      >
+        I'll be there!
+      </button>
+    </div>
+    <button
+      onClick={[Function]}
+    >
+      Back to Pupdates
+    </button>
+  </section>
+</div>
+`;

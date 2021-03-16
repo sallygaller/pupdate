@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders the UI as expected 1`] = `
+<div
+  className="AvailablePupdates"
+>
+  <section>
+    <div>
+      <div
+        className="main"
+      >
+        <div
+          className="section"
+        >
+          <div
+            className="sectionhead"
+            onClick={[Function]}
+          >
+            <h3>
+              Available Pupdates
+            </h3>
+          </div>
+          <div
+            className="page fadeOut"
+          >
+            <div
+              className="article"
+            >
+               
+              <p>
+                No pupdates here! Why don't you create one?
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+`;

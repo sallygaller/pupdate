@@ -1,0 +1,54 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders the UI as expected 1`] = `
+<div
+  className="Pup"
+>
+  <h1>
+    Hi, I'm 
+    
+    !
+  </h1>
+  <img
+    alt=""
+    className="Pup-img"
+    src="https://pupdate.s3-us-west-1.amazonaws.com/"
+  />
+  <p>
+    Breed:
+     
+    
+     
+    <br />
+    Size: 
+    
+    <br />
+    Age: 
+    
+  </p>
+  <p>
+    
+  </p>
+  <ul>
+    <h3>
+      
+      's Play Profile
+    </h3>
+    
+    
+    
+    
+    
+    
+    
+    
+  </ul>
+  <div>
+    <button
+      onClick={[Function]}
+    >
+      Back
+    </button>
+  </div>
+</div>
+`;
