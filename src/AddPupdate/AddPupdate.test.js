@@ -1,14 +1,13 @@
-import React from "react";
 import ReactDOM from "react-dom";
-import renderer from "react-test-renderer";
 import { BrowserRouter } from "react-router-dom";
-import App from "./App";
+import renderer from "react-test-renderer";
+import AddPupdate from "./AddPupdate";
 
 it("renders without crashing", () => {
   const div = document.createElement("div");
   ReactDOM.render(
     <BrowserRouter>
-      <App />
+      <AddPupdate />
     </BrowserRouter>,
     div
   );
@@ -16,12 +15,6 @@ it("renders without crashing", () => {
 });
 
 it("renders the UI as expected", () => {
-  const tree = renderer
-    .create(
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    )
-    .toJSON();
+  const tree = renderer.create(<AddPupdate name="AddPupdate" />).toJSON();
   expect(tree).toMatchSnapshot();
 });

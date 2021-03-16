@@ -237,7 +237,11 @@ class PupdateProfile extends React.Component {
           )}
           <div>
             <button onClick={this.handleAttendees}>
-              View/Hide Attendee List
+              {this.state.showAttendees === true ? (
+                <p className="PupdateProfile-attendee">Hide Attendee List</p>
+              ) : (
+                <p className="PupdateProfile-attendee">View Attendee List</p>
+              )}
             </button>
             <AttendeeList
               showAttendees={this.state.showAttendees}
@@ -248,14 +252,14 @@ class PupdateProfile extends React.Component {
           {this.state.userPupdate === true ? (
             <div>
               <Link to={`/edit/pupdates/${this.state.pupdate.id}`}>
-                <button>Edit Pupdate</button>
+                <button className="PupdateProfile-edit">Edit Pupdate</button>
               </Link>
               <button onClick={this.handleDeleteRequest}>Delete Pupdate</button>
             </div>
           ) : this.state.userAttending === true ? (
             <div>
               <button onClick={this.handleRsvpNo}>
-                I can no longer attend.
+                I can no longer attend
               </button>
             </div>
           ) : (
@@ -263,7 +267,6 @@ class PupdateProfile extends React.Component {
               <button onClick={this.handleRsvpYes}>I'll be there!</button>
             </div>
           )}
-          <br></br>
           <button onClick={this.handleBack}>Back to Pupdates</button>
         </section>
       </div>

@@ -73,7 +73,7 @@ export default function EditPupdate(props) {
 
   return (
     <div className="EditPupdate">
-      <h2>Edit pupdate</h2>
+      <h2>Edit Pupdate</h2>
       <form className="EditPupdate-form" onSubmit={(e) => handleSubmit(e)}>
         <div className="EditPupdate-error" role="alert">
           {error && (

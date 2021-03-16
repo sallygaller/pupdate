@@ -1,0 +1,141 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders the UI as expected 1`] = `
+<div
+  className="App"
+>
+  <header>
+    <a
+      href="/"
+      onClick={[Function]}
+    >
+      <h1
+        className="App-h1"
+      >
+        pupdate
+      </h1>
+    </a>
+    <nav
+      className="Nav"
+    >
+      <div>
+        <a
+          aria-current={null}
+          href="/login"
+          onClick={[Function]}
+        >
+          Log in
+        </a>
+        <a
+          aria-current={null}
+          href="/register"
+          onClick={[Function]}
+        >
+          Register
+        </a>
+      </div>
+    </nav>
+  </header>
+  <main>
+    <div
+      className="LandingPage"
+    >
+      <h2>
+        Helping Pups Find Their Perfect Playmate
+      </h2>
+      <section>
+        <h3>
+          Create a Play Profile
+        </h3>
+        <p>
+          [
+          <em>
+            placeholder for screenshot of creating a profile
+          </em>
+          ]
+        </p>
+        <p>
+          Is your pup rowdy, shy, or ball obsessed? Does playing with a puppy make your senior dog feel young again? Include information about your dog's preferred playstyle to ensure a happy playdate!
+        </p>
+      </section>
+      <section>
+        <h3>
+          Create a Meetup in Your Local Park
+        </h3>
+        <p>
+          [
+          <em>
+            placeholder for creating a meetup
+          </em>
+          ]
+        </p>
+        <p>
+          Arrange playdates with other dog owners in your area by choosing a location, date, and time.
+        </p>
+      </section>
+      <section>
+        <h3>
+          RSVP to Meetings
+        </h3>
+        <p>
+          [
+          <em>
+            placeholder for screenshot of RSVP/comment interface
+          </em>
+          ]
+        </p>
+        <p>
+          Search for and RSVP to pupdates happening in your area. View your previous meetups so you can arrange them again at a moment's notice!
+        </p>
+      </section>
+      <section>
+        <h3>
+          Get Started with pupdate!
+        </h3>
+        <div
+          className="LandingPage-link"
+        >
+          <a
+            href="/register"
+            onClick={[Function]}
+          >
+            Register here
+          </a>
+        </div>
+        <div
+          className="LandingPage-link"
+        >
+          <a
+            href="/login"
+            onClick={[Function]}
+          >
+            Log in here
+          </a>
+        </div>
+      </section>
+    </div>
+  </main>
+  <footer>
+    <p>
+      Created by Sally Galler
+    </p>
+    <p>
+      Photo by
+       
+      <a
+        href="https://unsplash.com/@camilofierro14?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
+      >
+        Camilo Fierro
+      </a>
+       
+      on
+       
+      <a
+        href="/s/photos/dogs?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
+      >
+        Unsplash
+      </a>
+    </p>
+  </footer>
+</div>
+`;

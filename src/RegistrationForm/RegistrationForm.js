@@ -42,7 +42,7 @@ export default function RegistrationForm(props) {
           </p>
         )}
       </div>
-      <label htmlFor="first-name">First name: </label>
+      <label htmlFor="first-name">First Name: </label>
       <input
         required
         type="text"
@@ -50,7 +50,7 @@ export default function RegistrationForm(props) {
         id="first-name"
         onChange={(e) => setFirstname(e.target.value)}
       />
-      <label htmlFor="last-name">Last name: </label>
+      <label htmlFor="last-name">Last Name: </label>
       <input
         required
         type="text"

@@ -10,19 +10,11 @@
     margin: 0;
     padding: 0; 
 }
-
-.PupdateProfile select {
-    width: 25%;
-}
-
-.PupdateProfile li {
-    display: flex;
-    flex-direction: row;
-    text-align: center;
+.PupdateProfile div {
+    margin-bottom: 15px;
 }
 
 .PupdateProfile button {
-    margin: 0 auto;
     padding: 10px;
     border: #F2AD1D solid 2px;
     border-radius: 25px;
@@ -31,8 +23,12 @@
     text-align: center;
 }
 
-.PupdateProfile section {
-    margin-bottom: 100px;
+.PupdateProfile-attendee {
+    margin: 0px;
+}
+
+.PupdateProfile button:hover {
+    background-color: #F2AD1D;
 }
 
 .PupdateProfile a,
@@ -46,4 +42,8 @@
 
 .PupdateProfile-item {
     text-align: left;
+}
+
+.PupdateProfile-edit {
+    margin-right: 25px;
 }
