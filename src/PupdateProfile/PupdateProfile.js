@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import AttendeeList from "../AttendeeList/AttendeeList";
+import AttendeeListAccordion from "../AttendeeListAccordion/AttendeeListAccordion";
 import PropTypes from "prop-types";
 import moment from "moment";
 import { API_ENDPOINT } from "../config";
@@ -14,7 +15,7 @@ class PupdateProfile extends React.Component {
       pupdate: [],
       attendees: "",
       organizerPups: [],
-      showAttendees: false,
+      rsvps: [],
       rsvp: "",
       userPupdate: false,
       userAttending: false,
@@ -104,40 +105,6 @@ class PupdateProfile extends React.Component {
         console.error({ error });
       });
   }
-
-  handleAttendees = () => {
-    if (this.state.showAttendees === false) {
-      Promise.all(
-        this.state.rsvps.map((pupdateRsvp) =>
-          fetch(API_ENDPOINT + `/pups/user/${pupdateRsvp.attendee}`, {
-            headers: {
-              authorization: `bearer ${TokenService.getAuthToken()}`,
-            },
-          })
-        )
-      )
-        .then((responses) => {
-          return Promise.all(
-            responses.map((response) => {
-              return response.json();
-            })
-          );
-        })
-        .then((data) => {
-          this.setState({
-            attendees: data,
-            showAttendees: true,
-          });
-        })
-        .catch((error) => {
-          console.error({ error });
-        });
-    } else {
-      this.setState({
-        showAttendees: false,
-      });
-    }
-  };
 
   handleRsvpNo = (e) => {
     fetch(API_ENDPOINT + `/pupdate-rsvp/user/${this.state.rsvp}`, {
@@ -236,38 +203,58 @@ class PupdateProfile extends React.Component {
             </div>
           )}
           <div>
-            <button onClick={this.handleAttendees}>
-              {this.state.showAttendees === true ? (
+            {/* {this.state.showAttendees === true ? (
                 <p className="PupdateProfile-attendee">Hide Attendee List</p>
               ) : (
                 <p className="PupdateProfile-attendee">View Attendee List</p>
-              )}
-            </button>
-            <AttendeeList
+              )} */}
+            {/* <button
+              className="PupdateProfile-attendees"
+              onClick={this.handleAttendees}
+            > */}
+            <AttendeeListAccordion
+              rsvps={this.state.rsvps}
               showAttendees={this.state.showAttendees}
               attendees={this.state.attendees}
+              title="Attendee List"
             />
+            {/* </button> */}
           </div>
           <br></br>
           {this.state.userPupdate === true ? (
             <div>
               <Link to={`/edit/pupdates/${this.state.pupdate.id}`}>
-                <button className="PupdateProfile-edit">Edit Pupdate</button>
+                <button className="PupdateProfile-button">Edit Pupdate</button>
               </Link>
-              <button onClick={this.handleDeleteRequest}>Delete Pupdate</button>
+              <button
+                className="PupdateProfile-button"
+                onClick={this.handleDeleteRequest}
+              >
+                Delete Pupdate
+              </button>
             </div>
           ) : this.state.userAttending === true ? (
             <div>
-              <button onClick={this.handleRsvpNo}>
+              <button
+                className="PupdateProfile-button"
+                onClick={this.handleRsvpNo}
+              >
                 I can no longer attend
               </button>
             </div>
           ) : (
             <div>
-              <button onClick={this.handleRsvpYes}>I'll be there!</button>
+              <button
+                className="PupdateProfile-button"
+                onClick={this.handleRsvpYes}
+              >
+                I'll be there!
+              </button>
             </div>
           )}
-          <button onClick={this.handleBack}>Back to Pupdates</button>
+          <button className="PupdateProfile-button" onClick={this.handleBack}>
+            Back to Pupdates
+          </button>
         </section>
       </div>
     );

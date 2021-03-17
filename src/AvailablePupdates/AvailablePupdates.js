@@ -86,13 +86,6 @@ class AvailablePupdates extends React.Component {
               userAttending="false"
               availablePupdate="true"
             />
-            {/* <ul>
-              {this.state.availablePupdates.map((availablePupdate) => (
-                <li key={availablePupdate.id}>
-                  <Pupdate pupdate={availablePupdate} availablePupdate="true" />
-                </li>
-              ))}
-            </ul> */}
           </div>
         </section>
       </div>

@@ -1,14 +1,11 @@
 .Pupdate {
-    /* margin: 0px auto; */
-    /* border: #F2AD1D solid 2px;
-    border-radius: 25px; */
     padding: 5px;
     margin: 5px;
 }
 
 .Pupdate-group {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
 }
 
 .Pupdate h3 {
@@ -17,7 +14,6 @@
 }
 
 .Pupdate-rsvp p {
-    border: none;
     cursor: pointer;
     border: #F2AD1D solid 2px;
     border-radius: 25px;
@@ -37,11 +33,18 @@
     padding:  0px;
 }
 
-.Pupdate-item {
+
+@media screen and (min-width: 1000px) {
+    .Pupdate-group {
+        flex-direction: row;
+    }
+
+  .Pupdate-item {
     flex-basis: 25em;
     margin: 10px;
-}
+    }   
 
-.Pupdate-item-double {
+    .Pupdate-item-double {
     flex-basis: 50em;
+    }
 }

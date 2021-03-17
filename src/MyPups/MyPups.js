@@ -80,14 +80,14 @@ class MyPups extends React.Component {
               </Link>
               <br></br>
               <Link to={`/edit/pups/${pup.id}`}>
-                <button className="MyPups-profile">Edit Play Profile</button>
+                <button className="MyPups-profile">Edit Profile</button>
               </Link>
               <button
                 className="MyPups-delete-profile"
                 type="button"
                 onClick={() => this.handleDeleteRequest(pup.id)}
               >
-                Delete Play Profile
+                Delete Profile
               </button>
             </li>
           ))}

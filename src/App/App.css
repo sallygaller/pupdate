@@ -25,7 +25,7 @@
     color: #fcfaf1;
     font-family: 'La Belle Aurore', cursive;
     font-size: 4em;
-    margin-bottom: 0px;
+    margin-bottom: 15px;
   }
 
   .App a,
@@ -50,4 +50,9 @@
     text-decoration: none;
     font-weight: bold;
     color: white;
+  }
+
+  .App button {
+    text-transform: uppercase;
+    font-weight: bold;
   }

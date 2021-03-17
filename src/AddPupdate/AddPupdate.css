@@ -11,7 +11,7 @@
     display: flex;
     flex-direction: column;
     margin: 0 auto;
-    width: 50%;
+    width: 90%;
 }
 
 .AddPupdate textarea {
@@ -26,6 +26,7 @@
 .AddPupdate input {
     width: 100%;
     padding: 12px 20px;
+    font-family: 'Open Sans', sans-serif;
     margin: 8px 0;
     display: inline-block;
     border: 1px solid #ccc;
@@ -48,4 +49,12 @@
 
 .AddPupdate button:hover {
     background-color: #F2AD1D;
+}
+
+
+@media screen and (min-width: 1000px) {
+    .AddPupdate-form {
+        width: 50%;
+    }
+
 }

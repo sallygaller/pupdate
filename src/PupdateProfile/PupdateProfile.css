@@ -1,6 +1,6 @@
 .PupdateProfile {
     text-align: center;
-    width: 50%;
+    width: 95%;
     margin: 0 auto;
 }
 
@@ -10,24 +10,36 @@
     margin: 0;
     padding: 0; 
 }
-.PupdateProfile div {
-    margin-bottom: 15px;
+
+.PupdateProfile-attendees {
+    width: 100%;
+    border: none;
 }
 
-.PupdateProfile button {
+
+
+.PupdateProfile-button {
     padding: 10px;
     border: #F2AD1D solid 2px;
     border-radius: 25px;
     cursor: pointer;
     padding: 10px;
     text-align: center;
+    margin: 5px;
+    font-size: 0.8em;
+}
+
+.PupdateProfile li {
+    margin-bottom: 5px;
+    font-size: 0.85em;
+    text-transform: uppercase;
 }
 
 .PupdateProfile-attendee {
     margin: 0px;
 }
 
-.PupdateProfile button:hover {
+.PupdateProfile-button:hover {
     background-color: #F2AD1D;
 }
 
@@ -46,4 +58,11 @@
 
 .PupdateProfile-edit {
     margin-right: 25px;
+}
+
+
+@media screen and (min-width: 1000px) {
+    .PupdateProfile {
+        width: 50%;
+    }  
 }

@@ -1,12 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import AttendeeListAccordion from "../AttendeeListAccordion/AttendeeListAccordion";
 import "./AttendeeList.css";
 
 export default function AttendeeList(props) {
   const attendees = props.attendees;
   return (
     <div className="AttendeeList">
-      <ul
+      <AttendeeListAccordion title="Attendee List" attendees={attendees} />
+
+      {/* <ul
         className={props.showAttendees === false ? "AttendeeList-hidden" : null}
       >
         {attendees.length === 0 ? (
@@ -20,7 +23,7 @@ export default function AttendeeList(props) {
             );
           })
         )}
-      </ul>
+      </ul> */}
     </div>
   );
 }

@@ -39,7 +39,7 @@ class Pupdate extends React.Component {
       <div className="Pupdate">
         <div className="Pupdate-group">
           <div className="Pupdate-item-double">
-            <p>
+            <p className="Pupdate-details">
               Date: {moment(pupdate.date).format("LL")} <br></br>
               Time: {moment(pupdate.starttime, "h:mm A").format(
                 "h:mm A"

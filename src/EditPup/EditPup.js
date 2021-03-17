@@ -122,9 +122,9 @@ export default function EditPup(props) {
   };
 
   return (
-    <div className="AddPup">
+    <div className="EditPup">
       <h2>Edit {formState.name}'s Profile</h2>
-      <form className="AddPup-form" onSubmit={(e) => handleSubmit(e)}>
+      <form className="EditPup-form" onSubmit={(e) => handleSubmit(e)}>
         <label htmlFor="pup-name">Name:</label>
         <input
           required
