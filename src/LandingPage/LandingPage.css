@@ -6,6 +6,11 @@
     margin: 0 auto;
 }
 
+.LandingPage img {
+  width: 18em;
+  margin: 0 auto;
+}
+
 .LandingPage a,
 .LandingPage a:active,
 .LandingPage a:focus,
@@ -32,4 +37,8 @@
   .LandingPage {
       width: 50%;
   }  
+
+  .LandingPage img {
+    width: 40em;
+  }
 }
