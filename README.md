@@ -10,7 +10,7 @@ pupdate is an app designed for dog owners to schedule playdates for their pups. 
 ### Logging In
 Users may login with a demo account (using the credentials provided on the Login page), register for their own account, or login with an existing account. 
 
-<img src="src/Utils/images/1-LoginPage.png" alt="Login Page" width="500">
+<img src="src/Utils/images/1-LoginPage.PNG" alt="Login Page" width="500">
 
 ### Pupdates
 The Pupdates page is the central hub of the application. This is where users can see pupdates they're attending, pupdates that are happening in their area, and pupdates they've organized. Users can see which pup is "organizing" each pupdate, and click to view more details and RSVP. 
