@@ -6,6 +6,7 @@ import AuthApiService from "../services/auth-api-service";
 import AvailablePupdates from "../AvailablePupdates/AvailablePupdates";
 import EditPup from "../EditPup/EditPup";
 import EditPupdate from "../EditPupdate/EditPupdate";
+import Error from "../Error/Error";
 import IdleService from "../services/idle-service";
 import LandingPage from "../LandingPage/LandingPage";
 import LoginPage from "../LoginPage/LoginPage";
@@ -119,34 +120,38 @@ class App extends React.Component {
           <Link to="/">
             <h1 className="App-h1">pupdate</h1>
           </Link>
-          <Nav isLoggedIn={this.state.isLoggedIn} onLogout={this.onLogout} />
+          <Error>
+            <Nav isLoggedIn={this.state.isLoggedIn} onLogout={this.onLogout} />
+          </Error>
         </header>
         <main>
           <Switch>
-            <Route exact path={"/"} component={LandingPage} />
-            <PrivateRoute
-              path={"/edit/pupdates/:pupdateId"}
-              component={EditPupdate}
-            />
-            <PrivateRoute
-              path={"/pupdates/:pupdateId"}
-              component={PupdateProfile}
-            />
-            <PrivateRoute path={"/pupdates"} component={Pupdates} />
-            <PrivateRoute
-              path={"/availablepupdates"}
-              component={AvailablePupdates}
-            />
-            <PrivateRoute path={"/new-pupdate"} component={AddPupdate} />
-            <PrivateRoute path={"/pups/:pupId"} component={Pup} />
-            <PrivateRoute path={"/pups"} component={MyPups} />
-            <PrivateRoute path={"/edit/pups/:pupId"} component={EditPup} />
-            <PrivateRoute path={"/addpup"} component={AddPup} />
-            <Route path={"/register"} component={RegistrationPage} />
-            <Route
-              path={"/login"}
-              render={() => <LoginPage onLogin={this.onLogin} />}
-            />
+            <Error>
+              <Route exact path={"/"} component={LandingPage} />
+              <PrivateRoute
+                path={"/edit/pupdates/:pupdateId"}
+                component={EditPupdate}
+              />
+              <PrivateRoute
+                path={"/pupdates/:pupdateId"}
+                component={PupdateProfile}
+              />
+              <PrivateRoute path={"/pupdates"} component={Pupdates} />
+              <PrivateRoute
+                path={"/availablepupdates"}
+                component={AvailablePupdates}
+              />
+              <PrivateRoute path={"/new-pupdate"} component={AddPupdate} />
+              <PrivateRoute path={"/pups/:pupId"} component={Pup} />
+              <PrivateRoute path={"/pups"} component={MyPups} />
+              <PrivateRoute path={"/edit/pups/:pupId"} component={EditPup} />
+              <PrivateRoute path={"/addpup"} component={AddPup} />
+              <Route path={"/register"} component={RegistrationPage} />
+              <Route
+                path={"/login"}
+                render={() => <LoginPage onLogin={this.onLogin} />}
+              />
+            </Error>
           </Switch>
         </main>
         <footer>
