@@ -121,6 +121,14 @@ export default function AddPup() {
     <div className="AddPup">
       <h2>Add a Pup</h2>
       <form className="AddPup-form" onSubmit={(e) => handleSubmit(e)}>
+        <div className="AddPup-error" role="alert">
+          {error && (
+            <p>
+              {error.message}
+              {error}
+            </p>
+          )}
+        </div>
         <label htmlFor="pup-name">Name:</label>
         <input
           required

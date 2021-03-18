@@ -65,7 +65,9 @@ export default function EditPup(props) {
 
   const onChange = (e) => {
     if (e.target.type === "checkbox" && !e.target.checked) {
-      setFormState({ ...formState, [e.target.name]: "" });
+      setFormState({ ...formState, [e.target.name]: false });
+    } else if (e.target.type === "checkbox" && e.target.checked) {
+      setFormState({ ...formState, [e.target.name]: true });
     } else {
       setFormState({ ...formState, [e.target.name]: e.target.value });
     }
@@ -125,6 +127,14 @@ export default function EditPup(props) {
     <div className="EditPup">
       <h2>Edit {formState.name}'s Profile</h2>
       <form className="EditPup-form" onSubmit={(e) => handleSubmit(e)}>
+        <div className="EditPup-error" role="alert">
+          {error && (
+            <p>
+              {error.message}
+              {error}
+            </p>
+          )}
+        </div>
         <label htmlFor="pup-name">Name:</label>
         <input
           required

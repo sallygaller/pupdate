@@ -183,6 +183,11 @@ class PupdateProfile extends React.Component {
               Location: {this.state.pupdate.location}
             </p>
           </div>
+          <div>
+            {this.state.pupdate.description ? (
+              <p>{this.state.pupdate.description}</p>
+            ) : null}
+          </div>
           {this.state.userPupdate === true ? null : (
             <div>
               <h3>Organized by:</h3>
