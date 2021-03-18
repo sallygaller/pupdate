@@ -1,5 +1,4 @@
 import React from "react";
-import Pupdate from "../Pupdate/Pupdate";
 import "./Accordion.css";
 
 class Section extends React.Component {
@@ -32,7 +31,6 @@ class Section extends React.Component {
         <div className="sectionhead" onClick={this.handleClick}>
           <h3>{this.props.title}</h3>
         </div>
-        {/* <div className={this.state.open ? "animated" : "hidden"}> */}
         <div className={this.state.open ? "animated" : "hidden"}>
           <div className="article">{this.props.children}</div>
         </div>

@@ -14,6 +14,9 @@ exports[`renders the UI as expected 1`] = `
       <div
         className="section"
       >
+        <button>
+          toggle
+        </button>
         <div
           className="sectionhead"
           onClick={[Function]}
@@ -23,7 +26,7 @@ exports[`renders the UI as expected 1`] = `
           </h3>
         </div>
         <div
-          className="page fadeOut"
+          className="hidden"
         >
           <div
             className="article"
@@ -42,6 +45,9 @@ exports[`renders the UI as expected 1`] = `
       <div
         className="section"
       >
+        <button>
+          toggle
+        </button>
         <div
           className="sectionhead"
           onClick={[Function]}
@@ -51,7 +57,7 @@ exports[`renders the UI as expected 1`] = `
           </h3>
         </div>
         <div
-          className="page fadeOut"
+          className="hidden"
         >
           <div
             className="article"
@@ -75,6 +81,9 @@ exports[`renders the UI as expected 1`] = `
             <div
               className="section"
             >
+              <button>
+                toggle
+              </button>
               <div
                 className="sectionhead"
                 onClick={[Function]}
@@ -84,7 +93,7 @@ exports[`renders the UI as expected 1`] = `
                 </h3>
               </div>
               <div
-                className="page fadeOut"
+                className="hidden"
               >
                 <div
                   className="article"

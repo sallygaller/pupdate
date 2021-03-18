@@ -3,7 +3,7 @@
     flex-direction: column;
     text-align: left;
     margin: 0 auto;
-    width: 30%;
+    width: 95%;
 }
 
 .RegistrationForm input {
@@ -33,5 +33,9 @@
     color: red;
 }
 
-
+@media screen and (min-width: 1000px) {
+    .RegistrationForm {
+        width: 30%;
+    }
+}
 

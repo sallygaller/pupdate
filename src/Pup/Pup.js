@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import PupSize from "../Utils/Helpers";
 import PropTypes from "prop-types";
 import TokenService from "../services/token-service";
 import { API_ENDPOINT } from "../config";
@@ -124,7 +125,7 @@ class Pup extends React.Component {
           {this.state.breed.charAt(0).toUpperCase() + this.state.breed.slice(1)}{" "}
           {this.state.mix === "true" ? "Mix" : null}
           <br></br>
-          Size: {this.state.size}
+          Size: {PupSize(this.state.size)}
           <br></br>
           Age: {this.state.age}
         </p>

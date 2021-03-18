@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./AttendeeListAccordion.css";
+import "./AttendeeList.css";
 import { API_ENDPOINT } from "../config";
 import TokenService from "../services/token-service";
 

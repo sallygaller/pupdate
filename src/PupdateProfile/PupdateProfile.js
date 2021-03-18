@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import AttendeeList from "../AttendeeList/AttendeeList";
-import AttendeeListAccordion from "../AttendeeListAccordion/AttendeeListAccordion";
 import PropTypes from "prop-types";
 import moment from "moment";
 import { API_ENDPOINT } from "../config";
@@ -27,9 +26,6 @@ class PupdateProfile extends React.Component {
     match: PropTypes.shape({
       params: PropTypes.object,
     }),
-    // history: PropTypes.shape({
-    //   push: PropTypes.func,
-    // }).isRequired,
   };
 
   componentDidMount() {
@@ -203,22 +199,12 @@ class PupdateProfile extends React.Component {
             </div>
           )}
           <div>
-            {/* {this.state.showAttendees === true ? (
-                <p className="PupdateProfile-attendee">Hide Attendee List</p>
-              ) : (
-                <p className="PupdateProfile-attendee">View Attendee List</p>
-              )} */}
-            {/* <button
-              className="PupdateProfile-attendees"
-              onClick={this.handleAttendees}
-            > */}
-            <AttendeeListAccordion
+            <AttendeeList
               rsvps={this.state.rsvps}
               showAttendees={this.state.showAttendees}
               attendees={this.state.attendees}
               title="Attendee List"
             />
-            {/* </button> */}
           </div>
           <br></br>
           {this.state.userPupdate === true ? (

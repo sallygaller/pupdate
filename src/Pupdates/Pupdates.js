@@ -1,5 +1,4 @@
 import React from "react";
-import Pupdate from "../Pupdate/Pupdate";
 import AvailablePupdates from "../AvailablePupdates/AvailablePupdates";
 import { API_ENDPOINT } from "../config";
 import TokenService from "../services/token-service";

@@ -12,11 +12,11 @@
     display: flex;
     flex-direction: column;
     margin: 0 auto;
-    width: 30%;
+    width: 95%;
 }
 
 .EditPupdate textarea {
-    font-family: sans-serif
+    font-family: 'Open Sans', sans-serif;
 }
 
 .EditPupdate input {
@@ -27,6 +27,7 @@
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
 } 
 
 .EditPupdate label {
@@ -48,4 +49,10 @@
 
 .EditPupdate-error {
     color: red;
+}
+
+@media screen and (min-width: 1000px) {
+    .EditPupdate-form {
+        width: 30%;
+    }
 }

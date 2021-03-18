@@ -4,7 +4,6 @@ import Pupdate from "../Pupdate/Pupdate";
 import "./Accordion.css";
 
 export default function Accordion(props) {
-  console.log(props.pupdates);
   return (
     <div className="main">
       <Section title={props.title} pupdates={props.pupdates}>

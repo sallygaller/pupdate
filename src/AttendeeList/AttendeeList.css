@@ -1,17 +1,139 @@
-.AttendeeList {
-   margin: 0 auto;
-}
-
-.AttendeeList-hidden {
+.AttendeeList-section {
+    position: relative;
+    margin: 0 auto;
+    width: 80%;
+    border-bottom: 2px solid;
+  }
+  .AttendeeList-section button {
+      position: absolute;
+      right: 0;
+      margin: 0;
+      margin-top: 10px;
+      padding: 0;
+      height: 3em;
+      width: 3em;
+      outline: 0;
+      border: 0;
+      background: none;
+      text-indent: -9999%;
+      pointer-events: none;
+    }
+  .AttendeeList-section button:before {
+        content: '';
+        display: block;
+        position: absolute;
+        height: 12px;
+        width: 4px;
+        border-radius: .3em;
+        background: #F2AD1D;
+        transform-origin: 50%;
+        top: 50%;
+        left: 50%;
+        transition: all .25s ease-in-out;
+        transform: translate(75%, -50%) rotate(45deg);
+      }
+  .AttendeeList-section button:after {
+        content: '';
+        display: block;
+        position: absolute;
+        height: 12px;
+        width: 4px;
+        border-radius: .3em;
+        background: #F2AD1D;
+        transform-origin: 50%;
+        top: 50%;
+        left: 50%;
+        transition: all .25s ease-in-out;
+        transform: translate(-75%, -50%) rotate(-45deg);
+  }
+  
+  .AttendeeList-section.open button:before, .section.open button:after {
+        height: 14px;
+  }
+  .AttendeeList-section.open
+      :before {
+        transform: translate(0%, -50%) rotate(-45deg);
+  }
+  .AttendeeList-section.open
+      :after {
+        transform: translate(0%, -50%) rotate(45deg);
+  }
+  .AttendeeList-section.open 
+    .AttendeeList-articlewrap {
+      height: 100%;
+  }
+  
+  
+  .AttendeeList-articlewrap {
+    height: 0;
+    overflow: hidden;
+    transition: all .2s ease-in;
+  }
+  
+  .AttendeeList-sectionhead {
+    width: 80%;
+    margin: 0 auto;
+    overflow: hidden;
+    cursor: pointer;
+    font-weight: 700;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    padding: 1em;
+    padding-bottom: 0
+  }
+  
+  .AttendeeList-article {
+    padding: 1em;
+    color: #333;
+    line-height: 1.3;
+  }
+  
+  .AttendeeList-animated {
+      font-size: 1em;
+      text-align: center;
+      padding: 5px;
+      text-transform: uppercase;
+      position: relative;
+      font-weight: bold;
+      
+      -webkit-animation: fadeInDown 300ms ease-out;
+      -moz-animation: fadeInDown 300ms ease-out;
+      -o-animation: fadeInDown 300ms ease-out;
+      animation: fadeInDown 300ms ease-out;
+  }
+  
+  @-webkit-keyframes fadeInDown {
+    from {
+      opacity: 0;
+      -webkit-transform: translate3d(0, -30%, 0);
+      transform: translate3d(0, -30%, 0);
+    }
+  
+    to {
+      opacity: 1;
+      -webkit-transform: translate3d(0, 0, 0);
+      transform: translate3d(0, 0, 0);
+    }
+  }
+  @keyframes fadeInDown {
+    from {
+      opacity: 0;
+      -webkit-transform: translate3d(0, -30%, 0);
+      transform: translate3d(0, -30%, 0);
+    }
+  
+    to {
+      opacity: 1;
+      -webkit-transform: translate3d(0, 0, 0);
+      transform: translate3d(0, 0, 0);
+    }
+  }
+  
+  .AttendeeList-animate__fadeInDown {
+    -webkit-animation-name: fadeInDown;
+    animation-name: fadeInDown;
+  }
+  
+  .AttendeeList-hidden {
     display: none;
-}
-
-.AttendeeList-play-profile {
-    background-color: #0081a7;
-    color: white;
-    margin: 0px 15px;
-}
-
-li {
-    padding: 10px;
-}
+  }

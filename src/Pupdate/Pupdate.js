@@ -48,8 +48,6 @@ class Pupdate extends React.Component {
               Location: {pupdate.location}
             </p>
           </div>
-          {/* </div>
-        <div className="Pupdate-group"> */}
           <div className="Pupdate-item">
             <ul>
               Organized by:

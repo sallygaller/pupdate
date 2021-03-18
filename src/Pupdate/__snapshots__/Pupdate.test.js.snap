@@ -10,7 +10,9 @@ exports[`renders the UI as expected 1`] = `
     <div
       className="Pupdate-item-double"
     >
-      <p>
+      <p
+        className="Pupdate-details"
+      >
         Date: 
         March 2, 2020
          

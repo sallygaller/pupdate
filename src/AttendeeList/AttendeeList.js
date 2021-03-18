@@ -1,29 +1,29 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import AttendeeListAccordion from "../AttendeeListAccordion/AttendeeListAccordion";
+import AttendeeListSection from "./AttendeeListSection";
 import "./AttendeeList.css";
 
 export default function AttendeeList(props) {
-  const attendees = props.attendees;
   return (
-    <div className="AttendeeList">
-      <AttendeeListAccordion title="Attendee List" attendees={attendees} />
-
-      {/* <ul
-        className={props.showAttendees === false ? "AttendeeList-hidden" : null}
+    <div className="AttendeeList-main">
+      <AttendeeListSection
+        title={props.title}
+        pupdates={props.attendees}
+        rsvps={props.rsvps}
       >
-        {attendees.length === 0 ? (
-          <li>No attendees yet!</li>
+        {" "}
+        {props.attendees.length === 0 ? (
+          <p>No attendees yet!</p>
         ) : (
-          attendees[0].map((attendee) => {
-            return (
+          <ul>
+            {props.attendees[0].map((attendee) => (
               <li key={attendee.id}>
                 <Link to={`/pups/${attendee.id}`}>{attendee.name}</Link>
               </li>
-            );
-          })
+            ))}
+          </ul>
         )}
-      </ul> */}
+      </AttendeeListSection>
     </div>
   );
 }

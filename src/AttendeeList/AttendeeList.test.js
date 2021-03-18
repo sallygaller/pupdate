@@ -3,7 +3,7 @@ import { BrowserRouter } from "react-router-dom";
 import renderer from "react-test-renderer";
 import PupdateProfile from "../PupdateProfile/PupdateProfile";
 import { pups, pupdates } from "../Utils/TestFiles";
-import AttendeeList from "./AttendeeList";
+import AttendeeList from "../AttendeeList/AttendeeList";
 
 it("renders without crashing", () => {
   const div = document.createElement("div");

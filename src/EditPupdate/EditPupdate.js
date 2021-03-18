@@ -30,7 +30,7 @@ export default function EditPupdate(props) {
       })
       .then((responseData) => {
         setId(responseData.id);
-        setDate(responseData.date);
+        setDate(moment(responseData.date).format("YYYY-MM-DD"));
         setStarttime(responseData.starttime);
         setEndtime(responseData.endtime);
         setLocation(responseData.location);
@@ -71,6 +71,10 @@ export default function EditPupdate(props) {
       });
   };
 
+  const handleBack = () => {
+    props.history.goBack();
+  };
+
   return (
     <div className="EditPupdate">
       <h2>Edit Pupdate</h2>
@@ -92,7 +96,7 @@ export default function EditPupdate(props) {
         <label htmlFor="date">Date: </label>
         <input
           type="date"
-          value={moment(date).format("YYYY-MM-DD")}
+          value={date}
           onChange={(e) => setDate(e.target.value)}
         ></input>
         <label htmlFor="startTime">Start Time: </label>
@@ -118,7 +122,9 @@ export default function EditPupdate(props) {
           onChange={(e) => setDescription(e.target.value)}
         ></textarea>
         <button type="submit">Submit</button>
-        <button type="button">Cancel</button>
+        <button type="button" onClick={(e) => handleBack()}>
+          Cancel
+        </button>
       </form>
     </div>
   );

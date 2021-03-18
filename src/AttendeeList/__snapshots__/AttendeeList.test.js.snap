@@ -7,7 +7,7 @@ exports[`renders the UI as expected 1`] = `
   <section>
     <h2>
       Pupdate on 
-      March 16, 2021
+      March 17, 2021
     </h2>
     <div>
       <p>
@@ -29,36 +29,50 @@ exports[`renders the UI as expected 1`] = `
       <ul />
     </div>
     <div>
-      <button
-        onClick={[Function]}
-      >
-        <p
-          className="PupdateProfile-attendee"
-        >
-          View Attendee List
-        </p>
-      </button>
       <div
-        className="AttendeeList"
+        className="AttendeeList-main"
       >
-        <ul
-          className="AttendeeList-hidden"
+        <div
+          className="AttendeeList-section"
         >
-          <li>
-            No attendees yet!
-          </li>
-        </ul>
+          <button>
+            toggle
+          </button>
+          <div
+            className="AttendeeList-sectionhead"
+            onClick={[Function]}
+          >
+            <h3>
+              Attendee List
+            </h3>
+          </div>
+          <div
+            className="AttendeeList-hidden"
+          >
+            <div
+              className="AttendeeList-article"
+            >
+              <ul>
+                <li>
+                  No attendees yet!
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <br />
     <div>
       <button
+        className="PupdateProfile-button"
         onClick={[Function]}
       >
         I'll be there!
       </button>
     </div>
     <button
+      className="PupdateProfile-button"
       onClick={[Function]}
     >
       Back to Pupdates
