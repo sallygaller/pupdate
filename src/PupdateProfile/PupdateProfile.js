@@ -12,6 +12,7 @@ class PupdateProfile extends React.Component {
     super(props);
     this.state = {
       pupdate: [],
+      checkDelete: false,
       attendees: "",
       organizerPups: [],
       rsvps: [],
@@ -217,12 +218,31 @@ class PupdateProfile extends React.Component {
               <Link to={`/edit/pupdates/${this.state.pupdate.id}`}>
                 <button className="PupdateProfile-button">Edit Pupdate</button>
               </Link>
-              <button
-                className="PupdateProfile-button"
-                onClick={this.handleDeleteRequest}
-              >
-                Delete Pupdate
-              </button>
+              {this.state.checkDelete ? (
+                <div>
+                  Are you sure?
+                  <button
+                    className="PupdateProfile-button"
+                    onClick={this.handleDeleteRequest}
+                  >
+                    Yes
+                  </button>
+                  <button
+                    className="PupdateProfile-button"
+                    type="button"
+                    onClick={() => this.setState({ checkDelete: false })}
+                  >
+                    No
+                  </button>
+                </div>
+              ) : (
+                <button
+                  className="PupdateProfile-button"
+                  onClick={() => this.setState({ checkDelete: true })}
+                >
+                  Delete Pupdate
+                </button>
+              )}
             </div>
           ) : this.state.userAttending === true ? (
             <div>

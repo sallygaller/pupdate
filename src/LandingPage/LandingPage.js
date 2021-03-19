@@ -39,11 +39,15 @@ export default function LandingPage() {
       <section>
         <h3>Get Started with pupdate!</h3>
         <div className="LandingPage-link">
-          <Link to="/register">Register here</Link>
+          <Link to="/register">Register</Link>
         </div>
         <div className="LandingPage-link">
-          <Link to="/login">Log in here</Link>
+          <Link to="/login">Log in</Link>
         </div>
+        <p className="LandingPage-instructions">
+          For demo purposes, please use the credentials provided on the Login
+          page.
+        </p>
       </section>
     </div>
   );

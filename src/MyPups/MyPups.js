@@ -9,7 +9,7 @@ class MyPups extends React.Component {
     super(props);
     this.state = {
       pups: [],
-      deleteCheck: false,
+      checkDelete: false,
     };
   }
 
