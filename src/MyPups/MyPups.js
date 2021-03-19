@@ -85,7 +85,7 @@ class MyPups extends React.Component {
               </Link>
               {this.state.checkDelete ? (
                 <div>
-                  Are you sure you want to delete this profile?
+                  Are you sure?
                   <button
                     className="MyPups-delete-profile"
                     type="button"
@@ -94,7 +94,7 @@ class MyPups extends React.Component {
                     Yes
                   </button>
                   <button
-                    className="MyPups-delete-profile"
+                    className="MyPups-add"
                     type="button"
                     onClick={() => this.setState({ checkDelete: false })}
                   >

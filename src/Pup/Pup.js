@@ -18,14 +18,14 @@ class Pup extends React.Component {
       age: "",
       size: "",
       playstyle: {
-        nervous: "",
-        rambunctious: "",
-        gentle: "",
-        wrestling: "",
-        walks: "",
-        parks: "",
-        foodobsessed: "",
-        ballobsessed: "",
+        nervous: null,
+        rambunctious: null,
+        gentle: null,
+        wrestling: null,
+        walks: null,
+        parks: null,
+        foodobsessed: null,
+        ballobsessed: null,
       },
       description: "",
       owner: "",
@@ -70,33 +70,28 @@ class Pup extends React.Component {
           age: responseData1.age,
           size: responseData1.size,
           playstyle: {
-            nervous:
-              responseData1.nervous === true
-                ? "I'm nervous or shy around other dogs."
-                : "",
-            rambunctious:
-              responseData1.rambunctious === true
-                ? "I'm rambunctious and playful."
-                : "",
-            gentle: responseData1.gentle === true ? "I play gently." : null,
-            wrestling:
-              responseData1.wrestling === true
-                ? "I like playfighting and wrestling."
-                : "",
-            walks:
-              responseData1.walks === true
-                ? "I like going on walks with my pup pals."
-                : "",
-            parks:
-              responseData1.parks === true
-                ? "I like going to dog parks with my pup pals."
-                : "",
-            foodobsessed:
-              responseData1.foodobsessed === true ? "I'm food-obsessed!" : null,
-            ballobsessed:
-              responseData1.ballobsessed === true
-                ? "I love to play fetch!"
-                : "",
+            nervous: responseData1.nervous
+              ? "I'm nervous or shy around other dogs."
+              : null,
+            rambunctious: responseData1.rambunctious
+              ? "I'm rambunctious and playful."
+              : null,
+            gentle: responseData1.gentle ? "I play gently." : null,
+            wrestling: responseData1.wrestling
+              ? "I like playfighting and wrestling."
+              : null,
+            walks: responseData1.walks
+              ? "I like going on walks with my pup pals."
+              : null,
+            parks: responseData1.parks
+              ? "I like going to dog parks with my pup pals."
+              : null,
+            foodobsessed: responseData1.foodobsessed
+              ? "I'm food-obsessed!"
+              : null,
+            ballobsessed: responseData1.ballobsessed
+              ? "I love to play fetch!"
+              : null,
           },
           description: responseData1.description,
           owner: responseData1.owner,
@@ -135,7 +130,7 @@ class Pup extends React.Component {
         <h2>{this.state.name}'s Play Profile</h2>
         <ul>
           {Object.values(this.state.playstyle).map((p) => {
-            return p !== "" ? <li key={p}>{p}</li> : null;
+            return p !== null ? <li key={p}>{p}</li> : null;
           })}
         </ul>
         {this.state.userPup === true ? (
