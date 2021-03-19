@@ -136,14 +136,14 @@ class App extends React.Component {
                 path={"/pupdates/:pupdateId"}
                 component={PupdateProfile}
               />
-              <PrivateRoute path={"/pupdates"} component={Pupdates} />
+              <PrivateRoute exact path={"/pupdates"} component={Pupdates} />
               <PrivateRoute
                 path={"/availablepupdates"}
                 component={AvailablePupdates}
               />
               <PrivateRoute path={"/new-pupdate"} component={AddPupdate} />
               <PrivateRoute path={"/pups/:pupId"} component={Pup} />
-              <PrivateRoute path={"/pups"} component={MyPups} />
+              <PrivateRoute exact path={"/pups"} component={MyPups} />
               <PrivateRoute path={"/edit/pups/:pupId"} component={EditPup} />
               <PrivateRoute path={"/addpup"} component={AddPup} />
               <Route path={"/register"} component={RegistrationPage} />

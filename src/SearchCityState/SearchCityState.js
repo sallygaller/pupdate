@@ -46,6 +46,10 @@ function SearchCityState(props) {
   const autoCompleteRef = useRef("");
 
   useEffect(() => {
+    if (window.google) {
+      handleScriptLoad(props.setLocation, autoCompleteRef);
+      return;
+    }
     loadScript(
       `https://maps.googleapis.com/maps/api/js?key=${API_TOKEN}&libraries=places`,
       () => handleScriptLoad(props.setLocation, autoCompleteRef)

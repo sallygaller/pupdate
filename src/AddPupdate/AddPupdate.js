@@ -81,26 +81,29 @@ export default function AddPupdate() {
         </label>
         <input
           required
+          id="date"
           type="date"
           value={date}
           onChange={(e) => setDate(e.target.value)}
         />
-        <label htmlFor="startTime">
+        <label htmlFor="starttime">
           Start Time:
           <Required />
         </label>
         <input
           required
+          id="starttime"
           type="time"
           value={starttime}
           onChange={(e) => setStarttime(e.target.value)}
         />
-        <label htmlFor="endTime">
+        <label htmlFor="endtime">
           End Time
           <Required />{" "}
         </label>
         <input
           required
+          id="endtime"
           type="time"
           value={endtime}
           onChange={(e) => setEndtime(e.target.value)}

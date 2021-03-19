@@ -115,11 +115,13 @@ class Pup extends React.Component {
     return (
       <div className="Pup">
         <h1>Hi, I'm {this.state.name}!</h1>
-        <img
-          className="Pup-img"
-          alt={this.state.name}
-          src={`https://pupdate.s3-us-west-1.amazonaws.com/${this.state.id}`}
-        />
+        {this.state.id ? (
+          <img
+            className="Pup-img"
+            alt={this.state.name}
+            src={`https://pupdate.s3-us-west-1.amazonaws.com/${this.state.id}`}
+          />
+        ) : null}
         <p>
           Breed:{" "}
           {this.state.breed.charAt(0).toUpperCase() + this.state.breed.slice(1)}{" "}
@@ -130,10 +132,10 @@ class Pup extends React.Component {
           Age: {this.state.age}
         </p>
         <p>{this.state.description}</p>
+        <h2>{this.state.name}'s Play Profile</h2>
         <ul>
-          <h3>{this.state.name}'s Play Profile</h3>
           {Object.values(this.state.playstyle).map((p) => {
-            return p !== "" ? <li key={p}>{p}</li> : "";
+            return p !== "" ? <li key={p}>{p}</li> : null;
           })}
         </ul>
         {this.state.userPup === true ? (

@@ -22,6 +22,7 @@
 
   .App-h1 {
     text-align: center;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
     color: #fcfaf1;
     font-family: 'La Belle Aurore', cursive;
     font-size: 4em;

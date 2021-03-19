@@ -29,7 +29,9 @@ export default function AddPup() {
 
   const onChange = (e) => {
     if (e.target.type === "checkbox" && !e.target.checked) {
-      setFormState({ ...formState, [e.target.name]: "" });
+      setFormState({ ...formState, [e.target.name]: false });
+    } else if (e.target.type === "checkbox" && e.target.checked) {
+      setFormState({ ...formState, [e.target.name]: true });
     } else {
       setFormState({ ...formState, [e.target.name]: e.target.value });
     }
@@ -104,7 +106,7 @@ export default function AddPup() {
         history.push("/pups");
       })
       .catch((error) => {
-        console.error({ error });
+        setError(error.message);
       });
   };
 
@@ -128,7 +130,7 @@ export default function AddPup() {
             </p>
           )}
         </div>
-        <label htmlFor="pup-name">Name:</label>
+        <label htmlFor="name">Name:</label>
         <input
           required
           type="text"
@@ -137,7 +139,7 @@ export default function AddPup() {
           value={formState.name}
           onChange={onChange}
         />
-        <label htmlFor="pup-breed">
+        <label htmlFor="breed">
           Breed (if your pup's a mixture, select the dominant breed):
         </label>
         <select
@@ -163,9 +165,9 @@ export default function AddPup() {
             value={formState.mix}
             onChange={onChange}
           />
-          <label htmlFor="pup-mix">My pup's a mix!</label>
+          <label htmlFor="mix">My pup's a mix!</label>
         </div>
-        <label htmlFor="pup-age">Age range:</label>
+        <label htmlFor="age">Age range:</label>
         <select
           required
           name="age"
@@ -173,17 +175,17 @@ export default function AddPup() {
           value={formState.age}
           onChange={onChange}
         >
-          <option key="puppy" value="Puppy">
+          <option key="puppy" id="puppy" value="Puppy">
             Puppy (6-18 months)
           </option>
-          <option key="adult" value="Adult">
+          <option key="adult" id="adult" value="Adult">
             Adult (18 months-6 years)
           </option>
-          <option key="senior" value="Senior">
+          <option key="senior" id="senior" value="Senior">
             Senior (6 years and older)
           </option>
         </select>
-        <label htmlFor="pup-size">Size:</label>
+        <label htmlFor="size">Size:</label>
         <select
           required
           name="size"
@@ -191,19 +193,19 @@ export default function AddPup() {
           value={formState.size}
           onChange={onChange}
         >
-          <option key="xs" value="XS">
+          <option key="x-small" id="x-small" value="XS">
             Extra Small (under 10lbs)
           </option>
-          <option key="s" value="S">
+          <option key="small" id="small" value="S">
             Small (10-30lbs)
           </option>
-          <option key="m" value="M">
+          <option key="medium" id="medium" value="M">
             Medium (30-60lbs)
           </option>
-          <option key="l" value="L">
+          <option key="large" id="large" value="L">
             Large (60-90lbs)
           </option>
-          <option key="xl" value="XL">
+          <option key="x-large" id="x-large" value="XL">
             Extra Large (over 90lbs)
           </option>
         </select>
@@ -304,7 +306,7 @@ export default function AddPup() {
             Prefers off-leash parks
           </label>
         </div>
-        <label htmlFor="pup-description">Description:</label>
+        <label htmlFor="description">Description:</label>
         <textarea
           id="description"
           name="description"
@@ -314,7 +316,7 @@ export default function AddPup() {
           value={formState.description}
           onChange={onChange}
         />
-        <label htmlFor="pup-pic">Photo:</label>
+        <label htmlFor="uploads">Photo:</label>
         <input
           type="file"
           name="uploads"

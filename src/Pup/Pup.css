@@ -18,6 +18,10 @@
     padding-left: 0px;
 }
 
+.Pup h2 {
+    font-size: 1.25em;
+}
+
 .Pup button {
     width: 50%;
     border: #F2AD1D solid 2px;

@@ -9,6 +9,7 @@ class MyPups extends React.Component {
     super(props);
     this.state = {
       pups: [],
+      deleteCheck: false,
     };
   }
 
@@ -74,7 +75,7 @@ class MyPups extends React.Component {
                 <h3>{pup.name}</h3>
                 <img
                   className="MyPups-img"
-                  alt={pup.name}
+                  alt={`Profile of ${pup.name}`}
                   src={`https://pupdate.s3-us-west-1.amazonaws.com/${pup.id}`}
                 />
               </Link>
@@ -82,13 +83,33 @@ class MyPups extends React.Component {
               <Link to={`/edit/pups/${pup.id}`}>
                 <button className="MyPups-profile">Edit Profile</button>
               </Link>
-              <button
-                className="MyPups-delete-profile"
-                type="button"
-                onClick={() => this.handleDeleteRequest(pup.id)}
-              >
-                Delete Profile
-              </button>
+              {this.state.checkDelete ? (
+                <div>
+                  Are you sure you want to delete this profile?
+                  <button
+                    className="MyPups-delete-profile"
+                    type="button"
+                    onClick={() => this.handleDeleteRequest(pup.id)}
+                  >
+                    Yes
+                  </button>
+                  <button
+                    className="MyPups-delete-profile"
+                    type="button"
+                    onClick={() => this.setState({ checkDelete: false })}
+                  >
+                    No
+                  </button>
+                </div>
+              ) : (
+                <button
+                  className="MyPups-delete-profile"
+                  type="button"
+                  onClick={() => this.setState({ checkDelete: true })}
+                >
+                  Delete Profile
+                </button>
+              )}
             </li>
           ))}
         </ul>

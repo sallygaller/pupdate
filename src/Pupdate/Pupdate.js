@@ -49,8 +49,8 @@ class Pupdate extends React.Component {
             </p>
           </div>
           <div className="Pupdate-item">
+            Organized by:
             <ul>
-              Organized by:
               {this.state.organizerPups.map((organizerPup) => (
                 <li key={organizerPup.id}>
                   <Link to={`/pups/${organizerPup.id}`}>
