@@ -2,23 +2,21 @@
 
 exports[`renders the UI as expected 1`] = `
 <div
-  className="EditPup"
+  className="AddPup"
 >
   <h2>
-    Edit 
-    
-    's Profile
+    Add a Pup
   </h2>
   <form
-    className="EditPup-form"
+    className="AddPup-form"
     onSubmit={[Function]}
   >
     <div
-      className="EditPup-error"
+      className="AddPup-error"
       role="alert"
     />
     <label
-      htmlFor="pup-name"
+      htmlFor="name"
     >
       Name:
     </label>
@@ -31,7 +29,7 @@ exports[`renders the UI as expected 1`] = `
       value=""
     />
     <label
-      htmlFor="pup-breed"
+      htmlFor="breed"
     >
       Breed (if your pup's a mixture, select the dominant breed):
     </label>
@@ -50,16 +48,16 @@ exports[`renders the UI as expected 1`] = `
         name="mix"
         onChange={[Function]}
         type="checkbox"
-        value=""
+        value={false}
       />
       <label
-        htmlFor="pup-mix"
+        htmlFor="mix"
       >
         My pup's a mix!
       </label>
     </div>
     <label
-      htmlFor="pup-age"
+      htmlFor="age"
     >
       Age range:
     </label>
@@ -71,23 +69,26 @@ exports[`renders the UI as expected 1`] = `
       value=""
     >
       <option
+        id="puppy"
         value="Puppy"
       >
         Puppy (6-18 months)
       </option>
       <option
+        id="adult"
         value="Adult"
       >
         Adult (18 months-6 years)
       </option>
       <option
+        id="senior"
         value="Senior"
       >
         Senior (6 years and older)
       </option>
     </select>
     <label
-      htmlFor="pup-size"
+      htmlFor="size"
     >
       Size:
     </label>
@@ -99,26 +100,31 @@ exports[`renders the UI as expected 1`] = `
       value=""
     >
       <option
+        id="x-small"
         value="XS"
       >
         Extra Small (under 10lbs)
       </option>
       <option
+        id="small"
         value="S"
       >
         Small (10-30lbs)
       </option>
       <option
+        id="medium"
         value="M"
       >
         Medium (30-60lbs)
       </option>
       <option
+        id="large"
         value="L"
       >
         Large (60-90lbs)
       </option>
       <option
+        id="x-large"
         value="XL"
       >
         Extra Large (over 90lbs)
@@ -133,12 +139,11 @@ exports[`renders the UI as expected 1`] = `
       className="AddPup-option"
     >
       <input
-        checked=""
         id="nervous"
         name="nervous"
         onChange={[Function]}
         type="checkbox"
-        value=""
+        value={false}
       />
       <label
         className="checkbox"
@@ -151,12 +156,11 @@ exports[`renders the UI as expected 1`] = `
       className="AddPup-option"
     >
       <input
-        checked=""
         id="rambunctious"
         name="rambunctious"
         onChange={[Function]}
         type="checkbox"
-        value=""
+        value={false}
       />
       <label
         className="checkbox"
@@ -169,12 +173,11 @@ exports[`renders the UI as expected 1`] = `
       className="AddPup-option"
     >
       <input
-        checked=""
         id="gentle"
         name="gentle"
         onChange={[Function]}
         type="checkbox"
-        value=""
+        value={false}
       />
       <label
         className="checkbox"
@@ -187,12 +190,11 @@ exports[`renders the UI as expected 1`] = `
       className="AddPup-option"
     >
       <input
-        checked=""
         id="wrestling"
         name="wrestling"
         onChange={[Function]}
         type="checkbox"
-        value=""
+        value={false}
       />
       <label
         className="checkbox"
@@ -205,12 +207,11 @@ exports[`renders the UI as expected 1`] = `
       className="AddPup-option"
     >
       <input
-        checked=""
         id="foodobsessed"
         name="foodobsessed"
         onChange={[Function]}
         type="checkbox"
-        value=""
+        value={false}
       />
       <label
         className="checkbox"
@@ -223,12 +224,11 @@ exports[`renders the UI as expected 1`] = `
       className="AddPup-option"
     >
       <input
-        checked=""
         id="ballobsessed"
         name="ballobsessed"
         onChange={[Function]}
         type="checkbox"
-        value=""
+        value={false}
       />
       <label
         className="checkbox"
@@ -241,12 +241,11 @@ exports[`renders the UI as expected 1`] = `
       className="AddPup-option"
     >
       <input
-        checked=""
         id="walks"
         name="walks"
         onChange={[Function]}
         type="checkbox"
-        value=""
+        value={false}
       />
       <label
         className="checkbox"
@@ -259,12 +258,11 @@ exports[`renders the UI as expected 1`] = `
       className="AddPup-option"
     >
       <input
-        checked=""
         id="parks"
         name="parks"
         onChange={[Function]}
         type="checkbox"
-        value=""
+        value={false}
       />
       <label
         className="checkbox"
@@ -274,7 +272,7 @@ exports[`renders the UI as expected 1`] = `
       </label>
     </div>
     <label
-      htmlFor="pup-description"
+      htmlFor="description"
     >
       Description:
     </label>
@@ -286,6 +284,17 @@ exports[`renders the UI as expected 1`] = `
       onChange={[Function]}
       rows="5"
       value=""
+    />
+    <label
+      htmlFor="uploads"
+    >
+      Photo:
+    </label>
+    <input
+      id="uploads"
+      name="uploads"
+      onChange={[Function]}
+      type="file"
     />
     <button
       type="submit"

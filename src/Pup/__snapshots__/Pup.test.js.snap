@@ -9,11 +9,6 @@ exports[`renders the UI as expected 1`] = `
     
     !
   </h1>
-  <img
-    alt=""
-    className="Pup-img"
-    src="https://pupdate.s3-us-west-1.amazonaws.com/"
-  />
   <p>
     Breed:
      
@@ -29,20 +24,11 @@ exports[`renders the UI as expected 1`] = `
   <p>
     
   </p>
-  <ul>
-    <h3>
-      
-      's Play Profile
-    </h3>
+  <h2>
     
-    
-    
-    
-    
-    
-    
-    
-  </ul>
+    's Play Profile
+  </h2>
+  <ul />
   <div>
     <button
       onClick={[Function]}

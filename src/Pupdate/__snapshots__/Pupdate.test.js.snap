@@ -30,9 +30,8 @@ exports[`renders the UI as expected 1`] = `
     <div
       className="Pupdate-item"
     >
-      <ul>
-        Organized by:
-      </ul>
+      Organized by:
+      <ul />
     </div>
   </div>
 </div>

@@ -11,13 +11,10 @@ exports[`renders the UI as expected 1`] = `
     <h3>
       Create a Play Profile
     </h3>
-    <p>
-      [
-      <em>
-        placeholder for screenshot of creating a profile
-      </em>
-      ]
-    </p>
+    <img
+      alt="Screenshot of dog profile"
+      src="screenshot1.PNG"
+    />
     <p>
       Is your pup rowdy, shy, or ball obsessed? Does playing with a puppy make your senior dog feel young again? Include information about your dog's preferred playstyle to ensure a happy playdate!
     </p>
@@ -26,13 +23,10 @@ exports[`renders the UI as expected 1`] = `
     <h3>
       Create a Meetup in Your Local Park
     </h3>
-    <p>
-      [
-      <em>
-        placeholder for creating a meetup
-      </em>
-      ]
-    </p>
+    <img
+      alt="Screenshot of form to add pupdate"
+      src="screenshot2.PNG"
+    />
     <p>
       Arrange playdates with other dog owners in your area by choosing a location, date, and time.
     </p>
@@ -42,14 +36,13 @@ exports[`renders the UI as expected 1`] = `
       RSVP to Meetings
     </h3>
     <p>
-      [
-      <em>
-        placeholder for screenshot of RSVP/comment interface
-      </em>
-      ]
+      <img
+        alt="Screenshot of pupdate interface"
+        src="screenshot3.PNG"
+      />
     </p>
     <p>
-      Search for and RSVP to pupdates happening in your area. View your previous meetups so you can arrange them again at a moment's notice!
+      RSVP to pupdates happening in your area! Don't forget to check the pup profiles of other attendees to ensure a happy playdate.
     </p>
   </section>
   <section>

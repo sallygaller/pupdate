@@ -41,13 +41,14 @@ exports[`renders the UI as expected 1`] = `
       </span>
     </label>
     <input
+      id="date"
       onChange={[Function]}
       required={true}
       type="date"
       value=""
     />
     <label
-      htmlFor="startTime"
+      htmlFor="starttime"
     >
       Start Time:
       <span>
@@ -55,13 +56,14 @@ exports[`renders the UI as expected 1`] = `
       </span>
     </label>
     <input
+      id="starttime"
       onChange={[Function]}
       required={true}
       type="time"
       value=""
     />
     <label
-      htmlFor="endTime"
+      htmlFor="endtime"
     >
       End Time
       <span>
@@ -70,6 +72,7 @@ exports[`renders the UI as expected 1`] = `
        
     </label>
     <input
+      id="endtime"
       onChange={[Function]}
       required={true}
       type="time"
