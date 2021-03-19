@@ -1,5 +1,8 @@
 .Nav {
     text-align: center;
+    display: flex;
+    width: 90%;
+    margin: 0 auto;
   }
   
 .Nav a,

@@ -16,15 +16,6 @@ class Nav extends React.Component {
   renderLogoutLink() {
     return (
       <div>
-        {/* <NavLink
-          to="/availablepupdates"
-          activeStyle={{
-            fontWeight: "bold",
-          }}
-        >
-          {" "}
-          Available Pupdates
-        </NavLink>{" "} */}
         <NavLink
           to="/pupdates"
           activeStyle={{
