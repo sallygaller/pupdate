@@ -15,7 +15,7 @@
 }
 
 .AddPupdate textarea {
-    font-family: sans-serif
+    font-family: 'Open Sans', sans-serif;
 }
 
 .AddPupdate-error {

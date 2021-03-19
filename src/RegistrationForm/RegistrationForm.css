@@ -11,12 +11,13 @@
     padding: 12px 20px;
     margin: 8px 0;
     display: inline-block;
+    font-family: 'Open Sans', sans-serif;
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
-  }
+}
 
-  .RegistrationForm button {
+.RegistrationForm button {
     width: 100%;
     border: #F2AD1D solid 2px;
     border-radius: 25px;
