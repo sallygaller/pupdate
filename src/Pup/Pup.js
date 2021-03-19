@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import PupSize from "../Utils/Helpers";
+import { PupSize } from "../Utils/Helpers";
 import PropTypes from "prop-types";
 import TokenService from "../services/token-service";
 import { API_ENDPOINT } from "../config";

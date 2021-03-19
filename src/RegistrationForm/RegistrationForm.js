@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import SearchCityState from "../SearchCityState/SearchCityState";
-import TokenService from "../services/token-service";
 import AuthApiService from "../services/auth-api-service";
 import "./RegistrationForm.css";
 

@@ -1,4 +1,4 @@
-export default function PupSize(size) {
+export function PupSize(size) {
   let sizeText = "";
   if (size === "XS") {
     sizeText = "Extra Small (under 10lbs)";

@@ -8,10 +8,7 @@ it("renders without crashing", () => {
   const div = document.createElement("div");
   ReactDOM.render(
     <BrowserRouter>
-      <Pupdate
-        pupdate={pupdates[0]}
-        // match={{ params: { id: 1 }, isExact: true, path: "", url: "" }}
-      />
+      <Pupdate pupdate={pupdates[0]} />
     </BrowserRouter>,
     div
   );
@@ -22,10 +19,7 @@ it("renders the UI as expected", () => {
   const tree = renderer
     .create(
       <BrowserRouter>
-        <Pupdate
-          pupdate={pupdates[0]}
-          //   match={{ params: { id: 1 }, isExact: true, path: "", url: "" }}
-        />
+        <Pupdate pupdate={pupdates[0]} />
       </BrowserRouter>
     )
     .toJSON();

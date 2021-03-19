@@ -110,7 +110,6 @@ export default function AddPup() {
 
   const onChangePic = (e) => {
     setUploads(e.target.files[0]);
-    // setUploads({ uploads: e.target.files[0] });
   };
 
   const handleClickCancel = () => {

@@ -1,5 +1,4 @@
-import { checkPropTypes } from "prop-types";
-import React, { useState, useEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { API_TOKEN } from "../config";
 
 let autoComplete;
