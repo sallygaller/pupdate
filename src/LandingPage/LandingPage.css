@@ -33,7 +33,7 @@
   background-color: #F2AD1D;
 }
 
-@media screen and (min-width: 1000px) {
+@media screen and (min-width: 800px) {
   .LandingPage {
       width: 65%;
   }  
