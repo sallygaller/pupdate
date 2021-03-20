@@ -1,4 +1,5 @@
 import React from "react";
+import "./Error.css";
 
 class Error extends React.Component {
   constructor(props) {
@@ -20,7 +21,11 @@ class Error extends React.Component {
 
   render() {
     if (this.state.hasError) {
-      return <h2>Could not display</h2>;
+      return (
+        <div className="Error-h2">
+          <h2>Could not display</h2>
+        </div>
+      );
     }
     return this.props.children;
   }
