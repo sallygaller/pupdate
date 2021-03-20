@@ -18,35 +18,39 @@ export default function AddPupdate() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const pupdate = {
-      date,
-      starttime,
-      endtime,
-      location,
-      description,
-    };
-    fetch(API_ENDPOINT + `/pupdates`, {
-      method: "POST",
-      body: JSON.stringify(pupdate),
-      headers: {
-        "content-type": "application/json",
-        authorization: `bearer ${TokenService.getAuthToken()}`,
-      },
-    })
-      .then((res) => {
-        if (!res.ok) {
-          return res.json().then((error) => {
-            throw error;
-          });
-        }
-        return res.json();
+    if (location === "") {
+      setError("Please complete the 'Location' field below.");
+    } else {
+      const pupdate = {
+        date,
+        starttime,
+        endtime,
+        location,
+        description,
+      };
+      fetch(API_ENDPOINT + `/pupdates`, {
+        method: "POST",
+        body: JSON.stringify(pupdate),
+        headers: {
+          "content-type": "application/json",
+          authorization: `bearer ${TokenService.getAuthToken()}`,
+        },
       })
-      .then((data) => {
-        history.push("/pupdates");
-      })
-      .catch((error) => {
-        setError(error.message);
-      });
+        .then((res) => {
+          if (!res.ok) {
+            return res.json().then((error) => {
+              throw error;
+            });
+          }
+          return res.json();
+        })
+        .then((data) => {
+          history.push("/pupdates");
+        })
+        .catch((error) => {
+          setError(error.message);
+        });
+    }
   };
 
   const handleClickCancel = () => {

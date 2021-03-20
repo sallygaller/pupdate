@@ -35,7 +35,9 @@ class LoginForm extends React.Component {
     const { error } = this.state;
     return (
       <form className="LoginForm" onSubmit={(e) => this.handleSubmitJwtAuth(e)}>
-        <div role="alert">{error && <p className="red">{error}</p>}</div>
+        <div role="alert">
+          {error && <p className="LoginForm-error">{error}</p>}
+        </div>
         <label htmlFor="email">Email: </label>
         <input
           type="text"

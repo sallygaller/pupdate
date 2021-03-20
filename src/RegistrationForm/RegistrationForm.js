@@ -11,24 +11,30 @@ export default function RegistrationForm(props) {
   const [location, setLocation] = useState("");
   const [error, setError] = useState(null);
 
+  const Required = () => <span>*</span>;
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    let locationArray = location.split(",");
-    const user = {
-      firstname,
-      lastname,
-      email,
-      password,
-      city: locationArray[0],
-      state: locationArray[1].trim(),
-    };
-    AuthApiService.postUser(user)
-      .then((user) => {
-        props.onRegistrationSuccess();
-      })
-      .catch((res) => {
-        setError(res.error);
-      });
+    if (location === "") {
+      setError("Please complete the 'City, State, Location' field below.");
+    } else {
+      let locationArray = location.split(",");
+      const user = {
+        firstname,
+        lastname,
+        email,
+        password,
+        city: locationArray[0],
+        state: locationArray[1].trim(),
+      };
+      AuthApiService.postUser(user)
+        .then((user) => {
+          props.onRegistrationSuccess();
+        })
+        .catch((res) => {
+          setError(res.error);
+        });
+    }
   };
 
   return (
@@ -41,7 +47,9 @@ export default function RegistrationForm(props) {
           </p>
         )}
       </div>
-      <label htmlFor="first-name">First Name: </label>
+      <label htmlFor="first-name">
+        First Name: <Required />
+      </label>
       <input
         required
         type="text"
@@ -49,7 +57,9 @@ export default function RegistrationForm(props) {
         id="first-name"
         onChange={(e) => setFirstname(e.target.value)}
       />
-      <label htmlFor="last-name">Last Name: </label>
+      <label htmlFor="last-name">
+        Last Name: <Required />{" "}
+      </label>
       <input
         required
         type="text"
@@ -58,7 +68,9 @@ export default function RegistrationForm(props) {
         id="last-name"
         onChange={(e) => setLastname(e.target.value)}
       />
-      <label htmlFor="email">Email: </label>
+      <label htmlFor="email">
+        Email: <Required />
+      </label>
       <input
         required
         type="text"
@@ -67,7 +79,13 @@ export default function RegistrationForm(props) {
         value={email}
         onChange={(e) => setEmail(e.target.value)}
       />
-      <label htmlFor="password">Password: </label>
+      <label htmlFor="password">
+        Password: <Required />
+      </label>
+      <p>
+        (must be longer than 8 characters and contain 1 upper case, lower case,
+        number and special character)
+      </p>
       <input
         required
         type="password"
@@ -76,12 +94,13 @@ export default function RegistrationForm(props) {
         value={password}
         onChange={(e) => setPassword(e.target.value)}
       />
-      <label htmlFor="zip">City and State: </label>{" "}
+      <label htmlFor="zip">
+        City, State, Country: <Required />
+      </label>{" "}
       <SearchCityState
-        required
         location={location}
         setLocation={setLocation}
-        placeholder={"Begin typing a city and state"}
+        placeholder={"Portland, OR, USA"}
       />
       <button type="submit">Sign Up!</button>
     </form>

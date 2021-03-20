@@ -1,6 +1,7 @@
 .section {
   position: relative;
-  width: 100%;
+  margin: 0 auto;
+  width: 90%;
   border-bottom: 1px solid;
 }
 .section button {
@@ -70,7 +71,7 @@
 }
 
 .sectionhead {
-  width: 100%;
+  width: 85%;
   overflow: hidden;
   cursor: pointer;
   font-weight: 700;

@@ -30,8 +30,12 @@
     background-color: #F2AD1D;
 }
 
-.red {
+.LoginForm-error {
     color: red;
+    margin-top: 0px;
+    font-size: 0.9em;
+    text-align: center;
+    font-style: italic;
 }
 
 @media screen and (min-width: 800px) {

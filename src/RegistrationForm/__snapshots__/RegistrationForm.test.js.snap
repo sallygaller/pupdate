@@ -13,6 +13,9 @@ exports[`renders the UI as expected 1`] = `
     htmlFor="first-name"
   >
     First Name: 
+    <span>
+      *
+    </span>
   </label>
   <input
     id="first-name"
@@ -25,6 +28,10 @@ exports[`renders the UI as expected 1`] = `
     htmlFor="last-name"
   >
     Last Name: 
+    <span>
+      *
+    </span>
+     
   </label>
   <input
     id="last-name"
@@ -38,6 +45,9 @@ exports[`renders the UI as expected 1`] = `
     htmlFor="email"
   >
     Email: 
+    <span>
+      *
+    </span>
   </label>
   <input
     id="email"
@@ -51,7 +61,13 @@ exports[`renders the UI as expected 1`] = `
     htmlFor="password"
   >
     Password: 
+    <span>
+      *
+    </span>
   </label>
+  <p>
+    (must be longer than 8 characters and contain 1 upper case, lower case, number and special character)
+  </p>
   <input
     id="password"
     name="password"
@@ -63,7 +79,10 @@ exports[`renders the UI as expected 1`] = `
   <label
     htmlFor="zip"
   >
-    City and State: 
+    City, State, Country: 
+    <span>
+      *
+    </span>
   </label>
    
   <div
@@ -71,7 +90,7 @@ exports[`renders the UI as expected 1`] = `
   >
     <input
       onChange={[Function]}
-      placeholder="Begin typing a city and state"
+      placeholder="Portland, OR, USA"
       value=""
     />
   </div>

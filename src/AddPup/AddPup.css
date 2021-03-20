@@ -75,7 +75,10 @@
 
 .AddPup-error {
     color: red;
-}
+    margin-top: 0px;
+    font-size: 0.75em;
+    font-style: italic;
+} 
 
 @media screen and (min-width: 800px) {
     .AddPup {
