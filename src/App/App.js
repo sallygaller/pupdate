@@ -6,7 +6,6 @@ import AuthApiService from "../services/auth-api-service";
 import AvailablePupdates from "../AvailablePupdates/AvailablePupdates";
 import EditPup from "../EditPup/EditPup";
 import EditPupdate from "../EditPupdate/EditPupdate";
-import Error from "../Error/Error";
 import IdleService from "../services/idle-service";
 import LandingPage from "../LandingPage/LandingPage";
 import LoginPage from "../LoginPage/LoginPage";
