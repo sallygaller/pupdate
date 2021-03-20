@@ -4,12 +4,15 @@ import AuthApiService from "../services/auth-api-service";
 import "./LoginForm.css";
 
 class LoginForm extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      error: null,
+    };
+  }
+
   static defaultProps = {
     onLoginSuccess: () => {},
-  };
-
-  state = {
-    error: null,
   };
 
   handleSubmitJwtAuth = (e) => {
