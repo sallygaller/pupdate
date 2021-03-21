@@ -56,7 +56,7 @@ exports[`renders the UI as expected 1`] = `
         href="/register"
         onClick={[Function]}
       >
-        Register here
+        Register
       </a>
     </div>
     <div
@@ -66,9 +66,14 @@ exports[`renders the UI as expected 1`] = `
         href="/login"
         onClick={[Function]}
       >
-        Log in here
+        Log in
       </a>
     </div>
+    <p
+      className="LandingPage-instructions"
+    >
+      For demo purposes, please use the credentials provided on the Login page.
+    </p>
   </section>
 </div>
 `;
