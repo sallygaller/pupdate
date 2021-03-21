@@ -78,7 +78,7 @@ export default function AddPup() {
       .then((res) => {
         if (!res.ok) {
           return res.json().then((error) => {
-            throw error;
+            setError(error.message);
           });
         }
         return res.json();
