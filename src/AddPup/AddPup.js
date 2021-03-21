@@ -318,7 +318,7 @@ export default function AddPup() {
         />
         <label htmlFor="uploads">Photo:</label>
         <input
-          required
+          // required
           type="file"
           name="uploads"
           id="uploads"
