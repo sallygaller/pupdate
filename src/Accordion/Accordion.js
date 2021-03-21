@@ -5,11 +5,14 @@ import "./Accordion.css";
 
 export default function Accordion(props) {
   return (
-    <div className="main">
+    <div className="main Accordion">
       <Section title={props.title} pupdates={props.pupdates}>
         {" "}
         {props.pupdates.length === 0 ? (
-          <p>No pupdates here! Why don't you create one?</p>
+          <p>
+            No pupdates here! Why don't you{" "}
+            <a href="/new-pupdate">create one?</a>
+          </p>
         ) : (
           <ul>
             {props.pupdates.map((pupdate) => (

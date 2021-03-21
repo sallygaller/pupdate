@@ -7,7 +7,7 @@ exports[`renders the UI as expected 1`] = `
   <section>
     <div>
       <div
-        className="main"
+        className="main Accordion"
       >
         <div
           className="section"
@@ -31,7 +31,13 @@ exports[`renders the UI as expected 1`] = `
             >
                
               <p>
-                No pupdates here! Why don't you create one?
+                No pupdates here! Why don't you
+                 
+                <a
+                  href="/new-pupdate"
+                >
+                  create one?
+                </a>
               </p>
             </div>
           </div>

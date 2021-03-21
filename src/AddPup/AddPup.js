@@ -12,8 +12,8 @@ export default function AddPup() {
   const [uploads, setUploads] = useState(null);
   const [formState, setFormState] = useState({
     name: "",
-    age: "",
-    size: "",
+    age: "Puppy",
+    size: "XS",
     breed: "",
     mix: false,
     nervous: false,
@@ -318,6 +318,7 @@ export default function AddPup() {
         />
         <label htmlFor="uploads">Photo:</label>
         <input
+          required
           type="file"
           name="uploads"
           id="uploads"
