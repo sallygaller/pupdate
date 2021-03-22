@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { API_ENDPOINT } from "../config";
 import TokenService from "../services/token-service";
+import MyPupsItem from "../MyPupsItem/MyPupsItem";
 import "./MyPups.css";
 
 class MyPups extends React.Component {
@@ -71,46 +72,52 @@ class MyPups extends React.Component {
         <ul>
           {this.state.pups.map((pup) => (
             <li key={pup.id}>
-              <Link to={`/pups/${pup.id}`}>
-                <h3>{pup.name}</h3>
-                <img
-                  className="MyPups-img"
-                  alt={`Profile of ${pup.name}`}
-                  src={`https://pupdate.s3-us-west-1.amazonaws.com/${pup.id}`}
-                />
-              </Link>
-              <br></br>
-              <Link to={`/edit/pups/${pup.id}`}>
-                <button className="MyPups-profile">Edit Profile</button>
-              </Link>
-              {this.state.checkDelete ? (
-                <div>
-                  Are you sure?
-                  <button
-                    className="MyPups-delete-profile"
-                    type="button"
-                    onClick={() => this.handleDeleteRequest(pup.id)}
-                  >
-                    Yes
-                  </button>
-                  <button
-                    className="MyPups-add"
-                    type="button"
-                    onClick={() => this.setState({ checkDelete: false })}
-                  >
-                    No
-                  </button>
-                </div>
-              ) : (
-                <button
-                  className="MyPups-delete-profile"
-                  type="button"
-                  onClick={() => this.setState({ checkDelete: true })}
-                >
-                  Delete Profile
-                </button>
-              )}
+              <MyPupsItem
+                pup={pup}
+                handleDeleteRequest={this.handleDeleteRequest}
+              />
             </li>
+            // <li key={pup.id}>
+            //   <Link to={`/pups/${pup.id}`}>
+            //     <h3>{pup.name}</h3>
+            //     <img
+            //       className="MyPups-img"
+            //       alt={`Profile of ${pup.name}`}
+            //       src={`https://pupdate.s3-us-west-1.amazonaws.com/${pup.id}`}
+            //     />
+            //   </Link>
+            //   <br></br>
+            //   <Link to={`/edit/pups/${pup.id}`}>
+            //     <button className="MyPups-profile">Edit Profile</button>
+            //   </Link>
+            //   {this.state.checkDelete ? (
+            //     <div>
+            //       Are you sure?
+            //       <button
+            //         className="MyPups-delete-profile"
+            //         type="button"
+            //         onClick={() => this.handleDeleteRequest(pup.id)}
+            //       >
+            //         Yes
+            //       </button>
+            //       <button
+            //         className="MyPups-add"
+            //         type="button"
+            //         onClick={() => this.setState({ checkDelete: false })}
+            //       >
+            //         No
+            //       </button>
+            //     </div>
+            //   ) : (
+            //     <button
+            //       className="MyPups-delete-profile"
+            //       type="button"
+            //       onClick={() => this.setState({ checkDelete: true })}
+            //     >
+            //       Delete Profile
+            //     </button>
+            //   )}
+            // </li>
           ))}
         </ul>
       </div>

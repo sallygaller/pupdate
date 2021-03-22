@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders the UI as expected 1`] = `
+<div>
+  <a
+    href="/pups/1"
+    onClick={[Function]}
+  >
+    <h3>
+      Eddie
+    </h3>
+    <img
+      alt="Profile of Eddie"
+      className="MyPups-img"
+      src="https://pupdate.s3-us-west-1.amazonaws.com/1"
+    />
+  </a>
+  <br />
+  <a
+    href="/edit/pups/1"
+    onClick={[Function]}
+  >
+    <button
+      className="MyPups-profile"
+    >
+      Edit Profile
+    </button>
+  </a>
+  <button
+    className="MyPups-delete-profile"
+    onClick={[Function]}
+    type="button"
+  >
+    Delete Profile
+  </button>
+</div>
+`;
