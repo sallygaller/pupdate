@@ -175,6 +175,7 @@ export default function AddPup() {
           value={formState.age}
           onChange={onChange}
         >
+          <option value="">Select an age range...</option>
           <option key="puppy" id="puppy" value="Puppy">
             Puppy (6-18 months)
           </option>
@@ -193,6 +194,7 @@ export default function AddPup() {
           value={formState.size}
           onChange={onChange}
         >
+          <option value="">Select a size...</option>
           <option key="x-small" id="x-small" value="XS">
             Extra Small (under 10lbs)
           </option>
@@ -318,7 +320,7 @@ export default function AddPup() {
         />
         <label htmlFor="uploads">Photo:</label>
         <input
-          // required
+          required
           type="file"
           name="uploads"
           id="uploads"
