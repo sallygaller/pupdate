@@ -12,8 +12,8 @@ export default function AddPup() {
   const [uploads, setUploads] = useState(null);
   const [formState, setFormState] = useState({
     name: "",
-    age: "Puppy",
-    size: "XS",
+    age: "",
+    size: "",
     breed: "",
     mix: false,
     nervous: false,
