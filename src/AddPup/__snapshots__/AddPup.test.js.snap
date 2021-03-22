@@ -66,8 +66,13 @@ exports[`renders the UI as expected 1`] = `
       name="age"
       onChange={[Function]}
       required={true}
-      value="Puppy"
+      value=""
     >
+      <option
+        value=""
+      >
+        Select an age range...
+      </option>
       <option
         id="puppy"
         value="Puppy"
@@ -97,8 +102,13 @@ exports[`renders the UI as expected 1`] = `
       name="size"
       onChange={[Function]}
       required={true}
-      value="XS"
+      value=""
     >
+      <option
+        value=""
+      >
+        Select a size...
+      </option>
       <option
         id="x-small"
         value="XS"
