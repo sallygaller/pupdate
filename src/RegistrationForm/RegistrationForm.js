@@ -16,7 +16,7 @@ export default function RegistrationForm(props) {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (location === "") {
-      setError("Please complete the 'City, State, Location' field below.");
+      setError("Please complete the 'City, State, Country' field below.");
     } else {
       let locationArray = location.split(",");
       const user = {
